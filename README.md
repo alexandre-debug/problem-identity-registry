@@ -2,7 +2,7 @@
 
 *A research record on giving recurring problems a shared, verifiable identity, so that people and AI systems can reuse known solutions instead of solving the same problems again.*
 
-**Status:** work in progress · version 0.1.1 · 29 September 2026 · [changelog](CHANGELOG.md)
+**Status:** work in progress · version 0.1.2 · 29 September 2026 · [changelog](CHANGELOG.md)
 **Author:** Alexandre Cardoso Rego (the project was first conceived, in Portuguese, as *Grande Cérebro*)
 **Português:** [README.pt-BR.md](README.pt-BR.md)
 

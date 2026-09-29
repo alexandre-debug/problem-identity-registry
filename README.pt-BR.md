@@ -2,7 +2,7 @@
 
 *Registro de pesquisa sobre dar a problemas recorrentes uma identidade compartilhada e verificável, para que pessoas e sistemas de IA reaproveitem soluções conhecidas em vez de resolver de novo os mesmos problemas.*
 
-**Situação:** pesquisa em andamento · versão 0.1.1 · 29 de setembro de 2026 · [mudanças](CHANGELOG.md)
+**Situação:** pesquisa em andamento · versão 0.1.2 · 29 de setembro de 2026 · [mudanças](CHANGELOG.md)
 **Autor:** Alexandre Cardoso Rego (o projeto nasceu com o nome *Grande Cérebro*)
 **English:** [README.md](README.md)
 
