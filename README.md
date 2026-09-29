@@ -2,7 +2,7 @@
 
 *A research record on giving recurring problems a shared, verifiable identity, so that people and AI systems can reuse known solutions instead of solving the same problems again.*
 
-**Status:** work in progress · version 0.1.0 · 29 September 2026
+**Status:** work in progress · version 0.1.1 · 29 September 2026 · [changelog](CHANGELOG.md)
 **Author:** Alexandre Cardoso Rego (the project was first conceived, in Portuguese, as *Grande Cérebro*)
 **Português:** [README.pt-BR.md](README.pt-BR.md)
 
@@ -30,7 +30,8 @@ This is the only claim this repository presents as confirmed, in the form we con
 | **H: M0 first, alternating with M2** | **2.57%** | **+59.3% (+54.2% to +65.0%)** |
 | M2: confirmed relations + global popularity term | 2.84% | +76.0% (+69.0% to +83.5%) |
 
-- **Ceiling.** Only 6.21% of the new questions had an earlier marked duplicate, so no method can go beyond that. User-marked duplicates are incomplete, so all numbers are lower bounds of "a relevant earlier discussion exists".
+- **Ceiling of this evaluation.** Only 6.21% of the new questions had an earlier marked duplicate, so in this evaluation, which is based on the markings available, no method can score above 6.21%. This is a limit of the metric, not of the real usefulness of the system. User-marked duplicates are incomplete, so all numbers are lower bounds of "a relevant earlier discussion exists".
+- **A discussion is not a solution.** A discussion from the marked family is not automatically a solution that applies to the new question; that was not measured.
 - **What H is.**
   - H takes its first suggestion from plain search, then alternates M2 and M0 in the remaining positions.
   - M2 adds a global popularity term (the number of confirmed links of a question) to the confirmed relations.
@@ -93,7 +94,7 @@ results/                         result files of each stage
 
 ## Reproducing
 
-- **Requirements:** Python 3.10+ with `numpy`, `scipy`, `scikit-learn`, and optionally `py7zr`; see [code/README.md](code/README.md).
+- **Requirements:** Python 3.10+ with `numpy`, `scipy`, `scikit-learn`, and optionally `py7zr`. The exact versions used, pinned requirement files and step-by-step instructions for a clean run are in [code/ENVIRONMENT.md](code/ENVIRONMENT.md).
 - **Where each stage ran:**
   - Rounds 1–5 (small scikit-learn models, TF-IDF and the dataset's pre-trained word vectors) ran in the assistant's cloud sandbox.
   - From round 6 on, embeddings and LLM judges via [Ollama](https://ollama.com) (`nomic-embed-text` for embeddings, `gemma4` as judge) ran locally on the author's Mac. The confirmation's result file records the exact model digests and the Ollama version.

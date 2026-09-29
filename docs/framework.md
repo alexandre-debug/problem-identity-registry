@@ -1,6 +1,6 @@
 # Framework: a shared registry of problem identities
 
-**Author:** Alexandre Cardoso Rego · version 0.1.0 · 29 September 2026 · [Português](framework.pt-BR.md)
+**Author:** Alexandre Cardoso Rego · version 0.1.1 · 29 September 2026 · [Português](framework.pt-BR.md)
 
 Sections 1 and 2 describe the motivation and the design. From section 3 on, each point carries one of four labels:
 
@@ -19,7 +19,11 @@ The project asks a simple question: **what if recurring problems had an identity
 
 ## 2. Core concepts [Proposal]
 
-**Problem identity.** A persistent identifier for a class of problems that share a solution. It plays the role that the ICD plays for diseases or CVE for software vulnerabilities, applied to everyday technical problems. An identity is not assigned by a central authority. It emerges from confirmations.
+**Problem identity.** A persistent identifier that groups **situations considered equivalent under explicit criteria**, such as the same symptom, the same cause and the same context. **Procedures (solutions) are linked to these situations**, each with the conditions under which it applies.
+
+- Identity is **not** defined by a shared solution. A broad procedure can serve different problems, as the general "umbrella" guides did in the experiments (section 3.5).
+- The identifier plays the role that the ICD plays for diseases or CVE for software vulnerabilities, applied to everyday technical problems.
+- It is not assigned by a central authority. It emerges from confirmations, whose types are defined below.
 
 **Confirmation (link).** A statement that two reported problems are related, stored with:
 

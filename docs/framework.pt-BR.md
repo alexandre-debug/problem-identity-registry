@@ -1,6 +1,6 @@
 # Framework: um registro compartilhado de identidades de problemas
 
-**Autor:** Alexandre Cardoso Rego · versão 0.1.0 · 29 de setembro de 2026 · [English](framework.md)
+**Autor:** Alexandre Cardoso Rego · versão 0.1.1 · 29 de setembro de 2026 · [English](framework.md)
 
 As seções 1 e 2 descrevem a motivação e o desenho. Da seção 3 em diante, cada ponto leva um de quatro rótulos:
 
@@ -19,7 +19,11 @@ O projeto faz uma pergunta simples: **e se problemas recorrentes tivessem uma id
 
 ## 2. Conceitos centrais [Proposta]
 
-**Identidade de problema.** Um identificador persistente para uma classe de problemas que compartilham uma solução. Faz o papel que o CID tem para doenças ou o CVE para falhas de segurança, aplicado a problemas técnicos do dia a dia. A identidade não é atribuída por uma autoridade central. Ela surge das confirmações.
+**Identidade de problema.** Um identificador persistente que agrupa **situações consideradas equivalentes segundo critérios explícitos**, como o mesmo sintoma, a mesma causa e o mesmo contexto. **Os procedimentos (soluções) ficam ligados a essas situações**, cada um com as condições em que se aplica.
+
+- A identidade **não** é definida por compartilhar uma solução. Um procedimento amplo pode servir a problemas diferentes, como os guias gerais "guarda-chuva" fizeram nos experimentos (seção 3.5).
+- O identificador faz o papel que o CID tem para doenças ou o CVE para falhas de segurança, aplicado a problemas técnicos do dia a dia.
+- Ele não é atribuído por uma autoridade central. Surge das confirmações, cujos tipos são definidos abaixo.
 
 **Confirmação (ligação).** Uma afirmação de que dois problemas relatados estão relacionados, guardada com:
 

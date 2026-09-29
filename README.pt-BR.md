@@ -2,7 +2,7 @@
 
 *Registro de pesquisa sobre dar a problemas recorrentes uma identidade compartilhada e verificável, para que pessoas e sistemas de IA reaproveitem soluções conhecidas em vez de resolver de novo os mesmos problemas.*
 
-**Situação:** pesquisa em andamento · versão 0.1.0 · 29 de setembro de 2026
+**Situação:** pesquisa em andamento · versão 0.1.1 · 29 de setembro de 2026 · [mudanças](CHANGELOG.md)
 **Autor:** Alexandre Cardoso Rego (o projeto nasceu com o nome *Grande Cérebro*)
 **English:** [README.md](README.md)
 
@@ -30,7 +30,8 @@ Esta é a única afirmação que este repositório apresenta como confirmada, na
 | **H: M0 em primeiro, alternando com o M2** | **2,57%** | **+59,3% (+54,2% a +65,0%)** |
 | M2: relações confirmadas + termo global de popularidade | 2,84% | +76,0% (+69,0% a +83,5%) |
 
-- **Teto.** Só 6,21% das perguntas novas tinham uma duplicata marcada anterior, e nenhum método pode passar disso. As duplicatas marcadas pelos usuários são incompletas, então todos os números são limites inferiores de "existe uma discussão anterior relevante".
+- **Teto desta avaliação.** Só 6,21% das perguntas novas tinham uma duplicata marcada anterior, então, nesta avaliação baseada nas marcações disponíveis, nenhum método pode passar de 6,21%. É um limite da medida, não da utilidade real do sistema. As duplicatas marcadas pelos usuários são incompletas, então todos os números são limites inferiores de "existe uma discussão anterior relevante".
+- **Discussão não é solução.** Uma discussão da família marcada não é automaticamente uma solução que se aplica à pergunta nova; isso não foi medido.
 - **O que é o H.**
   - O H tira a primeira sugestão da busca comum e depois alterna o M2 e o M0 nas posições restantes.
   - O M2 acrescenta às relações confirmadas um termo global de popularidade (o número de ligações confirmadas de uma pergunta).
@@ -93,7 +94,7 @@ results/                         arquivos de resultado de cada etapa
 
 ## Como reproduzir
 
-- **Requisitos:** Python 3.10+ com `numpy`, `scipy`, `scikit-learn` e, opcionalmente, `py7zr`; veja [code/README.md](code/README.md).
+- **Requisitos:** Python 3.10+ com `numpy`, `scipy`, `scikit-learn` e, opcionalmente, `py7zr`. As versões exatas usadas, os arquivos de requisitos fixados e o passo a passo para uma execução do zero estão em [code/ENVIRONMENT.md](code/ENVIRONMENT.md).
 - **Onde cada etapa rodou:**
   - As rodadas 1 a 5 (modelos scikit-learn pequenos, TF-IDF e os vetores de palavras pré-treinados do conjunto) rodaram no ambiente de nuvem do assistente.
   - Da rodada 6 em diante, os embeddings e os juízes LLM via [Ollama](https://ollama.com) (`nomic-embed-text` para os embeddings, `gemma4` como juiz) rodaram no Mac do autor. O arquivo de resultado da confirmação registra os digests exatos dos modelos e a versão do Ollama.
