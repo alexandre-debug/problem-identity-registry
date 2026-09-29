@@ -1,0 +1,17 @@
+Events_1 V2: turnos=591 acertos_hash=10.7% interpretação_correta_no_hit=77.8%
+     entidade   turnos= 289 hit= 6.2% correta_no_hit=55.6%
+     categorico turnos=  57 hit= 8.8% correta_no_hit=40.0%
+     sem_valor  turnos= 245 hit=16.3% correta_no_hit=92.5%
+Events_1 V3: turnos=591 acertos_hash=15.7% interpretação_correta_no_hit=77.4%
+     entidade   turnos= 289 hit= 8.3% correta_no_hit=41.7%
+     categorico turnos=  57 hit=17.5% correta_no_hit=70.0%
+     sem_valor  turnos= 245 hit=24.1% correta_no_hit=93.2%
+Events_2 V2: turnos=1508 acertos_hash=15.8% interpretação_correta_no_hit=80.3%
+     entidade   turnos= 655 hit= 8.1% correta_no_hit=49.1%
+     categorico turnos= 156 hit=20.5% correta_no_hit=93.8%
+     sem_valor  turnos= 697 hit=22.0% correta_no_hit=88.2%
+Events_2 V3: turnos=1508 acertos_hash=16.8% interpretação_correta_no_hit=80.2%
+     entidade   turnos= 655 hit= 8.7% correta_no_hit=49.1%
+     categorico turnos= 156 hit=21.8% correta_no_hit=91.2%
+     sem_valor  turnos= 697 hit=23.2% correta_no_hit=88.9%
+dialogos de teste de B com GetEventDates (sonda de "não suportada" em A): 98

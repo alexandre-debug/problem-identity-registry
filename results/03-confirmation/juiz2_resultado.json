@@ -1,0 +1,85 @@
+{
+ "itens": 370,
+ "contagens": {
+  "marcada": {
+   "perguntas_validas": 170,
+   "com_1a_sugestao_diferente": 61,
+   "rotuladas": 61
+  },
+  "sem_marcacao": {
+   "perguntas_validas": 360,
+   "com_1a_sugestao_diferente": 84,
+   "rotuladas": 84
+  }
+ },
+ "claude_controles": {
+  "sensibilidade": 0.575,
+  "falsos_positivos": 0.0,
+  "valido": true
+ },
+ "gemma_nos_mesmos_controles": {
+  "sensibilidade": 0.205,
+  "falsos_positivos": 0.0,
+  "valido": false
+ },
+ "P2_complementar_claude": {
+  "M1_menos_M0": -0.019,
+  "ic95": [
+   -0.0483,
+   0.0066
+  ],
+  "discordantes_so_M0_util_x_so_M1_util": {
+   "marcada": [
+    8,
+    13
+   ],
+   "sem_marcacao": [
+    18,
+    10
+   ]
+  },
+  "passa": false
+ },
+ "P2_mesmos_itens_gemma": {
+  "M1_menos_M0": -0.0248,
+  "ic95": [
+   -0.0503,
+   -0.0007
+  ],
+  "discordantes_so_M0_util_x_so_M1_util": {
+   "marcada": [
+    10,
+    8
+   ],
+   "sem_marcacao": [
+    16,
+    7
+   ]
+  }
+ },
+ "sim_nas_sugestoes": {
+  "claude": {
+   "M0": 0.393,
+   "M1": 0.372
+  },
+  "gemma": {
+   "M0": 0.278,
+   "M1": 0.201
+  }
+ },
+ "concordancia_claude_gemma": {
+  "todos_os_itens": {
+   "n": 367,
+   "acordo": 0.719,
+   "kappa": 0.329
+  },
+  "so_sugestoes": {
+   "n": 288,
+   "acordo": 0.698,
+   "kappa": 0.311
+  },
+  "gemma_sim_quando_claude_sim": 0.402,
+  "gemma_sim_quando_claude_nao": 0.102
+ },
+ "itens_sha256": "87d80f9bc877c1909af036bfb12269c0982fd215c9655174e2fbb0c09a46d848"
+}

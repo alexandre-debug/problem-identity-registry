@@ -1,0 +1,18 @@
+{
+ "train_dialogues": 2760,
+ "val_dialogues": 306,
+ "stage2_examples": 34742,
+ "copy_on_accept": [
+  "event.date",
+  "event.name"
+ ],
+ "val_realista_estagio1": {
+  "intencao": 0.9741,
+  "decisao": 0.9555
+ },
+ "val_realista_estagio2": {
+  "intencao": 0.9834,
+  "decisao": 0.9586
+ },
+ "train_seconds": 90.5
+}

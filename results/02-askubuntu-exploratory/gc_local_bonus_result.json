@@ -1,0 +1,639 @@
+{
+ "modelo": "gemma4:latest",
+ "julgamentos_novos": 991,
+ "respostas_invalidas_novas": 14,
+ "A_quem_troca_o_1o_colocado": {
+  "marcadas_todas": {
+   "M2_troca_a_1a_sugestao_do_M0": 0.8516,
+   "causa_da_troca": {
+    "so_o_bonus": "1104 (54%)",
+    "relacoes_e_bonus": "476 (23%)",
+    "so_as_relacoes": "474 (23%)"
+   },
+   "quando_o_bonus_muda_o_1o_colocado": {
+    "casos": 1603,
+    "bonus_liquido_mediana": 0.09,
+    "correspondencia_sacrificada_mediana": 0.025,
+    "ligacoes_do_vencedor_mediana": 140
+   }
+  },
+  "sem_marcacao_amostra_5000": {
+   "M2_troca_a_1a_sugestao_do_M0": 0.6774,
+   "causa_da_troca": {
+    "so_o_bonus": "2438 (72%)",
+    "relacoes_e_bonus": "548 (16%)",
+    "so_as_relacoes": "401 (12%)"
+   },
+   "quando_o_bonus_muda_o_1o_colocado": {
+    "casos": 3020,
+    "bonus_liquido_mediana": 0.099,
+    "correspondencia_sacrificada_mediana": 0.043,
+    "ligacoes_do_vencedor_mediana": 140
+   }
+  }
+ },
+ "acerto_sem_llm_avaliacao": {
+  "M0": {
+   "familia_top1": 0.0139,
+   "familia_top5": 0.0319,
+   "marcada_top5": 0.0119
+  },
+  "M1": {
+   "familia_top1": 0.0232,
+   "familia_top5": 0.0416,
+   "marcada_top5": 0.0365
+  },
+  "beta=0.005": {
+   "familia_top1": 0.0296,
+   "familia_top5": 0.0457,
+   "marcada_top5": 0.0441
+  },
+  "beta=0.01": {
+   "familia_top1": 0.0327,
+   "familia_top5": 0.0479,
+   "marcada_top5": 0.0471
+  },
+  "M2": {
+   "familia_top1": 0.0335,
+   "familia_top5": 0.0491,
+   "marcada_top5": 0.0484
+  },
+  "beta=0.04": {
+   "familia_top1": 0.0252,
+   "familia_top5": 0.0422,
+   "marcada_top5": 0.0414
+  }
+ },
+ "familia_top5_diferencas": {
+  "M1_menos_M0": {
+   "pontos": 0.0097,
+   "ic95": [
+    0.0086,
+    0.0108
+   ]
+  },
+  "M2_menos_M0": {
+   "pontos": 0.0173,
+   "ic95": [
+    0.0159,
+    0.0186
+   ]
+  },
+  "M2_menos_M1": {
+   "pontos": 0.0075,
+   "ic95": [
+    0.0065,
+    0.0086
+   ]
+  }
+ },
+ "B_juiz_1a_sugestao_bruto_ponderado": {
+  "M1_menos_M0": {
+   "diferenca_ponderada": 0.0095,
+   "ic95": [
+    -0.0124,
+    0.0321
+   ],
+   "discordantes": {
+    "marcada": [
+     12,
+     6
+    ],
+    "sem_marcacao": [
+     5,
+     9
+    ]
+   }
+  },
+  "M2_menos_M0": {
+   "diferenca_ponderada": -0.0769,
+   "ic95": [
+    -0.1184,
+    -0.0314
+   ],
+   "discordantes": {
+    "marcada": [
+     29,
+     18
+    ],
+    "sem_marcacao": [
+     38,
+     15
+    ]
+   }
+  },
+  "M2_menos_M1 (efeito do bonus)": {
+   "diferenca_ponderada": -0.0865,
+   "ic95": [
+    -0.1294,
+    -0.0424
+   ],
+   "discordantes": {
+    "marcada": [
+     23,
+     18
+    ],
+    "sem_marcacao": [
+     39,
+     12
+    ]
+   }
+  }
+ },
+ "B_origem_das_mudancas_do_M2": {
+  "M2_melhorou_marcada": {
+   "bonus (M1 erra)": 14,
+   "relacoes (M1 já acerta)": 4
+  },
+  "M2_melhorou_sem_marcacao": {
+   "bonus (M1 erra)": 10,
+   "relacoes (M1 já acerta)": 5
+  },
+  "M2_piorou_marcada": {
+   "bonus (M1 acerta)": 21,
+   "relacoes_e_bonus (M1 também erra)": 6,
+   "relacoes (M1 = M2)": 2
+  },
+  "M2_piorou_sem_marcacao": {
+   "bonus (M1 acerta)": 35,
+   "relacoes (M1 = M2)": 2,
+   "relacoes_e_bonus (M1 também erra)": 1
+  }
+ },
+ "C_curva_de_beta_calibracao": [
+  {
+   "beta": 0.0,
+   "marcada_top5": 0.0458,
+   "familia_top5": 0.052,
+   "juiz_menos_M0": -0.0136
+  },
+  {
+   "beta": 0.005,
+   "marcada_top5": 0.0547,
+   "familia_top5": 0.0566,
+   "juiz_menos_M0": -0.0322
+  },
+  {
+   "beta": 0.01,
+   "marcada_top5": 0.0581,
+   "familia_top5": 0.0592,
+   "juiz_menos_M0": -0.0432
+  },
+  {
+   "beta": 0.02,
+   "marcada_top5": 0.0589,
+   "familia_top5": 0.0599,
+   "juiz_menos_M0": -0.1182
+  },
+  {
+   "beta": 0.04,
+   "marcada_top5": 0.0518,
+   "familia_top5": 0.0526,
+   "juiz_menos_M0": -0.2207
+  }
+ ],
+ "C_beta_escolhido_por_regua": {
+  "pela_duplicata_marcada (régua da rodada 7)": 0.02,
+  "pela_familia": 0.02,
+  "pelo_juiz": 0.0
+ },
+ "C_curva_de_beta_avaliacao_descritiva": [
+  {
+   "beta": 0.0,
+   "familia_top5_menos_M0": 0.0097,
+   "juiz_menos_M0": 0.0095
+  },
+  {
+   "beta": 0.005,
+   "familia_top5_menos_M0": 0.0139,
+   "juiz_menos_M0": 0.0146
+  },
+  {
+   "beta": 0.01,
+   "familia_top5_menos_M0": 0.016,
+   "juiz_menos_M0": 0.0179
+  },
+  {
+   "beta": 0.02,
+   "familia_top5_menos_M0": 0.0173,
+   "juiz_menos_M0": -0.0769
+  },
+  {
+   "beta": 0.04,
+   "familia_top5_menos_M0": 0.0103,
+   "juiz_menos_M0": -0.1619
+  }
+ ],
+ "M1_nos_criterios_da_rodada_8": {
+  "C1_familia": false,
+  "C2_juiz": true
+ },
+ "juiz": {
+  "sensibilidade": 0.467,
+  "falsos_positivos": 0.0
+ },
+ "exemplos_M2_piorou": "[15 exemplos removidos na versão pública: contêm trechos de perguntas do askubuntu.com. SHA-256 do arquivo original: ccf498786ee9f7a4ad906b0d7142365786a5713596fe2a23ba25b7ad2dcfe302]",
+ "chave_cegos": [
+  {
+   "n": 1,
+   "A": "M0",
+   "B": "M2",
+   "grupo": "marcada",
+   "gemma_M0": false,
+   "gemma_M2": false,
+   "M0_na_familia_marcada": false,
+   "M2_na_familia_marcada": true
+  },
+  {
+   "n": 2,
+   "A": "M0",
+   "B": "M2",
+   "grupo": "sem_marcacao",
+   "gemma_M0": false,
+   "gemma_M2": false,
+   "M0_na_familia_marcada": null,
+   "M2_na_familia_marcada": null
+  },
+  {
+   "n": 3,
+   "A": "M2",
+   "B": "M0",
+   "grupo": "marcada",
+   "gemma_M0": false,
+   "gemma_M2": false,
+   "M0_na_familia_marcada": false,
+   "M2_na_familia_marcada": true
+  },
+  {
+   "n": 4,
+   "A": "M2",
+   "B": "M0",
+   "grupo": "sem_marcacao",
+   "gemma_M0": false,
+   "gemma_M2": false,
+   "M0_na_familia_marcada": null,
+   "M2_na_familia_marcada": null
+  },
+  {
+   "n": 5,
+   "A": "M2",
+   "B": "M0",
+   "grupo": "sem_marcacao",
+   "gemma_M0": true,
+   "gemma_M2": true,
+   "M0_na_familia_marcada": null,
+   "M2_na_familia_marcada": null
+  },
+  {
+   "n": 6,
+   "A": "M2",
+   "B": "M0",
+   "grupo": "marcada",
+   "gemma_M0": true,
+   "gemma_M2": false,
+   "M0_na_familia_marcada": false,
+   "M2_na_familia_marcada": true
+  },
+  {
+   "n": 7,
+   "A": "M0",
+   "B": "M2",
+   "grupo": "marcada",
+   "gemma_M0": true,
+   "gemma_M2": false,
+   "M0_na_familia_marcada": false,
+   "M2_na_familia_marcada": false
+  },
+  {
+   "n": 8,
+   "A": "M0",
+   "B": "M2",
+   "grupo": "sem_marcacao",
+   "gemma_M0": false,
+   "gemma_M2": false,
+   "M0_na_familia_marcada": null,
+   "M2_na_familia_marcada": null
+  },
+  {
+   "n": 9,
+   "A": "M2",
+   "B": "M0",
+   "grupo": "sem_marcacao",
+   "gemma_M0": true,
+   "gemma_M2": true,
+   "M0_na_familia_marcada": null,
+   "M2_na_familia_marcada": null
+  },
+  {
+   "n": 10,
+   "A": "M0",
+   "B": "M2",
+   "grupo": "sem_marcacao",
+   "gemma_M0": false,
+   "gemma_M2": false,
+   "M0_na_familia_marcada": null,
+   "M2_na_familia_marcada": null
+  },
+  {
+   "n": 11,
+   "A": "M2",
+   "B": "M0",
+   "grupo": "sem_marcacao",
+   "gemma_M0": false,
+   "gemma_M2": false,
+   "M0_na_familia_marcada": null,
+   "M2_na_familia_marcada": null
+  },
+  {
+   "n": 12,
+   "A": "M2",
+   "B": "M0",
+   "grupo": "sem_marcacao",
+   "gemma_M0": false,
+   "gemma_M2": false,
+   "M0_na_familia_marcada": null,
+   "M2_na_familia_marcada": null
+  },
+  {
+   "n": 13,
+   "A": "M0",
+   "B": "M2",
+   "grupo": "marcada",
+   "gemma_M0": true,
+   "gemma_M2": false,
+   "M0_na_familia_marcada": false,
+   "M2_na_familia_marcada": false
+  },
+  {
+   "n": 14,
+   "A": "M0",
+   "B": "M2",
+   "grupo": "marcada",
+   "gemma_M0": true,
+   "gemma_M2": true,
+   "M0_na_familia_marcada": false,
+   "M2_na_familia_marcada": true
+  },
+  {
+   "n": 15,
+   "A": "M2",
+   "B": "M0",
+   "grupo": "sem_marcacao",
+   "gemma_M0": false,
+   "gemma_M2": false,
+   "M0_na_familia_marcada": null,
+   "M2_na_familia_marcada": null
+  },
+  {
+   "n": 16,
+   "A": "M2",
+   "B": "M0",
+   "grupo": "marcada",
+   "gemma_M0": false,
+   "gemma_M2": true,
+   "M0_na_familia_marcada": false,
+   "M2_na_familia_marcada": true
+  },
+  {
+   "n": 17,
+   "A": "M2",
+   "B": "M0",
+   "grupo": "marcada",
+   "gemma_M0": false,
+   "gemma_M2": true,
+   "M0_na_familia_marcada": false,
+   "M2_na_familia_marcada": true
+  },
+  {
+   "n": 18,
+   "A": "M2",
+   "B": "M0",
+   "grupo": "marcada",
+   "gemma_M0": true,
+   "gemma_M2": true,
+   "M0_na_familia_marcada": true,
+   "M2_na_familia_marcada": false
+  },
+  {
+   "n": 19,
+   "A": "M2",
+   "B": "M0",
+   "grupo": "sem_marcacao",
+   "gemma_M0": false,
+   "gemma_M2": false,
+   "M0_na_familia_marcada": null,
+   "M2_na_familia_marcada": null
+  },
+  {
+   "n": 20,
+   "A": "M2",
+   "B": "M0",
+   "grupo": "sem_marcacao",
+   "gemma_M0": false,
+   "gemma_M2": false,
+   "M0_na_familia_marcada": null,
+   "M2_na_familia_marcada": null
+  },
+  {
+   "n": 21,
+   "A": "M0",
+   "B": "M2",
+   "grupo": "sem_marcacao",
+   "gemma_M0": false,
+   "gemma_M2": false,
+   "M0_na_familia_marcada": null,
+   "M2_na_familia_marcada": null
+  },
+  {
+   "n": 22,
+   "A": "M2",
+   "B": "M0",
+   "grupo": "marcada",
+   "gemma_M0": false,
+   "gemma_M2": true,
+   "M0_na_familia_marcada": false,
+   "M2_na_familia_marcada": false
+  },
+  {
+   "n": 23,
+   "A": "M2",
+   "B": "M0",
+   "grupo": "marcada",
+   "gemma_M0": true,
+   "gemma_M2": true,
+   "M0_na_familia_marcada": false,
+   "M2_na_familia_marcada": true
+  },
+  {
+   "n": 24,
+   "A": "M0",
+   "B": "M2",
+   "grupo": "sem_marcacao",
+   "gemma_M0": false,
+   "gemma_M2": false,
+   "M0_na_familia_marcada": null,
+   "M2_na_familia_marcada": null
+  },
+  {
+   "n": 25,
+   "A": "M2",
+   "B": "M0",
+   "grupo": "sem_marcacao",
+   "gemma_M0": true,
+   "gemma_M2": false,
+   "M0_na_familia_marcada": null,
+   "M2_na_familia_marcada": null
+  },
+  {
+   "n": 26,
+   "A": "M2",
+   "B": "M0",
+   "grupo": "marcada",
+   "gemma_M0": false,
+   "gemma_M2": false,
+   "M0_na_familia_marcada": false,
+   "M2_na_familia_marcada": true
+  },
+  {
+   "n": 27,
+   "A": "M2",
+   "B": "M0",
+   "grupo": "marcada",
+   "gemma_M0": false,
+   "gemma_M2": true,
+   "M0_na_familia_marcada": false,
+   "M2_na_familia_marcada": false
+  },
+  {
+   "n": 28,
+   "A": "M2",
+   "B": "M0",
+   "grupo": "marcada",
+   "gemma_M0": true,
+   "gemma_M2": true,
+   "M0_na_familia_marcada": false,
+   "M2_na_familia_marcada": false
+  },
+  {
+   "n": 29,
+   "A": "M0",
+   "B": "M2",
+   "grupo": "sem_marcacao",
+   "gemma_M0": false,
+   "gemma_M2": false,
+   "M0_na_familia_marcada": null,
+   "M2_na_familia_marcada": null
+  },
+  {
+   "n": 30,
+   "A": "M0",
+   "B": "M2",
+   "grupo": "marcada",
+   "gemma_M0": true,
+   "gemma_M2": true,
+   "M0_na_familia_marcada": false,
+   "M2_na_familia_marcada": true
+  },
+  {
+   "n": 31,
+   "A": "M0",
+   "B": "M2",
+   "grupo": "marcada",
+   "gemma_M0": false,
+   "gemma_M2": true,
+   "M0_na_familia_marcada": false,
+   "M2_na_familia_marcada": true
+  },
+  {
+   "n": 32,
+   "A": "M2",
+   "B": "M0",
+   "grupo": "marcada",
+   "gemma_M0": false,
+   "gemma_M2": true,
+   "M0_na_familia_marcada": false,
+   "M2_na_familia_marcada": true
+  },
+  {
+   "n": 33,
+   "A": "M0",
+   "B": "M2",
+   "grupo": "sem_marcacao",
+   "gemma_M0": true,
+   "gemma_M2": false,
+   "M0_na_familia_marcada": null,
+   "M2_na_familia_marcada": null
+  },
+  {
+   "n": 34,
+   "A": "M0",
+   "B": "M2",
+   "grupo": "sem_marcacao",
+   "gemma_M0": false,
+   "gemma_M2": false,
+   "M0_na_familia_marcada": null,
+   "M2_na_familia_marcada": null
+  },
+  {
+   "n": 35,
+   "A": "M0",
+   "B": "M2",
+   "grupo": "sem_marcacao",
+   "gemma_M0": false,
+   "gemma_M2": false,
+   "M0_na_familia_marcada": null,
+   "M2_na_familia_marcada": null
+  },
+  {
+   "n": 36,
+   "A": "M2",
+   "B": "M0",
+   "grupo": "sem_marcacao",
+   "gemma_M0": false,
+   "gemma_M2": false,
+   "M0_na_familia_marcada": null,
+   "M2_na_familia_marcada": null
+  },
+  {
+   "n": 37,
+   "A": "M2",
+   "B": "M0",
+   "grupo": "sem_marcacao",
+   "gemma_M0": false,
+   "gemma_M2": false,
+   "M0_na_familia_marcada": null,
+   "M2_na_familia_marcada": null
+  },
+  {
+   "n": 38,
+   "A": "M2",
+   "B": "M0",
+   "grupo": "sem_marcacao",
+   "gemma_M0": false,
+   "gemma_M2": false,
+   "M0_na_familia_marcada": null,
+   "M2_na_familia_marcada": null
+  },
+  {
+   "n": 39,
+   "A": "M0",
+   "B": "M2",
+   "grupo": "marcada",
+   "gemma_M0": false,
+   "gemma_M2": true,
+   "M0_na_familia_marcada": false,
+   "M2_na_familia_marcada": false
+  },
+  {
+   "n": 40,
+   "A": "M2",
+   "B": "M0",
+   "grupo": "sem_marcacao",
+   "gemma_M0": false,
+   "gemma_M2": false,
+   "M0_na_familia_marcada": null,
+   "M2_na_familia_marcada": null
+  }
+ ],
+ "minutos": 19.0
+}

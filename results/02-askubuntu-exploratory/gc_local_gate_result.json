@@ -1,0 +1,178 @@
+{
+ "modelo": "gemma4:latest",
+ "julgamentos_novos": 1445,
+ "respostas_invalidas_novas": 10,
+ "calibracao": {
+  "tabela": [
+   {
+    "tau": "1a_sempre_da_rede",
+    "familia_top5": 0.0584,
+    "juiz_G_menos_M0": -0.1182
+   },
+   {
+    "tau": "-0.02",
+    "familia_top5": 0.0578,
+    "juiz_G_menos_M0": -0.0178
+   },
+   {
+    "tau": "+0.00",
+    "familia_top5": 0.0575,
+    "juiz_G_menos_M0": -0.0038
+   },
+   {
+    "tau": "+0.02",
+    "familia_top5": 0.0572,
+    "juiz_G_menos_M0": 0.0017
+   },
+   {
+    "tau": "+0.04",
+    "familia_top5": 0.057,
+    "juiz_G_menos_M0": 0.0008
+   },
+   {
+    "tau": "+0.06",
+    "familia_top5": 0.057,
+    "juiz_G_menos_M0": 0.0008
+   },
+   {
+    "tau": "+0.08",
+    "familia_top5": 0.057,
+    "juiz_G_menos_M0": 0.0
+   },
+   {
+    "tau": "+0.10",
+    "familia_top5": 0.057,
+    "juiz_G_menos_M0": 0.0
+   },
+   {
+    "tau": "1a_sempre_plana(H)",
+    "familia_top5": 0.057,
+    "juiz_G_menos_M0": 0.0
+   }
+  ],
+  "tau_escolhido": "+0.02"
+ },
+ "avaliacao": {
+  "acerto_sem_llm": {
+   "M0": {
+    "familia_top1": 0.0139,
+    "familia_top5": 0.0319,
+    "marcada_top1": 0.0046,
+    "marcada_top5": 0.0119
+   },
+   "M2": {
+    "familia_top1": 0.0335,
+    "familia_top5": 0.0491,
+    "marcada_top1": 0.0321,
+    "marcada_top5": 0.0484
+   },
+   "G": {
+    "familia_top1": 0.0167,
+    "familia_top5": 0.046,
+    "marcada_top1": 0.0088,
+    "marcada_top5": 0.0445
+   },
+   "H": {
+    "familia_top1": 0.0139,
+    "familia_top5": 0.0459,
+    "marcada_top1": 0.0046,
+    "marcada_top5": 0.0444
+   }
+  },
+  "familia_top5_diferencas": {
+   "G_menos_M0": {
+    "pontos": 0.0141,
+    "ic95": [
+     0.013,
+     0.0153
+    ]
+   },
+   "H_menos_M0": {
+    "pontos": 0.0141,
+    "ic95": [
+     0.0129,
+     0.0153
+    ]
+   },
+   "M2_menos_M0": {
+    "pontos": 0.0173,
+    "ic95": [
+     0.0159,
+     0.0186
+    ]
+   }
+  },
+  "juiz_1a_sugestao_bruto_ponderado": {
+   "M2_menos_M0": {
+    "diferenca_ponderada": -0.0769,
+    "ic95": [
+     -0.1184,
+     -0.0314
+    ],
+    "mudou_a_1a_sugestao": {
+     "marcada": 128,
+     "sem_marcacao": 216
+    },
+    "discordantes": {
+     "marcada": [
+      29,
+      18
+     ],
+     "sem_marcacao": [
+      38,
+      15
+     ]
+    }
+   },
+   "G_menos_M0": {
+    "diferenca_ponderada": -0.0026,
+    "ic95": [
+     -0.0098,
+     0.0019
+    ],
+    "mudou_a_1a_sugestao": {
+     "marcada": 11,
+     "sem_marcacao": 15
+    },
+    "discordantes": {
+     "marcada": [
+      1,
+      2
+     ],
+     "sem_marcacao": [
+      1,
+      0
+     ]
+    }
+   }
+  },
+  "juiz_sim_bruto": {
+   "marcada": {
+    "M0": 0.467,
+    "M2": 0.389,
+    "G": 0.473
+   },
+   "sem_marcacao": {
+    "M0": 0.247,
+    "M2": 0.171,
+    "G": 0.243
+   }
+  },
+  "portao_troca_a_1a_sugestao": {
+   "marcadas_todas": 0.0862,
+   "sem_marcacao_amostra_5000": 0.0278
+  },
+  "juiz": {
+   "sensibilidade": 0.467,
+   "falsos_positivos": 0.0
+  },
+  "G_menos_M0_corrigido_pelo_juiz": -0.0056
+ },
+ "criterios": {
+  "C1_familia_top5_G_menos_M0_>=1pp_e_IC>0": true,
+  "C2_juiz_IC_inferior_>=-0,03": true,
+  "rodada_8_passa": true
+ },
+ "exemplos_G_diferente_de_M0": "[12 exemplos removidos na versão pública: contêm trechos de perguntas do askubuntu.com. SHA-256 do arquivo original: b45a3c100d4a5a30aa562d5e4fa1d001dc87855b0982509f469138d99456f057]",
+ "minutos": 24.9
+}

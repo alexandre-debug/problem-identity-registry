@@ -1,0 +1,8 @@
+gc_data/
+gc_cache/
+*.npy
+*.npy.done
+*.npy.meta.json
+*.7z
+__pycache__/
+juiz2_chave_NAO_ENVIAR.json

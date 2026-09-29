@@ -1,0 +1,4 @@
+numpy>=1.24
+scipy>=1.10
+scikit-learn>=1.3
+py7zr>=0.20   # optional: only to extract the Stack Exchange dump (a 7z program also works)

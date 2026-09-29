@@ -1,0 +1,47 @@
+{
+ "config": {
+  "metodo": "M2",
+  "beta": 0.02,
+  "condicao": "V3"
+ },
+ "acertos_M2_V3": 0.0484,
+ "acertos_M0_V3": 0.0119,
+ "M2_acerta_e_M0_erra": 1293,
+ "M0_acerta_e_M2_erra": 67,
+ "mecanismo_nos_ganhos": {
+  "centro do grupo": "882 (68%)",
+  "peso foi decisivo": "434 (34%)",
+  "pergunta guarda-chuva (top-50 em ligações)": "1006 (78%)",
+  "ponte (duplicata confirmada)": "410 (32%)",
+  "própria pergunta": "1 (0%)"
+ },
+ "diversidade_das_5_sugestoes_M2": {
+  "maior_familia_entre_as_5_todas": {
+   "1": 2023,
+   "2": 2547,
+   "3": 1619,
+   "4": 865,
+   "5": 358
+  },
+  "quando_acerta": {
+   "1": 164,
+   "2": 410,
+   "3": 445,
+   "4": 372,
+   "5": 234
+  },
+  "quando_erra": {
+   "1": 186,
+   "2": 318,
+   "3": 183,
+   "4": 76,
+   "5": 24
+  }
+ },
+ "custo_por_pergunta_ms": {
+  "M0_mediana": 2.0,
+  "M2_mediana": 3.14,
+  "ligacoes_na_memoria": 10377,
+  "perguntas_com_ligacoes": 12727
+ }
+}
