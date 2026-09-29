@@ -1,7 +1,7 @@
 {
   "title": "Problem Identity Registry: a research record on shared, verifiable identities for recurring problems",
   "upload_type": "software",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "publication_date": "2026-09-29",
   "creators": [
     {
@@ -9,7 +9,7 @@
     }
   ],
   "description": "<p>Research record (work in progress) proposing that recurring problems receive shared, verifiable identities built from confirmed \"same problem\" links, used across applications. It includes a dated protocol (original in Portuguese, summary in English), code and result files.</p><p><b>Confirmed claim:</b> on new AskUbuntu questions (2020-2024, never used in the exploratory phase), using previously recorded duplicate relations increased the retrieval of discussions from the marked family among five suggestions. An interleaved combination (plain semantic search first, alternating with a relation-based ranking that includes a popularity term) went from 1.61% to 2.57% of new questions (+59% relative; 95% CI +54% to +65%), keeping the first suggestion identical to plain search. Relations without the popularity term gave +41%. Resolution of problems and savings of work were not measured.</p><p><b>Unresolved:</b> whether the relation-based ranking can safely choose the first suggestion. The official outcome of the confirmation is inconclusive because the pre-registered judge failed its controls; a complementary blind second judge that passed its controls found M1 - M0 = -1.9 points (95% CI -4.8 to +0.7). Negative and inconclusive results of all rounds are reported.</p><p>The idea and its direction are by the author; experimental design, code and analyses were developed with the assistance of Claude (Anthropic), with critical reviews from ChatGPT (OpenAI) relayed by the author. Code: MIT. Documentation and results: CC BY 4.0 (third-party excerpts were removed from the published files).</p>",
-  "license": "MIT",
+  "license": "mit",
   "keywords": [
     "information retrieval",
     "duplicate question detection",
