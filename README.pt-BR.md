@@ -1,5 +1,7 @@
 # Problem Identity Registry
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23037099.svg)](https://doi.org/10.5281/zenodo.23037099)
+
 *Registro de pesquisa sobre dar a problemas recorrentes uma identidade compartilhada e verificável, para que pessoas e sistemas de IA reaproveitem soluções conhecidas em vez de resolver de novo os mesmos problemas.*
 
 **Situação:** pesquisa em andamento · versão 0.1.2 · 29 de setembro de 2026 · [mudanças](CHANGELOG.md)
@@ -123,4 +125,10 @@ results/                         arquivos de resultado de cada etapa
 
 ## Como citar
 
-Veja [CITATION.cff](CITATION.cff). Um DOI será acrescentado depois da primeira versão arquivada no Zenodo.
+Cite o registro arquivado no Zenodo:
+
+> Rego, A. C. (2026). *Problem Identity Registry: a research record on shared, verifiable identities for recurring problems*. Zenodo. https://doi.org/10.5281/zenodo.23037099
+
+- O DOI acima representa todas as versões e sempre leva à mais recente.
+- Para citar uma versão específica, use o DOI próprio dela, listado na página do Zenodo. Versão 0.1.0: [10.5281/zenodo.23037100](https://doi.org/10.5281/zenodo.23037100).
+- As mesmas informações estão no [CITATION.cff](CITATION.cff), que o GitHub mostra em "Cite this repository".

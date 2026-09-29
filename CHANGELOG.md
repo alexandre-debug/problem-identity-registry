@@ -1,11 +1,17 @@
 # Changelog
 
+## Unreleased (main branch, after v0.1.2)
+
+- **DOI and citation.** Zenodo archived v0.1.0 as [10.5281/zenodo.23037100](https://doi.org/10.5281/zenodo.23037100). The concept DOI, which covers all versions, is [10.5281/zenodo.23037099](https://doi.org/10.5281/zenodo.23037099). Both were added to the READMEs, with a "How to cite" section, and to `CITATION.cff`.
+
 ## v0.1.2 (29 September 2026)
 
 Archiving metadata only. No results or documents changed.
 
 - **Zenodo archiving.** The Zenodo import of v0.1.0 stalled in the "Received" state. In `.zenodo.json`, the licence identifier was changed from `MIT` to `mit`, the form Zenodo expects, which is the likely cause. The corrected file was meant to be part of v0.1.1 but was left out of that upload, so v0.1.1 carried the same metadata as v0.1.0 and the fix takes effect in this release.
 - Version numbers updated in the README and `CITATION.cff`. The DOI will be added once Zenodo archives this release.
+- **Correction, added later the same day.** The licence identifier was not the cause of the delay. Zenodo archived v0.1.0 about an hour after its release, with the original `MIT` identifier: the import was only slow. The change to `mit` is harmless and was kept.
+- **Tag name.** This release was published on GitHub with the tag `v0.1.3` by mistake; there is no `v0.1.2` tag. Its files and its `.zenodo.json` say 0.1.2.
 
 ## v0.1.1 (29 September 2026)
 
