@@ -1,0 +1,421 @@
+{
+ "versao": "r11-v1",
+ "itens": 2070,
+ "controles_do_juiz": {
+  "K1_discriminacao_facil": {
+   "n": 60,
+   "acerto": 1.0,
+   "minimo": 0.85
+  },
+  "K2_ordem": {
+   "n": 40,
+   "consistencia": 0.8,
+   "minimo": 0.75
+  },
+  "K4_erro_decisivo": {
+   "n": 37,
+   "acerto": 1.0,
+   "minimo": 0.8,
+   "minimo_de_pares": 30
+  },
+  "K5_equivalentes": {
+   "n": 26,
+   "empates": 1.0,
+   "minimo": 0.5,
+   "minimo_de_pares": 20
+  }
+ },
+ "juiz_valido": true,
+ "controles_revisados": {
+  "pares_revisados": {
+   "K4": 41,
+   "K5": 40
+  },
+  "pares_aprovados": {
+   "K4": 37,
+   "K5": 26
+  },
+  "revisao_sha256": "5c54da1bbdac0653353e6f248b2d0596ec3093899ead5c885d2df4ab10212c32",
+  "aprovacoes_sha256": "921547d5db8dc8fca5e8383855521879b821cf0b0594e496fd7971d749e86ce6",
+  "erros_do_K4_sha256": "39f83b8824acb3dcaf56ff4f8107d9d9aad009d36cf6bf6d5d628b0dd944bef6",
+  "versoes_do_K5_sha256": "a60cf2732221dd6a675fce7e1c9e861faba5d26b2b39328f2c2c294030194676"
+ },
+ "errata_1": "P1 = Δ(CH1 − CH) como no pré-registro; a versão 6e6ec634 calculava CH − CH1 com o rótulo trocado. Em P1, prefere_primeira = H1 e prefere_segunda = H.",
+ "criterios": {
+  "P1_HxH1_no_estrato_P_IC_inferior_>_0": true,
+  "P2_populacao_H1_menos_M0_IC_inferior_>_-0.03": true,
+  "P3_populacao_H1_menos_M0_IC_inteiro_>_0": false,
+  "RESUMO": [
+   "P1: retirar a popularidade melhorou a resposta em relacao a H",
+   "P2: H1 ficou dentro da perda tolerada (-0,03) frente a M0",
+   "P3: superioridade de H1 sobre M0 nao demonstrada"
+  ]
+ },
+ "P1_H1_menos_H_no_estrato_P": {
+  "n": 838,
+  "delta": 0.0597,
+  "ic95": [
+   0.0131,
+   0.1086
+  ],
+  "prefere_primeira": 246,
+  "prefere_segunda": 196,
+  "empates": 396
+ },
+ "populacao_H1_menos_M0": {
+  "delta": 0.0063,
+  "ic95": [
+   -0.0158,
+   0.0286
+  ]
+ },
+ "secundarios": {
+  "populacao_H_menos_H1": {
+   "delta": -0.0367,
+   "ic95": [
+    -0.0665,
+    -0.0071
+   ]
+  },
+  "condicionais_contexto_diferente": {
+   "H1xM0": {
+    "P": {
+     "n": 420,
+     "delta": 0.019,
+     "ic95": [
+      -0.0548,
+      0.0929
+     ],
+     "prefere_primeira": 127,
+     "prefere_segunda": 119,
+     "empates": 174
+    },
+    "F": {
+     "n": 147,
+     "delta": 0.0748,
+     "ic95": [
+      -0.0476,
+      0.1837
+     ],
+     "prefere_primeira": 43,
+     "prefere_segunda": 32,
+     "empates": 72
+    }
+   },
+   "HxH1": {
+    "P": {
+     "n": 838,
+     "delta": -0.0597,
+     "ic95": [
+      -0.1098,
+      -0.0107
+     ],
+     "prefere_primeira": 196,
+     "prefere_segunda": 246,
+     "empates": 396
+    },
+    "F": {
+     "n": 202,
+     "delta": -0.005,
+     "ic95": [
+      -0.1089,
+      0.0892
+     ],
+     "prefere_primeira": 56,
+     "prefere_segunda": 57,
+     "empates": 89
+    }
+   },
+   "HxM0": {
+    "P": {
+     "n": 246,
+     "delta": -0.0244,
+     "ic95": [
+      -0.122,
+      0.0732
+     ],
+     "prefere_primeira": 71,
+     "prefere_segunda": 77,
+     "empates": 98
+    },
+    "F": {
+     "n": 54,
+     "delta": -0.037,
+     "ic95": [
+      -0.2407,
+      0.1667
+     ],
+     "prefere_primeira": 15,
+     "prefere_segunda": 17,
+     "empates": 22
+    }
+   }
+  },
+  "H_menos_M0_subamostra": {
+   "P": {
+    "n": 246,
+    "delta": -0.0244,
+    "ic95": [
+     -0.126,
+     0.0772
+    ],
+    "prefere_primeira": 71,
+    "prefere_segunda": 77,
+    "empates": 98
+   },
+   "F": {
+    "n": 54,
+    "delta": -0.037,
+    "ic95": [
+     -0.2407,
+     0.1667
+    ],
+    "prefere_primeira": 15,
+    "prefere_segunda": 17,
+    "empates": 22
+   }
+  },
+  "F_por_familia": {
+   "H1_menos_M0": {
+    "sem_mudanca": {
+     "n": 205,
+     "delta": 0.0488,
+     "ic95": [
+      -0.0341,
+      0.127
+     ],
+     "prefere_primeira": 40,
+     "prefere_segunda": 30,
+     "empates": 135
+    },
+    "ganho": {
+     "n": 6,
+     "delta": 0.5,
+     "ic95": [
+      0.1667,
+      0.8333
+     ],
+     "prefere_primeira": 3,
+     "prefere_segunda": 0,
+     "empates": 3
+    },
+    "perda": {
+     "n": 3,
+     "delta": -0.6667,
+     "ic95": [
+      -1.0,
+      0.0
+     ],
+     "prefere_primeira": 0,
+     "prefere_segunda": 2,
+     "empates": 1
+    }
+   },
+   "H_menos_H1": {
+    "sem_mudanca": {
+     "n": 193,
+     "delta": -0.0311,
+     "ic95": [
+      -0.1347,
+      0.0725
+     ],
+     "prefere_primeira": 48,
+     "prefere_segunda": 54,
+     "empates": 91
+    },
+    "ganho": {
+     "n": 18,
+     "delta": 0.2778,
+     "ic95": [
+      -0.0556,
+      0.6111
+     ],
+     "prefere_primeira": 8,
+     "prefere_segunda": 3,
+     "empates": 7
+    },
+    "perda": {
+     "n": 3,
+     "delta": 0.0,
+     "ic95": [
+      0.0,
+      0.0
+     ],
+     "prefere_primeira": 0,
+     "prefere_segunda": 0,
+     "empates": 3
+    }
+   },
+   "H_menos_M0": {
+    "sem_mudanca": {
+     "n": 46,
+     "delta": 0.0,
+     "ic95": [
+      -0.2174,
+      0.2174
+     ],
+     "prefere_primeira": 13,
+     "prefere_segunda": 13,
+     "empates": 20
+    },
+    "ganho": {
+     "n": 8,
+     "delta": -0.25,
+     "ic95": [
+      -0.75,
+      0.375
+     ],
+     "prefere_primeira": 2,
+     "prefere_segunda": 4,
+     "empates": 2
+    }
+   }
+  },
+  "equilibrio_de_discussoes_com_resposta_P": {
+   "H1xM0": {
+    "segunda_com_mais": {
+     "n": 43,
+     "delta": -0.0233,
+     "ic95": [
+      -0.2326,
+      0.186
+     ],
+     "prefere_primeira": 10,
+     "prefere_segunda": 11,
+     "empates": 22
+    },
+    "mesmo_numero": {
+     "n": 312,
+     "delta": 0.0353,
+     "ic95": [
+      -0.0481,
+      0.1154
+     ],
+     "prefere_primeira": 99,
+     "prefere_segunda": 88,
+     "empates": 125
+    },
+    "primeira_com_mais": {
+     "n": 65,
+     "delta": -0.0308,
+     "ic95": [
+      -0.2004,
+      0.1538
+     ],
+     "prefere_primeira": 18,
+     "prefere_segunda": 20,
+     "empates": 27
+    }
+   },
+   "HxH1": {
+    "mesmo_numero": {
+     "n": 648,
+     "delta": -0.0787,
+     "ic95": [
+      -0.1327,
+      -0.0247
+     ],
+     "prefere_primeira": 146,
+     "prefere_segunda": 197,
+     "empates": 305
+    },
+    "primeira_com_mais": {
+     "n": 167,
+     "delta": -0.006,
+     "ic95": [
+      -0.1078,
+      0.1078
+     ],
+     "prefere_primeira": 42,
+     "prefere_segunda": 43,
+     "empates": 82
+    },
+    "segunda_com_mais": {
+     "n": 23,
+     "delta": 0.087,
+     "ic95": [
+      -0.2174,
+      0.3913
+     ],
+     "prefere_primeira": 8,
+     "prefere_segunda": 6,
+     "empates": 9
+    }
+   },
+   "HxM0": {
+    "mesmo_numero": {
+     "n": 175,
+     "delta": -0.0686,
+     "ic95": [
+      -0.1829,
+      0.0514
+     ],
+     "prefere_primeira": 48,
+     "prefere_segunda": 60,
+     "empates": 67
+    },
+    "primeira_com_mais": {
+     "n": 58,
+     "delta": 0.0345,
+     "ic95": [
+      -0.1552,
+      0.2241
+     ],
+     "prefere_primeira": 17,
+     "prefere_segunda": 15,
+     "empates": 26
+    },
+    "segunda_com_mais": {
+     "n": 13,
+     "delta": 0.3077,
+     "ic95": [
+      -0.0769,
+      0.6923
+     ],
+     "prefere_primeira": 6,
+     "prefere_segunda": 2,
+     "empates": 5
+    }
+   }
+  },
+  "empates_automaticos": {
+   "H1xM0:prompt_identico": 533,
+   "HxH1:prompt_identico": 60
+  },
+  "custo_por_condicao": {
+   "CM0": {
+    "palavras_media": 172.7,
+    "tokens_entrada_media": 1359.9,
+    "tokens_saida_media": 255.5
+   },
+   "CH1": {
+    "palavras_media": 172.3,
+    "tokens_entrada_media": 1367.5,
+    "tokens_saida_media": 255.0
+   },
+   "CH": {
+    "palavras_media": 171.9,
+    "tokens_entrada_media": 1405.8,
+    "tokens_saida_media": 255.2
+   }
+  },
+  "juiz_escolheu_A_nos_principais": 0.29,
+  "juiz_empates_nos_principais": 0.446
+ },
+ "pesos": {
+  "marcadas_elegiveis": 267,
+  "sem_marcacao_elegiveis_na_amostra": 1350,
+  "escala_sem_marcacao": 18.3498,
+  "P_pool": 886,
+  "P_julgado": 886
+ },
+ "reproducao": {
+  "itens_sha256": "3f13b88dca2392e431f4617ba6a181c3bf047dd4de47fbd95a46e2e815eced29",
+  "modelo": "gemma4:latest",
+  "digest": "c6eb396dbd5992bbe3f5cdb947e8bbc0ee413d7c17e2beaae69f5d569cf982eb",
+  "ollama": "0.30.10",
+  "geracoes_cache": "r11_geracoes_ab105a1cef7d9d26.jsonl",
+  "script_sha256": "6e6ec634e00c1dcc029965e98e77c43d90f5984706f16535af10f7c9044cf96e",
+  "script_comparar_sha256": "0783fb6b1dd8392b34c45b2717829568410ee047d5a0b2951cd02dc1de0c6e21"
+ }
+}

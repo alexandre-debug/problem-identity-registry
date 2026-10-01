@@ -1,0 +1,15 @@
+{
+ "segundos_por_resposta": 18.4,
+ "respostas_na_rodada_completa": 1340,
+ "horas_estimadas": 6.8,
+ "respostas_vazias": 0,
+ "palavras_medias": {
+  "CH": 154.9,
+  "CM0": 157.5,
+  "C0": 161.3
+ },
+ "modelo": "gemma4:latest",
+ "digest": "c6eb396dbd5992bbe3f5cdb947e8bbc0ee413d7c17e2beaae69f5d569cf982eb",
+ "ollama": "0.30.10",
+ "think_desligado_aceito": true
+}

@@ -1,8 +1,8 @@
 # Experiment log (English summary)
 
-**Author:** Alexandre Cardoso Rego · research conducted 28–29 September 2026 · summary of version 0.1.0
+**Author:** Alexandre Cardoso Rego · research conducted 28 September – 1 October 2026 · summary of version 0.2.0
 
-This is a condensed English summary of every stage. The source of record is the original dated protocol, in Portuguese: [protocolo-original.pt-BR.md](protocolo-original.pt-BR.md). For each round, the question and the method were written there **before** running. Rounds meant to decide something also had their success criteria fixed in advance, and those criteria were never changed after seeing results. Diagnostic and exploratory stages had no criterion, as marked below. The protocol is a living document with day-level dates and no external time stamp before this release. Result files are in [`../results`](../results).
+This is a condensed English summary of every stage. The source of record is the original dated protocol, in Portuguese: [protocolo-original.pt-BR.md](protocolo-original.pt-BR.md) (up to the confirmation) and [protocolo-continuacao.pt-BR.md](protocolo-continuacao.pt-BR.md) (rounds 9 to 12). For each round, the question and the method were written there **before** running. Rounds meant to decide something also had their success criteria fixed in advance, and those criteria were never changed after seeing results. Diagnostic and exploratory stages had no criterion, as marked below. The protocol is a living document, dated to the day and, from round 9 on, often to the hour. It had no external time stamp before v0.1.0 (29 September 2026), its first public record. The continuation, with the pre-registrations of rounds 9 to 11, is first published in v0.2.0, after their results; its dates are the author's own record. Result files are in [`../results`](../results).
 
 ## Glossary
 
@@ -12,7 +12,8 @@ This is a condensed English summary of every stage. The source of record is the 
 |---|---|
 | SGD | Schema-Guided Dialogue dataset. Events_1 and Events_2 act as applications A and B. |
 | AskUbuntu (Lei et al.) | 167,765 questions with user-marked duplicates, IDs ordered in time. Used for all exploratory AskUbuntu work. |
-| AskUbuntu 2024 dump | 414,451 questions from the Stack Exchange dump of 2024-04-02. Used only for the confirmation. |
+| AskUbuntu 2024 dump | 414,451 questions from the Stack Exchange dump of 2024-04-02. Used for the confirmation and for rounds 9 and 10B. |
+| Super User 2024 dump | 505,136 questions from the same Stack Exchange dump date. Used for rounds 10A and 11. |
 
 **Conditions and methods**
 
@@ -35,6 +36,8 @@ This is a condensed English summary of every stage. The source of record is the 
 | Marked hit | An earlier user-marked duplicate appears among the 5 suggestions, divided by **all** new questions in the window. |
 | Family hit | The marked duplicate, or an already-confirmed duplicate of it, appears among the 5 suggestions. |
 | Judge | A model answers "would a correct answer to B solve A? YES/NO" for the first suggestion. It is checked on controls: marked-duplicate pairs (sensitivity) and random pairs (false positives). |
+| Net preference Δ | Rounds 9 and 11. A language model (gemma4) answers each new question with five retrieved discussions as context. A blind judge compares two answers and picks A, B or TIE. Δ = share of questions where the first condition is preferred − share where the second is; ties count zero. |
+| Judge controls K1–K5 | Mixed unlabelled into the judge's items. K1: an answer to the same question vs an answer to another question (≥ 0.85 correct). K2: items repeated with A and B swapped (≥ 0.75 consistent). K4: a faithful rewrite vs the same rewrite with one decisive technical error (≥ 0.80 correct, ≥ 30 approved pairs). K5: two equivalent rewrites (≥ 0.50 TIE, ≥ 20 approved pairs). K3 (round 9 only) was a diagnostic, not a control: the answer generated with the true solution in context vs the answer without context. Control pairs are reviewed by separate agents before judging. If any control fails, the round is INCONCLUSIVE. |
 
 ---
 
@@ -134,14 +137,105 @@ The first framing was a shared cache of validated interpretations of user reques
 - **Agreement between the judges:** 71.9%, Cohen's κ = 0.33.
 - **Reading:** there is not enough evidence to let the network choose the first suggestion. Keeping plain search first (design H) is the prudent decision.
 
+## Part 4 — Does the retrieved discussion improve the final answer? (rounds 9–11)
+
+The confirmation measured retrieval only. Rounds 9 to 11 measure the next step: whether the retrieved discussions change the answer a language model writes.
+
+**Common design.**
+
+- **Generator:** gemma4 on the author's Mac (digest registered), temperature 0, at most 350 output tokens, thinking disabled. The prompt is the same in every condition except the context block, which says the discussions may be irrelevant.
+- **Context:** five discussions. Each is the old question (up to 80 words) plus one answer (up to 150 words) **as it stood when the new question was posted**: the answer accepted before that date, otherwise the most upvoted one by that date, in the text version valid on that date. Nothing written or edited after the new question enters its context.
+- **Reference (judge only):** the accepted answer of the new question. Only new questions with an accepted answer are used. The answer of the marked duplicate is never the reference.
+- **Judge:** fresh Claude subagents, one per batch of 35 items, receiving only the rubric and the items. The key that maps answers to conditions stays on the author's machine; a local script returns aggregates only.
+- **Rubric:** "Decide which candidate is more likely to solve the asker's problem; a candidate with wrong, risky or irrelevant steps is worse. Ignore length, style and formatting." The reference is evidence, and a different approach can be equally correct.
+- **What is measured:** a judge's preference guided by an imperfect reference, not problems actually solved.
+
+### Round 9: AskUbuntu (pre-registered, frozen 29 September 2026)
+
+- **Strata, defined only by what each method retrieves:**
+  - E1, "the network brings the family": questions with an earlier marked duplicate whose family is in H's top 5 and not in M0's (124 available).
+  - E2, "questions without a marked duplicate, with different contexts" (name corrected by erratum): 400 from the random sample.
+  - E3, "the network loses the family": descriptive (11).
+- **Criteria:** P1, Δ(CH − CM0) in E1 with CI lower bound > 0. P2, Δ(CH − CM0) in E2 with CI lower bound > −0.10.
+- **Deviation 1 (before any judging):** gemma failed to insert errors into the K4 pairs (4 of 60 approved). The errors were then inserted by a separate Claude agent as one minimal edit to gemma's faithful rewrite; two other agents reviewed the pairs. Thresholds did not change.
+- **Judge controls: all passed.** K1 60/60, K2 87.5%, K4 34/34, K5 21/21 ties.
+
+| Stratum | n | Δ(CH − CM0) | 95% CI | CH / CM0 / tie |
+|---|---|---|---|---|
+| E1: the network brings the family | 124 | **+0.153** | +0.024 to +0.282 | 44 / 25 / 55 |
+| E2: no marked duplicate, different contexts | 400 | **−0.070** | −0.138 to 0.000 | 87 / 115 / 198 |
+| E3: the network loses the family (descriptive) | 11 | −0.182 | −0.545 to +0.182 | 1 / 3 / 7 |
+
+- **P1 passed; P2 failed.** Official verdict, pre-registered text: "In E2, H may worsen the answer."
+- **Exploratory:** the average over all questions was −0.064 [−0.124; −0.001]; it depends on weights for groups that were not evaluated and is not a demonstrated loss.
+- **Errata (external review):** the round did not isolate the popularity term; it was "a plausible suspect, not tested". Balancing the number of answered discussions weakens, but does not exclude, alternative explanations.
+- **Reading (review):** the system can bring context that improves the answer, but it cannot yet recognise in advance when to do so.
+
+### Round 10: use the network only when it helps (frozen 30 September 2026)
+
+- **Stage B, a gate on AskUbuntu.** The signal was how much the network's best new candidate beat plain search's top similarity, without the bonus. The rule required the gate to at least double the share of gains among its openings on questions with a marked duplicate (from 12.5% for H1 without a gate to ≥ 25.1%), with coverage ≥ 2%, on a development half, then a verification half.
+  - Best value with coverage ≥ 2%: 17.6% at τ = +0.02 on the development half (1.4× the baseline). **No τ was admissible: the gate is "not calibratable" for this signal, grid and requirements** (erratum). Stage C, which would have generated answers, did not run.
+  - H1 without a gate rarely lost the marked family: 289 gains against 38 losses.
+- **Stage A, retrieval on Super User** (a sparser network: only 1.89% of new questions have an earlier marked duplicate, against 6.21% on AskUbuntu; 12,377 links against 32,864).
+
+| Family hit (top 5) | Super User | Relative gain over M0 [95% CI] | AskUbuntu (confirmation) |
+|---|---|---|---|
+| M0 | 0.68% | — | 1.61% |
+| M1 | 0.79% | +15.5% [+11.4%; +20.0%] | +41.4% |
+| H1 | 0.76% | +11.6% [+7.9%; +15.4%] | +31.3% |
+| H | 0.85% | +25.3% [+19.9%; +30.7%] | +59.3% |
+| M2 | 0.87% | +27.3% [+21.4%; +33.6%] | +76.0% |
+
+- **A1 passed** (M1 lower bound +11.4% > 10%). **A2 failed** (H1 lower bound +7.9%, below 10%, although its CI excludes zero).
+
+### Round 11: plain search, H1 and H on the same questions (Super User; frozen 30 September 2026)
+
+- **Question:** does removing the popularity term avoid the harm seen in round 9, and how does H1 compare with plain search?
+- **Strata:**
+  - P: all 886 eligible questions without a marked duplicate where H or H1 differs from M0.
+  - F: the 214 marked questions, secondary.
+  - A random subsample of 300 for H × M0, secondary.
+- **Pre-registered criteria, each answered separately:**
+  - P1: Δ(CH1 − CH) in P, among questions where the prompts of H and H1 differ, with CI lower bound > 0.
+  - P2: Δ(CH1 − CM0) for the population of eligible questions (marked weight 1, unmarked weight 18.35; identical contexts count 0), with CI lower bound > −0.03.
+  - P3: the same Δ with the whole CI above 0.
+- **Deviation 2 (before any judging):** only 16 of 40 K5 pairs were approved, below the minimum of 20, mostly because gemma wrote meta text instead of a rewrite. Where gemma's first version was clean, a separate Claude agent wrote a new equivalent second version (10 pairs). Two other agents approved them. The controls became K4 37 and K5 26. Thresholds did not change.
+- **Judge controls: all passed.** K1 60/60, K2 0.80, K4 37/37, K5 26/26 ties. 2,070 items, 60 judge batches.
+- **Erratum 1 (found after the result):** the script computed P1 as CH − CH1 under the label "H1 − H". The pre-registered criterion is Δ(CH1 − CH). The sign was corrected without changing the criterion or the threshold, and an external review recomputed the aggregates. The original output is published next to the corrected one.
+
+| Criterion | Δ | 95% CI | Result |
+|---|---|---|---|
+| P1: Δ(CH1 − CH), stratum P, n = 838 (H1 preferred 246, H 196, tie 396) | **+0.060** | +0.013 to +0.109 | **passed** |
+| P2: Δ(CH1 − CM0), population | **+0.006** | −0.016 to +0.029 | **passed** (margin −0.03) |
+| P3: same Δ, whole CI above 0 | +0.006 | −0.016 to +0.029 | not passed |
+
+- **Official verdict, pre-registered texts:** "P1: removing popularity improved the answer relative to H." "P2: H1 stayed within the tolerated loss (−0.03) relative to M0." "P3: superiority of H1 over M0 not shown."
+- **Secondary, descriptive:**
+  - Population H − H1: −0.037 [−0.067; −0.007].
+  - In P with the same number of answered discussions in both contexts: H − H1 = −0.079 [−0.133; −0.025], n = 648.
+  - H − M0 on the subsample: −0.024 in P (n = 246) and −0.037 in F (n = 54), both inconclusive.
+  - Mean input tokens: 1,360 (M0), 1,368 (H1), 1,406 (H). Generation tokens were similar; the total cost of the network (building, maintaining and querying it) was not measured.
+- **Reading (review):** in this test, the popularity bonus hurt answer quality compared with the same design without it, and the network without the bonus kept quality within the accepted margin. A benefit over plain search, in quality, work saved or total cost, has not been shown.
+- **Limits:**
+  - Super User only; not repeated on AskUbuntu.
+  - P2 is population non-inferiority within 3 points, not equivalence, and does not guarantee every question.
+  - Without the bonus, retrieval finds less family (+11.6% instead of +25.3% on Super User).
+  - The K4 errors and part of the K5 pairs were written by agents of the same model family as the judge.
+
+### Round 12 (draft, not frozen): can low-cost models create the links?
+
+A draft in the protocol, already reviewed externally, proposes testing whether small local models can create directional "the answers of B solve A" links. The precision would be measured on a random sample of the links they would actually add, with calibration and evaluation separated. The comparison would include the same human links, human plus AI links, AI links only, and a learned metric without links (M3) as the "train instead of link" arm.
+
 ## Integrity notes
 
 - **Two blind sets were compromised and not used.** Diagnostic 8b and the confirmation each had one: the answer key reached the evaluator before labelling. The procedure was changed: the key never leaves the author's machine.
 - **External review changed the work before and after runs.** The author relayed critiques from ChatGPT.
   - Before runs, they changed the confirmation's design: the judge validity gate, the historical text versions and the cache fingerprints.
-  - After runs, they prompted corrections of interpretation, recorded as dated errata at the end of the original protocol:
+  - After runs, they prompted corrections of interpretation, recorded as dated errata (at the end of the original protocol, and next to each round in the continuation):
     - "no marked duplicate" does not mean "outside a known family";
     - not showing non-inferiority is not showing harm;
     - passing easy controls does not validate an AI as a curator;
     - the demonstrated gain is retrieval of discussions, not verified solutions.
 - **A hypothesis added during the work:** "AI as curator of the collective memory" (the author, 29 September 2026), documented in [framework.md](framework.md). It is untested.
+- **Control pairs written by agents (deviations 1 and 2).** In round 9, the local model failed to insert usable K4 errors; in round 11, it failed to write enough usable K5 versions. Before any judging, separate Claude agents inserted the K4 errors (deviation 1; in round 11 this was part of the frozen design) and wrote the second version of 10 of the 26 approved K5 pairs of round 11 (deviation 2). Other agents reviewed them, and no threshold changed. The judge belongs to the same model family, which is a known limitation.
+- **A sign error in the round 11 script (erratum 1).** It was found after the result, because the counts contradicted the label. It was corrected according to the pre-registered text, and the correction was checked in an external review. Both outputs are published.

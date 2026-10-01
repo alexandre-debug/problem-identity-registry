@@ -1,0 +1,237 @@
+{
+ "versao": "r9-v2",
+ "itens": 1050,
+ "empates_automaticos": 0,
+ "controles_do_juiz": {
+  "K1_discriminacao_facil": {
+   "n": 60,
+   "acerto": 1.0,
+   "minimo": 0.85
+  },
+  "K2_ordem": {
+   "n": 40,
+   "consistencia": 0.875,
+   "minimo": 0.75
+  },
+  "K4_erro_decisivo": {
+   "n": 34,
+   "acerto": 1.0,
+   "minimo": 0.8,
+   "minimo_de_pares": 30
+  },
+  "K5_equivalentes": {
+   "n": 21,
+   "empates": 1.0,
+   "minimo": 0.5,
+   "minimo_de_pares": 20
+  }
+ },
+ "juiz_valido": true,
+ "controles_revisados": {
+  "pares_revisados": {
+   "K4": 38,
+   "K5": 40
+  },
+  "pares_aprovados": {
+   "K4": 34,
+   "K5": 21
+  },
+  "revisao_sha256": "bf8040391215ab998181f7c4b9ef91f12b7206ad237e261d085bf7a0bc8e8502",
+  "aprovacoes_sha256": "2d1091eee62126dbe4ae69d018235a47f956d8e31aa919d556b0fb932fa1aa7d",
+  "erros_do_K4": "externos, desvio 1: 17bd985ae3e73fd226c05062693c71d68fa27c868d3565595be36992db955ddf"
+ },
+ "K3_diagnostico_oraculo": {
+  "n": 60,
+  "prefere_oraculo": 0.7,
+  "prefere_C0": 0.083,
+  "empates": 0.217,
+  "nota": "diagnostico do beneficio de dar a referencia ao gerador; nao reprova o juiz"
+ },
+ "CH_menos_CM0_por_estrato": {
+  "E1": {
+   "n": 124,
+   "delta": 0.1532,
+   "ic95": [
+    0.0242,
+    0.2823
+   ],
+   "prefere_primeira": 44,
+   "prefere_segunda": 25,
+   "empates": 55
+  },
+  "E2": {
+   "n": 400,
+   "delta": -0.07,
+   "ic95": [
+    -0.1375,
+    0.0
+   ],
+   "prefere_primeira": 87,
+   "prefere_segunda": 115,
+   "empates": 198
+  },
+  "E3": {
+   "n": 11,
+   "delta": -0.1818,
+   "ic95": [
+    -0.5455,
+    0.1818
+   ],
+   "prefere_primeira": 1,
+   "prefere_segunda": 3,
+   "empates": 7
+  }
+ },
+ "criterios": {
+  "P1_E1_IC_inferior_>_0": true,
+  "P2_E2_IC_inferior_>_-0.1": false,
+  "VEREDITO": "Em E2, H pode piorar a resposta (limite inferior abaixo da margem de -0,10)"
+ },
+ "secundarios": {
+  "efeito_populacional_estimado_EXPLORATORIO": {
+   "delta": -0.0637,
+   "ic95": [
+    -0.1242,
+    -0.0014
+   ],
+   "delta_em_E2_que_anularia_o_ganho_de_E1": -0.001,
+   "pesos": {
+    "E1": 0.0061,
+    "E3": 0.0006,
+    "E2_marcada": 0.0344,
+    "E2": 0.8881
+   },
+   "nota": "top-5 iguais contam 0; marcadas sem mudanca de familia recebem o delta de E2"
+  },
+  "CH_menos_C0": {
+   "E1": {
+    "n": 75,
+    "delta": 0.08,
+    "ic95": [
+     -0.08,
+     0.2533
+    ],
+    "prefere_primeira": 26,
+    "prefere_segunda": 20,
+    "empates": 29
+   },
+   "E2": {
+    "n": 75,
+    "delta": -0.0667,
+    "ic95": [
+     -0.2533,
+     0.12
+    ],
+    "prefere_primeira": 23,
+    "prefere_segunda": 28,
+    "empates": 24
+   }
+  },
+  "CM0_menos_C0": {
+   "E1": {
+    "n": 75,
+    "delta": -0.1067,
+    "ic95": [
+     -0.28,
+     0.08
+    ],
+    "prefere_primeira": 20,
+    "prefere_segunda": 28,
+    "empates": 27
+   },
+   "E2": {
+    "n": 75,
+    "delta": 0.1333,
+    "ic95": [
+     -0.0533,
+     0.2933
+    ],
+    "prefere_primeira": 27,
+    "prefere_segunda": 17,
+    "empates": 31
+   }
+  },
+  "CH_menos_CM0_por_equilibrio_de_discussoes_com_resposta": {
+   "E1": {
+    "mesmo_numero": {
+     "n": 76,
+     "delta": 0.2368,
+     "ic95": [
+      0.0789,
+      0.3947
+     ],
+     "prefere_primeira": 30,
+     "prefere_segunda": 12,
+     "empates": 34
+    },
+    "CH_com_mais": {
+     "n": 48,
+     "delta": 0.0208,
+     "ic95": [
+      -0.1875,
+      0.25
+     ],
+     "prefere_primeira": 14,
+     "prefere_segunda": 13,
+     "empates": 21
+    },
+    "CM0_com_mais": {
+     "n": 0,
+     "delta": null,
+     "ic95": null
+    }
+   },
+   "E2": {
+    "mesmo_numero": {
+     "n": 248,
+     "delta": -0.0887,
+     "ic95": [
+      -0.1774,
+      0.004
+     ],
+     "prefere_primeira": 58,
+     "prefere_segunda": 80,
+     "empates": 110
+    },
+    "CH_com_mais": {
+     "n": 145,
+     "delta": -0.0483,
+     "ic95": [
+      -0.1517,
+      0.0552
+     ],
+     "prefere_primeira": 28,
+     "prefere_segunda": 35,
+     "empates": 82
+    },
+    "CM0_com_mais": {
+     "n": 7,
+     "delta": 0.1429,
+     "ic95": [
+      0.0,
+      0.4286
+     ],
+     "prefere_primeira": 1,
+     "prefere_segunda": 0,
+     "empates": 6
+    }
+   }
+  },
+  "palavras_medias_por_condicao": {
+   "CH": 166.6,
+   "CM0": 165.6,
+   "C0": 169.1,
+   "ORACLE": 161.7
+  },
+  "juiz_escolheu_A_nos_principais": 0.249,
+  "juiz_empates_nos_principais": 0.486
+ },
+ "reproducao": {
+  "itens_sha256": "d1fb1aa08ccabc1ab686b71681a52afe6a9fea9fec8819db1849dca6621a0086",
+  "modelo": "gemma4:latest",
+  "digest": "c6eb396dbd5992bbe3f5cdb947e8bbc0ee413d7c17e2beaae69f5d569cf982eb",
+  "ollama": "0.30.10",
+  "geracoes_cache": "r9_geracoes_e25567e4cc702dff.jsonl",
+  "script_sha256": "e1dbbe2cd3b04dce163a842c085b190c18b77d4e03cdcc3d7228c154f491e997"
+ }
+}

@@ -6,8 +6,8 @@ The documentation (`README.md`, `README.pt-BR.md`, everything under `docs/`) and
 `results/` are licensed under the **Creative Commons Attribution 4.0 International License (CC BY 4.0)**:
 https://creativecommons.org/licenses/by/4.0/
 
-Third-party text (excerpts of askubuntu.com posts, licensed by their authors under CC BY-SA) was removed from
-the published files; see `results/README.md`. The original protocol mentions a few question titles in
+Third-party text (excerpts of askubuntu.com and superuser.com posts, licensed by their authors under CC BY-SA,
+and model rewrites of them) was removed from the published files; see `results/README.md`. The original protocol mentions a few question titles in
 paraphrased or quoted form, such as "my computer boots to a black screen, what options do i have to fix it?",
 as short illustrative quotations; they remain the work of their authors on askubuntu.com.
 

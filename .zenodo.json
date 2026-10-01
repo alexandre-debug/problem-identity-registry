@@ -1,14 +1,14 @@
 {
   "title": "Problem Identity Registry: a research record on shared, verifiable identities for recurring problems",
   "upload_type": "software",
-  "version": "0.1.4",
-  "publication_date": "2026-09-29",
+  "version": "0.2.0",
+  "publication_date": "2026-10-01",
   "creators": [
     {
       "name": "Rego, Alexandre Cardoso"
     }
   ],
-  "description": "<p>Research record (work in progress) proposing that recurring problems receive shared, verifiable identities built from confirmed \"same problem\" links, used across applications. It includes a dated protocol (original in Portuguese, summary in English), code and result files.</p><p><b>Confirmed claim:</b> on new AskUbuntu questions (2020-2024, never used in the exploratory phase), using previously recorded duplicate relations increased the retrieval of discussions from the marked family among five suggestions. An interleaved combination (plain semantic search first, alternating with a relation-based ranking that includes a popularity term) went from 1.61% to 2.57% of new questions (+59% relative; 95% CI +54% to +65%), keeping the first suggestion identical to plain search. Relations without the popularity term gave +41%. Resolution of problems and savings of work were not measured.</p><p><b>Unresolved:</b> whether the relation-based ranking can safely choose the first suggestion. The official outcome of the confirmation is inconclusive because the pre-registered judge failed its controls; a complementary blind second judge that passed its controls found M1 - M0 = -1.9 points (95% CI -4.8 to +0.7). Negative and inconclusive results of all rounds are reported.</p><p>The idea and its direction are by the author; experimental design, code and analyses were developed with the assistance of Claude (Anthropic), with critical reviews from ChatGPT (OpenAI) relayed by the author. Code: MIT. Documentation and results: CC BY 4.0 (third-party excerpts were removed from the published files).</p>",
+  "description": "<p>Research record (work in progress) proposing that recurring problems receive shared, verifiable identities built from confirmed \"same problem\" links, used across applications. It includes a dated protocol (original in Portuguese, summary in English), code and result files.</p><p><b>Confirmed claim:</b> on new AskUbuntu questions (2020-2024, never used in the exploratory phase), using previously recorded duplicate relations increased the retrieval of discussions from the marked family among five suggestions. An interleaved combination (plain semantic search first, alternating with a relation-based ranking that includes a popularity term) went from 1.61% to 2.57% of new questions (+59% relative; 95% CI +54% to +65%), keeping the first suggestion identical to plain search. Relations without the popularity term gave +41%. Resolution of problems and savings of work were not measured.</p><p><b>Unresolved:</b> whether the relation-based ranking can safely choose the first suggestion. The official outcome of the confirmation is inconclusive because the pre-registered judge failed its controls; a complementary blind second judge that passed its controls found M1 - M0 = -1.9 points (95% CI -4.8 to +0.7). Negative and inconclusive results of all rounds are reported.</p><p><b>Answer quality (new in 0.2.0):</b> rounds 9 to 11 tested whether the retrieved discussions improve the final answer. In two pre-registered rounds (9 and 11), a local language model (gemma4) answered new questions with five retrieved discussions as context, and blind judges compared the answers (Claude subagents that saw only a rubric and the items; the answer key stayed on the author's machine; all judge controls passed). On AskUbuntu, when the interleaved method brought the marked family that plain search missed, its answers were preferred: net preference +0.153 (95% CI +0.024 to +0.282, 124 questions); on questions without a marked duplicate it did slightly worse (-0.070, CI -0.138 to 0.000), failing the pre-registered margin. Round 10 found that a gate to decide in advance when to use the network could not be calibrated for its signal, grid and requirements. On Super User, removing the popularity term improved answers relative to the interleaved method on questions without a marked duplicate (+0.060, CI +0.013 to +0.109, 838 questions), and across eligible questions the network without that term stayed within 3 points of plain search (+0.006, CI -0.016 to +0.029). A benefit over plain search was not shown. These are a judge's preferences, not problems verified as solved. An erratum (a sign error in one script, corrected according to the pre-registered text) and two deviations (judge-control pairs partly written by separate Claude agents) are documented.</p><p>The idea and its direction are by the author; experimental design, code and analyses were developed with the assistance of Claude (Anthropic), with critical reviews from ChatGPT (OpenAI) relayed by the author. Code: MIT. Documentation and results: CC BY 4.0 (third-party excerpts were removed from the published files).</p>",
   "license": "mit",
   "keywords": [
     "information retrieval",
@@ -17,7 +17,9 @@
     "problem identity",
     "knowledge sharing",
     "AI curation",
-    "pre-registration"
+    "pre-registration",
+    "retrieval-augmented generation",
+    "LLM evaluation"
   ],
   "language": "eng"
 }

@@ -1,8 +1,8 @@
 cff-version: 1.2.0
 message: "If you use or discuss this work, please cite it as below."
 title: "Problem Identity Registry: a research record on shared, verifiable identities for recurring problems"
-version: 0.1.2
-date-released: 2026-09-29
+version: 0.2.0
+date-released: 2026-10-01
 doi: 10.5281/zenodo.23037099
 identifiers:
   - type: doi
@@ -27,8 +27,14 @@ abstract: >-
   new questions (+59% relative), keeping the first suggestion identical to plain search. Relations without
   the popularity term gave +41%. Whether the relation-based ranking can safely choose the first suggestion
   was not resolved: the official outcome of the confirmation is inconclusive because the pre-registered
-  judge failed its controls. Resolution of problems and savings of work were not measured. Negative and
-  inconclusive results are reported. Code: MIT; documentation and results: CC BY 4.0.
+  judge failed its controls. Version 0.2.0 adds rounds 9 to 11. In two pre-registered rounds, a local
+  model answered new questions with retrieved context and blind judges compared the answers: answers were
+  preferred when the context brought the marked family (AskUbuntu); on Super User questions without a marked duplicate, removing the
+  popularity term improved answers relative to the interleaved method, and across eligible Super User
+  questions the network without that term stayed within 3 points of plain search. A benefit over plain search was not shown, and a gate to decide in
+  advance when to use the network could not be calibrated for its signal, grid and requirements. Judgements are preferences, not problems
+  verified as solved; savings of work were not measured. Negative and inconclusive results, deviations
+  and an erratum are reported. Code: MIT; documentation and results: CC BY 4.0.
 keywords:
   - information retrieval
   - duplicate question detection
@@ -37,3 +43,5 @@ keywords:
   - knowledge sharing
   - AI curation
   - pre-registration
+  - retrieval-augmented generation
+  - LLM evaluation

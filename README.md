@@ -4,7 +4,7 @@
 
 *A research record on giving recurring problems a shared, verifiable identity, so that people and AI systems can reuse known solutions instead of solving the same problems again.*
 
-**Status:** work in progress · version 0.1.2 · 29 September 2026 · [changelog](CHANGELOG.md)
+**Status:** work in progress · version 0.2.0 · 1 October 2026 · [changelog](CHANGELOG.md)
 **Author:** Alexandre Cardoso Rego (the project was first conceived, in Portuguese, as *Grande Cérebro*)
 **Português:** [README.pt-BR.md](README.pt-BR.md)
 
@@ -43,6 +43,25 @@ This is the only claim this repository presents as confirmed, in the form we con
   - H keeps the plain first suggestion by construction.
 - **Methods were frozen before the run.** Data, text versions, criteria and methods were registered before the confirmation run. Texts were taken in their historical versions: new questions as originally written, older questions as they stood on 1 January 2020. No later edit, such as an added solution or a duplicate notice, could leak into the test.
 
+### Does it improve the final answer? (rounds 9–11)
+
+Retrieval is a means; the answer is what matters. In two pre-registered rounds, 9 and 11, a local language model (gemma4) answered new questions with five retrieved discussions as context. Blind judges compared the answers with the help of the asker's accepted answer. Round 10, between them, tested a gate and retrieval on Super User, without answers. The judges were fresh Claude subagents that saw only a rubric and the items, and the answer key stayed on the author's machine. The judges passed all their controls in both judged rounds. These are a judge's preferences, not problems verified as solved.
+
+| Round, site | Comparison | Net preference Δ [95% CI] | Pre-registered outcome |
+|---|---|---|---|
+| 9, AskUbuntu | H vs plain search, when H brings the marked family that plain search missed (124 questions) | +0.153 [+0.024; +0.282] | passed |
+| 9, AskUbuntu | H vs plain search, questions without a marked duplicate, different contexts (400) | −0.070 [−0.138; 0.000] | failed (margin −0.10) |
+| 11, Super User | H1 vs H, questions without a marked duplicate where the two differ (838) | +0.060 [+0.013; +0.109] | passed |
+| 11, Super User | H1 vs plain search, population of eligible questions | +0.006 [−0.016; +0.029] | no loss beyond 3 points: passed; superiority: not shown |
+
+- **What this means.**
+  - In round 9 (AskUbuntu), when the network brought the marked family that plain search missed, the judges preferred its answers.
+  - In round 11 (Super User), on questions without a marked duplicate, removing the popularity term (H1) improved answers relative to H, the same design with the term. This is the first direct test of the term on answers.
+  - Without the term, the network kept answer quality within 3 points of plain search across the eligible questions of Super User.
+  - A benefit over plain search, in quality, work saved or total cost, has **not** been shown.
+- **Erratum.** The round 11 script computed its first criterion as H − H1 while labelling it H1 − H. After the result, the sign was corrected according to the pre-registered text, and an external review recomputed the aggregates. Both outputs are published.
+- **Deviations.** In round 9, the local model could not insert usable errors into the decisive-error control pairs (K4); in round 11, it could not write enough usable equivalent pairs (K5). Before any judging, separate Claude agents filled those gaps (deviations 1 and 2), and other agents reviewed the pairs. In round 11, the K4 errors were written by an agent, as the frozen design specified. The judges belong to the same model family.
+
 ## What did not work, or is still unresolved
 
 Negative and inconclusive results are part of the record:
@@ -50,11 +69,15 @@ Negative and inconclusive results are part of the record:
 - **Caching identical phrases did not help.** In the first rounds, on the Schema-Guided Dialogue dataset, a memory of validated interpretations added nothing to a small model already trained on the domain. It agreed with the model 98% of the time. A shared memory of validated values helped only marginally and failed its pre-registered threshold.
 - **Plain retrieval rarely finds the marked earlier duplicate.** On AskUbuntu, TF-IDF and embeddings retrieved it for only 0.8% and 1.2% of new questions, against a ceiling of 7.2%.
 - **An exploratory "4× gain" was about half an artifact of the metric.** Moderators tend to mark the canonical guide as the duplicate, and plain search often found equally close but unmarked siblings. Crediting the whole confirmed family cut the apparent gain roughly in half. The comparison in the table above uses that family metric.
-- **A global popularity weight harms the first suggestion.** In the exploratory diagnostic, most of the degraded first suggestions (56 of 67) were caused by that term, which pulls famous guides into unrelated questions. The same term supplied 44% of the family gain. A link's weight should depend on context rather than on global fame; this is a proposal, not yet tested.
+- **A global popularity weight harms the first suggestion.** In the exploratory diagnostic, most of the degraded first suggestions (56 of 67) were caused by that term, which pulls famous guides into unrelated questions. The same term supplied 44% of the family gain. Round 11 then found the same on final answers, on Super User: on questions without a marked duplicate, answers were preferred without the term. A weight that depends on context, rather than on global fame, is still a proposal, not yet tested.
 - **Can the network choose the first suggestion by itself? Unresolved.**
   - In the confirmation, the pre-registered judge (a local gemma4 model with a fixed prompt) failed its control checks: it recognised only 27% of true duplicates. The official outcome of the confirmation is therefore **INCONCLUSIVE**.
   - In a pre-registered complementary step, a second blind judge (Claude, with the answer key kept on the author's machine) passed the same kind of controls. It found M1 − M0 = −1.9 points (95% CI −4.8 to +0.7) on the first suggestion.
   - That interval is compatible with both a relevant loss and a negligible difference. There is not yet enough evidence to let the network pick the first suggestion, so keeping plain search first is the prudent choice.
+- **Knowing in advance when to use the network: not achieved.**
+  - In round 9, the network helped when it brought the marked family and may have worsened the answer slightly on questions without a marked duplicate. A real application cannot see the marked family in advance.
+  - In round 10, a gate based on how much the network's candidate beat plain search reached at best 17.6% gains among its openings on questions with a marked duplicate (development half, coverage ≥ 2%), against 12.5% for H1 without a gate. The pre-registered requirement was at least twice that, 25.1%. The gate is "not calibratable" for that signal, grid and requirements.
+- **Smaller gains on a sparser network.** On Super User, only 1.89% of new questions have an earlier marked duplicate. There, relations improved retrieval much less: M1 +15.5%, against +41.4% on AskUbuntu. H1 gained +11.6%, but the lower bound of its CI (+7.9%) fell short of the pre-registered minimum of 10%.
 - **Network effect: only a moderate signal.**
   - In a simulation that split one community into ten "applications", confirmations became proportionally more valuable with more participants: the relative gain grew from +3% with one application to +31% with ten.
   - Part of this is expected by construction, because a link can exist only when both questions are in the memory.
@@ -62,24 +85,27 @@ Negative and inconclusive results are part of the record:
 
 ## What is still open
 
+- Whether the network gives a **benefit over plain search**, not only no loss: better answers, work saved or lower total cost.
+- Whether the round 11 result **holds on AskUbuntu** and other sites.
 - Whether the retrieved discussions actually **resolve** the new problem, and how much **work or compute** reuse would save.
 - Whether the effect holds **across different applications and domains**, beyond a single community split at random.
-- Whether an **AI curator** can create reliable links. A judge that passes easy controls, which reject random pairs, is not yet validated for hard cases: very similar problems that need different solutions. This is the author's hypothesis *"generate once, validate many, reuse always"*, described in the framework document.
+- Whether an **AI curator** can create reliable links. A judge that passes easy controls, which reject random pairs, is not yet validated for hard cases: very similar problems that need different solutions. This is the author's hypothesis *"generate once, validate many, reuse always"*, described in the framework document. A draft of round 12, already reviewed externally, would test it with small local models.
 - Whether **context-dependent weights** can keep the recall benefit of the popularity term without its harm.
 - **Governance:** false or malicious confirmations, privacy of the problems people report, and incentives to contribute.
 
 ## How the research was conducted
 
 - **A dated protocol.** Before each round, the question, the data and the methods were written in a dated protocol. Rounds meant to decide something had their success criteria fixed in advance, and the criteria were never changed after seeing results. When a result missed a threshold, for example by 0.16 points in round 7, it was recorded as missed. Some stages were explicitly exploratory and had no criterion; the experiment log says which.
-  - The protocol is a living document with day-level dates. It had no external time stamp before this release, which is its first dated public record.
+  - The protocol is a living document, dated to the day and, from round 9 on, often to the hour. It had no external time stamp before v0.1.0 (29 September 2026), its first dated public record; each release archives its state at that date. The continuation, with the pre-registrations of rounds 9 to 11, is first published in v0.2.0, after their results; its dates are the author's own record.
 - **Exploratory and confirmatory work are separated.** All tuning happened on the exploratory data (Lei et al. AskUbuntu, an older snapshot of the site). The confirmation used untouched 2020–2024 questions from the April 2024 Stack Exchange dump, with everything frozen.
 - **Blind judging, including the failures.**
   - Two blind checks were compromised because the answer key reached the evaluator before labelling. Both are recorded as compromised and were not used.
   - The procedure was then changed: the key never leaves the author's machine, and a local script returns only aggregate numbers.
   - In the complementary step, the labels came from Claude subagents that received only the rubric and the items. The orchestrating assistant, which knew the hypotheses and the first judge's aggregate result, only merged the batches.
 - **Corrections as errata.** After external review, interpretations that went beyond the data were corrected in dated errata at the end of the protocol, without deleting earlier text. This covers statements both in the protocol and in the conversation that accompanied the work.
+- **Deviations recorded, not hidden.** Some changes were needed after a design was frozen but before any result, such as how judge-control pairs were produced. Each was recorded as a numbered deviation with the author's decision. Each script change got a new SHA-256 and was tested to reproduce the frozen output where it was not meant to change anything.
 
-The full English summary of every round is in [docs/experiment-log.md](docs/experiment-log.md). The original dated protocol, in Portuguese, is in [docs/protocolo-original.pt-BR.md](docs/protocolo-original.pt-BR.md); its final section lists the few changes made for publication.
+The full English summary of every round is in [docs/experiment-log.md](docs/experiment-log.md). The original dated protocol, in Portuguese, is in [docs/protocolo-original.pt-BR.md](docs/protocolo-original.pt-BR.md); its final section lists the few changes made for publication. Rounds 9 to 12 continue in [docs/protocolo-continuacao.pt-BR.md](docs/protocolo-continuacao.pt-BR.md).
 
 ## Repository layout
 
@@ -87,10 +113,12 @@ The full English summary of every round is in [docs/experiment-log.md](docs/expe
 README.md, README.pt-BR.md       this overview
 docs/framework.md (+ .pt-BR)     the proposal: problem identities, confirmations, AI curator hypothesis, risks
 docs/experiment-log.md           English summary of every round, with criteria and results
-docs/protocolo-original.pt-BR.md the original dated protocol (source of record)
+docs/protocolo-original.pt-BR.md the original dated protocol (source of record), up to the confirmation
+docs/protocolo-continuacao.pt-BR.md  its continuation: rounds 9–12
 code/01-sgd-rounds/              rounds 1–4 (Schema-Guided Dialogue)
 code/02-askubuntu-exploratory/   rounds 5–8, diagnostics and network curves (AskUbuntu, Lei et al.)
 code/03-confirmation/            independent confirmation (AskUbuntu 2020–2024) and blind second judge
+code/04-answer-quality/          rounds 9–11: answers with retrieved context, blind judging, gate, Super User
 results/                         result files of each stage
 ```
 
@@ -104,24 +132,26 @@ results/                         result files of each stage
 - **Time:** the confirmation took about 94 minutes in total for 414,451 questions. The terminal's own estimate for the embedding step was about an hour of that.
 - **Confirmation data:** `askubuntu.com.7z` from the Stack Exchange data dump of 2 April 2024, on the [Internet Archive](https://archive.org/details/stackexchange).
 - **Commands:** `python3 gc_conf.py --judge gemma4:latest`, then `python3 gc_conf_juiz2.py gerar` / `comparar juiz2_rotulos.json`.
-- **Omitted files with third-party text:** the blind-judging item files, the example file and the example fields of four result files are not included, because they contain excerpts of askubuntu.com posts. The scripts produce them from the public data, given the same model digests and the locally saved caches. Bit-identical regeneration on other hardware is not guaranteed. Their SHA-256 hashes are listed in [results/README.md](results/README.md), and the author keeps the originals for verification on request.
+- **Rounds 9–11:** see [code/04-answer-quality/README.md](code/04-answer-quality/README.md). The answers were generated by gemma4 on the author's Mac (about 4.5 hours for the 1,540 answers of round 9; 2,846 distinct prompts in round 11), and the judging was done by Claude subagents, with the key kept on the author's machine. Super User data: `superuser.com.7z` from the same dump.
+- **Omitted files with third-party text:** the blind-judging item files, the pilot answers, the control-pair review files, the agent-written control edits, the example file and the example fields of four result files are not included, because they contain excerpts of askubuntu.com or superuser.com posts, or model rewrites of them. Except for the agent-written files, the scripts produce them from the public data, given the same model digests and the locally saved caches. Bit-identical regeneration on other hardware is not guaranteed. Their SHA-256 hashes are listed in [results/README.md](results/README.md), and the author keeps the originals for verification on request.
 
 ## Data and licenses
 
 - **Code:** MIT License ([LICENSE](LICENSE)).
-- **Documentation and result files:** CC BY 4.0 ([LICENSE-docs.md](LICENSE-docs.md)). Third-party text from askubuntu.com was removed from the published files.
+- **Documentation and result files:** CC BY 4.0 ([LICENSE-docs.md](LICENSE-docs.md)). Third-party text from askubuntu.com and superuser.com was removed from the published files.
 - **Datasets:** none are redistributed here.
   - Schema-Guided Dialogue (Rastogi et al., 2020).
   - AskUbuntu duplicate-question dataset (Lei et al., NAACL 2016).
-  - Stack Exchange data dump, 2024-04-02.
+  - Stack Exchange data dump, 2024-04-02 (AskUbuntu and Super User).
 
 ## Authorship and AI assistance
 
 - **Author:** the idea, its direction and the decisions in this project belong to Alexandre Cardoso Rego.
 - **Claude (Anthropic):** the experimental design, the code, the analyses and the documentation were developed with Claude, which acted as research assistant.
 - **ChatGPT (OpenAI):** the author relayed critical reviews from ChatGPT, several of which changed the protocol before runs and corrected interpretations after them.
-- **Judges:** the local model gemma4 (on the author's machine) and, in the complementary step, Claude subagents that received only the labelling rubric and the items.
-- **Separate review:** before publication, a separate Claude agent (same model family) that had not written the documentation checked it against the result files and the protocol. It reviewed the documentation, not the code.
+- **Judges:** the local model gemma4 (on the author's machine) and, in the complementary step and in rounds 9 and 11, Claude subagents that received only the labelling rubric and the items.
+- **Rounds 9–11:** the answers were generated by gemma4. Some judge-control pairs were written and reviewed by separate Claude agents (deviations 1 and 2).
+- **Separate review:** before publication, a separate Claude agent (same model family) that had not written the documentation checked it against the result files and the protocol. It reviewed the documentation, not the code. For version 0.2.0, an external review (ChatGPT) recomputed the aggregates of round 11 and checked its erratum.
 
 ## How to cite
 

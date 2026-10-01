@@ -1,5 +1,0 @@
-# Environment of the assistant's cloud sandbox (Python 3.11.15, Linux), used for rounds 1-5.
-# Versions of the main libraries, recorded on 2026-09-29 in the same sandbox.
-numpy==2.4.4
-scipy==1.17.1
-scikit-learn==1.8.0

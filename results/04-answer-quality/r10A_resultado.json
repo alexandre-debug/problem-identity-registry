@@ -1,0 +1,141 @@
+{
+ "versao": "r10-A-v1",
+ "dados": {
+  "site": "superuser.com",
+  "perguntas": 505136,
+  "perguntas_antes_de_2020": 411621,
+  "perguntas_na_avaliacao": 93515,
+  "com_duplicata_marcada_anterior": 1766,
+  "teto_marcada": 0.0189,
+  "duplicatas_validas": 14660,
+  "ligacoes_na_memoria": 12377,
+  "primeira_data": "2008-08-01T21:22:13.110",
+  "ultima_data": "2024-03-31T23:56:52.950",
+  "sem_historico_usou_versao_atual": 3
+ },
+ "acerto_sem_llm": {
+  "M0": {
+   "familia_top1": 0.0034,
+   "familia_top5": 0.0068,
+   "marcada_top1": 0.0028,
+   "marcada_top5": 0.0055
+  },
+  "M1": {
+   "familia_top1": 0.0043,
+   "familia_top5": 0.0079,
+   "marcada_top1": 0.0034,
+   "marcada_top5": 0.0074
+  },
+  "M2": {
+   "familia_top1": 0.0054,
+   "familia_top5": 0.0087,
+   "marcada_top1": 0.0049,
+   "marcada_top5": 0.0085
+  },
+  "H": {
+   "familia_top1": 0.0034,
+   "familia_top5": 0.0085,
+   "marcada_top1": 0.0028,
+   "marcada_top5": 0.0082
+  },
+  "H1": {
+   "familia_top1": 0.0034,
+   "familia_top5": 0.0076,
+   "marcada_top1": 0.0028,
+   "marcada_top5": 0.0071
+  }
+ },
+ "familia_top5_ganho_relativo_sobre_M0": {
+  "M1": {
+   "valor": 0.1554,
+   "ic95": [
+    0.1141,
+    0.1997
+   ]
+  },
+  "M2": {
+   "valor": 0.2732,
+   "ic95": [
+    0.214,
+    0.3355
+   ]
+  },
+  "H": {
+   "valor": 0.2527,
+   "ic95": [
+    0.1988,
+    0.3066
+   ]
+  },
+  "H1": {
+   "valor": 0.1162,
+   "ic95": [
+    0.0791,
+    0.1536
+   ]
+  }
+ },
+ "marcada_top5_ganho_relativo_sobre_M0": {
+  "M1": {
+   "valor": 0.3353,
+   "ic95": [
+    0.2679,
+    0.4066
+   ]
+  },
+  "M2": {
+   "valor": 0.5349,
+   "ic95": [
+    0.4428,
+    0.6299
+   ]
+  },
+  "H": {
+   "valor": 0.4903,
+   "ic95": [
+    0.4051,
+    0.5729
+   ]
+  },
+  "H1": {
+   "valor": 0.2849,
+   "ic95": [
+    0.2276,
+    0.3467
+   ]
+  }
+ },
+ "criterios": {
+  "A1_M1_familia_top5_ganho_relativo_IC_inferior_>_10%": true,
+  "A2_H1_familia_top5_ganho_relativo_IC_inferior_>_10%": false
+ },
+ "contagens_para_planejamento": {
+  "marcadas": {
+   "total": 1766,
+   "com_resposta_aceita": 267,
+   "aceitas_H1_diferente_de_M0": 136,
+   "aceitas_H_diferente_de_M0": 210,
+   "aceitas_H_diferente_de_H1": 164
+  },
+  "sem_marcacao_amostra": {
+   "total": 5000,
+   "com_resposta_aceita": 1350,
+   "aceitas_H1_diferente_de_M0": 413,
+   "aceitas_H_diferente_de_M0": 880,
+   "aceitas_H_diferente_de_H1": 727
+  },
+  "escala_sem_marcacao": 18.3498,
+  "nota": "resposta aceita = AcceptedAnswerId presente no Posts.xml"
+ },
+ "reproducao": {
+  "dados_sha256": "4f7c78f1407bd273cdac4e98b710d2c975e26f2f5a70a188715ee5fcc3f69671",
+  "preprocessamento": "v2: historico de edicoes; markdown limpo; pre/code ate 30 palavras; minusculas; 200 palavras",
+  "embeddings": {
+   "modelo": "nomic-embed-text",
+   "digest": "0a109f422b47e3a30ba2b10eca18548e944e8a23073ee3f3e947efcf3c45e59f"
+  },
+  "ollama": "0.30.10",
+  "script_sha256": "6b744b417a36b5b32e3facdca0392910bd1b06f6dbe87262a41ee9633cca933e"
+ },
+ "minutos_nesta_execucao": 139.8
+}

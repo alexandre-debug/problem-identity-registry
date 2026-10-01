@@ -1,0 +1,646 @@
+{
+ "versao": "r10-B-v1",
+ "regra": {
+  "taus": [
+   -0.1,
+   -0.08,
+   -0.06,
+   -0.04,
+   -0.02,
+   0.0,
+   0.02,
+   0.04,
+   0.06,
+   0.08,
+   0.1
+  ],
+  "fator_fracao": 2.0,
+  "cobertura_minima": 0.02,
+  "semente_metades": 1010,
+  "escolha": "tau admissivel de maior cobertura na metade de desenvolvimento"
+ },
+ "metades": {
+  "desenvolvimento": {
+   "perguntas": 5491,
+   "marcadas": 3044
+  },
+  "verificacao": {
+   "perguntas": 5491,
+   "marcadas": 2938
+  }
+ },
+ "resultado": {
+  "portao_calibravel": false,
+  "tau_escolhido": null,
+  "verificacao": null,
+  "calibracao_estavel": false,
+  "consequencia": "etapa C nao roda (portao nao calibravel)"
+ },
+ "tabelas": {
+  "desenvolvimento": {
+   "H1_sem_portao": {
+    "tau": null,
+    "abertas_marcadas": 2306,
+    "ganho": 289,
+    "perda": 38,
+    "neutro": 1979,
+    "fracao_de_ganhos": 0.1253,
+    "cobertura": 0.5674,
+    "abertas_sem_marcacao": 1341,
+    "sem_marcacao": 2447,
+    "marcadas": 3044,
+    "aceitas_abertas": {
+     "marcadas": 369,
+     "sem_marcacao": 297
+    },
+    "fonte_do_sinal_nas_aberturas": {
+     "duplicata": 637,
+     "centro": 3010
+    }
+   },
+   "grade": [
+    {
+     "tau": -0.1,
+     "abertas_marcadas": 2293,
+     "ganho": 287,
+     "perda": 37,
+     "neutro": 1969,
+     "fracao_de_ganhos": 0.1252,
+     "cobertura": 0.5654,
+     "abertas_sem_marcacao": 1331,
+     "sem_marcacao": 2447,
+     "marcadas": 3044,
+     "aceitas_abertas": {
+      "marcadas": 367,
+      "sem_marcacao": 296
+     },
+     "fonte_do_sinal_nas_aberturas": {
+      "duplicata": 630,
+      "centro": 2994
+     },
+     "admissivel": false,
+     "condicoes": {
+      "fracao_>=_2x_H1_sem_portao": false,
+      "ganhos_>_perdas": true,
+      "cobertura_>=_2%": true
+     }
+    },
+    {
+     "tau": -0.08,
+     "abertas_marcadas": 2285,
+     "ganho": 285,
+     "perda": 37,
+     "neutro": 1963,
+     "fracao_de_ganhos": 0.1247,
+     "cobertura": 0.5654,
+     "abertas_sem_marcacao": 1325,
+     "sem_marcacao": 2447,
+     "marcadas": 3044,
+     "aceitas_abertas": {
+      "marcadas": 367,
+      "sem_marcacao": 296
+     },
+     "fonte_do_sinal_nas_aberturas": {
+      "duplicata": 627,
+      "centro": 2983
+     },
+     "admissivel": false,
+     "condicoes": {
+      "fracao_>=_2x_H1_sem_portao": false,
+      "ganhos_>_perdas": true,
+      "cobertura_>=_2%": true
+     }
+    },
+    {
+     "tau": -0.06,
+     "abertas_marcadas": 2254,
+     "ganho": 284,
+     "perda": 37,
+     "neutro": 1933,
+     "fracao_de_ganhos": 0.126,
+     "cobertura": 0.5631,
+     "abertas_sem_marcacao": 1311,
+     "sem_marcacao": 2447,
+     "marcadas": 3044,
+     "aceitas_abertas": {
+      "marcadas": 361,
+      "sem_marcacao": 295
+     },
+     "fonte_do_sinal_nas_aberturas": {
+      "duplicata": 619,
+      "centro": 2946
+     },
+     "admissivel": false,
+     "condicoes": {
+      "fracao_>=_2x_H1_sem_portao": false,
+      "ganhos_>_perdas": true,
+      "cobertura_>=_2%": true
+     }
+    },
+    {
+     "tau": -0.04,
+     "abertas_marcadas": 2179,
+     "ganho": 277,
+     "perda": 37,
+     "neutro": 1865,
+     "fracao_de_ganhos": 0.1271,
+     "cobertura": 0.5282,
+     "abertas_sem_marcacao": 1257,
+     "sem_marcacao": 2447,
+     "marcadas": 3044,
+     "aceitas_abertas": {
+      "marcadas": 352,
+      "sem_marcacao": 276
+     },
+     "fonte_do_sinal_nas_aberturas": {
+      "duplicata": 601,
+      "centro": 2835
+     },
+     "admissivel": false,
+     "condicoes": {
+      "fracao_>=_2x_H1_sem_portao": false,
+      "ganhos_>_perdas": true,
+      "cobertura_>=_2%": true
+     }
+    },
+    {
+     "tau": -0.02,
+     "abertas_marcadas": 1889,
+     "ganho": 248,
+     "perda": 32,
+     "neutro": 1609,
+     "fracao_de_ganhos": 0.1313,
+     "cobertura": 0.4569,
+     "abertas_sem_marcacao": 1070,
+     "sem_marcacao": 2447,
+     "marcadas": 3044,
+     "aceitas_abertas": {
+      "marcadas": 300,
+      "sem_marcacao": 239
+     },
+     "fonte_do_sinal_nas_aberturas": {
+      "duplicata": 510,
+      "centro": 2449
+     },
+     "admissivel": false,
+     "condicoes": {
+      "fracao_>=_2x_H1_sem_portao": false,
+      "ganhos_>_perdas": true,
+      "cobertura_>=_2%": true
+     }
+    },
+    {
+     "tau": 0.0,
+     "abertas_marcadas": 1222,
+     "ganho": 155,
+     "perda": 20,
+     "neutro": 1047,
+     "fracao_de_ganhos": 0.1268,
+     "cobertura": 0.2619,
+     "abertas_sem_marcacao": 571,
+     "sem_marcacao": 2447,
+     "marcadas": 3044,
+     "aceitas_abertas": {
+      "marcadas": 190,
+      "sem_marcacao": 136
+     },
+     "fonte_do_sinal_nas_aberturas": {
+      "duplicata": 308,
+      "centro": 1485
+     },
+     "admissivel": false,
+     "condicoes": {
+      "fracao_>=_2x_H1_sem_portao": false,
+      "ganhos_>_perdas": true,
+      "cobertura_>=_2%": true
+     }
+    },
+    {
+     "tau": 0.02,
+     "abertas_marcadas": 272,
+     "ganho": 48,
+     "perda": 3,
+     "neutro": 221,
+     "fracao_de_ganhos": 0.1765,
+     "cobertura": 0.049,
+     "abertas_sem_marcacao": 105,
+     "sem_marcacao": 2447,
+     "marcadas": 3044,
+     "aceitas_abertas": {
+      "marcadas": 44,
+      "sem_marcacao": 25
+     },
+     "fonte_do_sinal_nas_aberturas": {
+      "centro": 377
+     },
+     "admissivel": false,
+     "condicoes": {
+      "fracao_>=_2x_H1_sem_portao": false,
+      "ganhos_>_perdas": true,
+      "cobertura_>=_2%": true
+     }
+    },
+    {
+     "tau": 0.04,
+     "abertas_marcadas": 27,
+     "ganho": 5,
+     "perda": 0,
+     "neutro": 22,
+     "fracao_de_ganhos": 0.1852,
+     "cobertura": 0.0057,
+     "abertas_sem_marcacao": 6,
+     "sem_marcacao": 2447,
+     "marcadas": 3044,
+     "aceitas_abertas": {
+      "marcadas": 3,
+      "sem_marcacao": 3
+     },
+     "fonte_do_sinal_nas_aberturas": {
+      "centro": 33
+     },
+     "admissivel": false,
+     "condicoes": {
+      "fracao_>=_2x_H1_sem_portao": false,
+      "ganhos_>_perdas": true,
+      "cobertura_>=_2%": false
+     }
+    },
+    {
+     "tau": 0.06,
+     "abertas_marcadas": 1,
+     "ganho": 0,
+     "perda": 0,
+     "neutro": 1,
+     "fracao_de_ganhos": 0.0,
+     "cobertura": 0.0,
+     "abertas_sem_marcacao": 0,
+     "sem_marcacao": 2447,
+     "marcadas": 3044,
+     "aceitas_abertas": {
+      "marcadas": 0,
+      "sem_marcacao": 0
+     },
+     "fonte_do_sinal_nas_aberturas": {
+      "centro": 1
+     },
+     "admissivel": false,
+     "condicoes": {
+      "fracao_>=_2x_H1_sem_portao": false,
+      "ganhos_>_perdas": false,
+      "cobertura_>=_2%": false
+     }
+    },
+    {
+     "tau": 0.08,
+     "abertas_marcadas": 0,
+     "ganho": 0,
+     "perda": 0,
+     "neutro": 0,
+     "fracao_de_ganhos": null,
+     "cobertura": 0.0,
+     "abertas_sem_marcacao": 0,
+     "sem_marcacao": 2447,
+     "marcadas": 3044,
+     "aceitas_abertas": {
+      "marcadas": 0,
+      "sem_marcacao": 0
+     },
+     "fonte_do_sinal_nas_aberturas": {},
+     "admissivel": false,
+     "condicoes": {
+      "fracao_>=_2x_H1_sem_portao": false,
+      "ganhos_>_perdas": false,
+      "cobertura_>=_2%": false
+     }
+    },
+    {
+     "tau": 0.1,
+     "abertas_marcadas": 0,
+     "ganho": 0,
+     "perda": 0,
+     "neutro": 0,
+     "fracao_de_ganhos": null,
+     "cobertura": 0.0,
+     "abertas_sem_marcacao": 0,
+     "sem_marcacao": 2447,
+     "marcadas": 3044,
+     "aceitas_abertas": {
+      "marcadas": 0,
+      "sem_marcacao": 0
+     },
+     "fonte_do_sinal_nas_aberturas": {},
+     "admissivel": false,
+     "condicoes": {
+      "fracao_>=_2x_H1_sem_portao": false,
+      "ganhos_>_perdas": false,
+      "cobertura_>=_2%": false
+     }
+    }
+   ]
+  },
+  "verificacao": {
+   "H1_sem_portao": {
+    "tau": null,
+    "abertas_marcadas": 2232,
+    "ganho": 283,
+    "perda": 48,
+    "neutro": 1901,
+    "fracao_de_ganhos": 0.1268,
+    "cobertura": 0.5735,
+    "abertas_sem_marcacao": 1403,
+    "sem_marcacao": 2553,
+    "marcadas": 2938,
+    "aceitas_abertas": {
+     "marcadas": 326,
+     "sem_marcacao": 325
+    },
+    "fonte_do_sinal_nas_aberturas": {
+     "duplicata": 690,
+     "centro": 2945
+    }
+   },
+   "grade": [
+    {
+     "tau": -0.1,
+     "abertas_marcadas": 2227,
+     "ganho": 283,
+     "perda": 47,
+     "neutro": 1897,
+     "fracao_de_ganhos": 0.1271,
+     "cobertura": 0.565,
+     "abertas_sem_marcacao": 1394,
+     "sem_marcacao": 2553,
+     "marcadas": 2938,
+     "aceitas_abertas": {
+      "marcadas": 324,
+      "sem_marcacao": 320
+     },
+     "fonte_do_sinal_nas_aberturas": {
+      "duplicata": 688,
+      "centro": 2933
+     },
+     "admissivel": false,
+     "condicoes": {
+      "fracao_>=_2x_H1_sem_portao": false,
+      "ganhos_>_perdas": true,
+      "cobertura_>=_2%": true
+     }
+    },
+    {
+     "tau": -0.08,
+     "abertas_marcadas": 2216,
+     "ganho": 282,
+     "perda": 47,
+     "neutro": 1887,
+     "fracao_de_ganhos": 0.1273,
+     "cobertura": 0.5598,
+     "abertas_sem_marcacao": 1389,
+     "sem_marcacao": 2553,
+     "marcadas": 2938,
+     "aceitas_abertas": {
+      "marcadas": 322,
+      "sem_marcacao": 317
+     },
+     "fonte_do_sinal_nas_aberturas": {
+      "duplicata": 686,
+      "centro": 2919
+     },
+     "admissivel": false,
+     "condicoes": {
+      "fracao_>=_2x_H1_sem_portao": false,
+      "ganhos_>_perdas": true,
+      "cobertura_>=_2%": true
+     }
+    },
+    {
+     "tau": -0.06,
+     "abertas_marcadas": 2191,
+     "ganho": 277,
+     "perda": 47,
+     "neutro": 1867,
+     "fracao_de_ganhos": 0.1264,
+     "cobertura": 0.5563,
+     "abertas_sem_marcacao": 1371,
+     "sem_marcacao": 2553,
+     "marcadas": 2938,
+     "aceitas_abertas": {
+      "marcadas": 321,
+      "sem_marcacao": 315
+     },
+     "fonte_do_sinal_nas_aberturas": {
+      "duplicata": 675,
+      "centro": 2887
+     },
+     "admissivel": false,
+     "condicoes": {
+      "fracao_>=_2x_H1_sem_portao": false,
+      "ganhos_>_perdas": true,
+      "cobertura_>=_2%": true
+     }
+    },
+    {
+     "tau": -0.04,
+     "abertas_marcadas": 2130,
+     "ganho": 270,
+     "perda": 46,
+     "neutro": 1814,
+     "fracao_de_ganhos": 0.1268,
+     "cobertura": 0.5322,
+     "abertas_sem_marcacao": 1315,
+     "sem_marcacao": 2553,
+     "marcadas": 2938,
+     "aceitas_abertas": {
+      "marcadas": 313,
+      "sem_marcacao": 301
+     },
+     "fonte_do_sinal_nas_aberturas": {
+      "duplicata": 656,
+      "centro": 2789
+     },
+     "admissivel": false,
+     "condicoes": {
+      "fracao_>=_2x_H1_sem_portao": false,
+      "ganhos_>_perdas": true,
+      "cobertura_>=_2%": true
+     }
+    },
+    {
+     "tau": -0.02,
+     "abertas_marcadas": 1901,
+     "ganho": 244,
+     "perda": 43,
+     "neutro": 1614,
+     "fracao_de_ganhos": 0.1284,
+     "cobertura": 0.4619,
+     "abertas_sem_marcacao": 1109,
+     "sem_marcacao": 2553,
+     "marcadas": 2938,
+     "aceitas_abertas": {
+      "marcadas": 276,
+      "sem_marcacao": 261
+     },
+     "fonte_do_sinal_nas_aberturas": {
+      "duplicata": 587,
+      "centro": 2423
+     },
+     "admissivel": false,
+     "condicoes": {
+      "fracao_>=_2x_H1_sem_portao": false,
+      "ganhos_>_perdas": true,
+      "cobertura_>=_2%": true
+     }
+    },
+    {
+     "tau": 0.0,
+     "abertas_marcadas": 1247,
+     "ganho": 175,
+     "perda": 30,
+     "neutro": 1042,
+     "fracao_de_ganhos": 0.1403,
+     "cobertura": 0.2609,
+     "abertas_sem_marcacao": 622,
+     "sem_marcacao": 2553,
+     "marcadas": 2938,
+     "aceitas_abertas": {
+      "marcadas": 182,
+      "sem_marcacao": 146
+     },
+     "fonte_do_sinal_nas_aberturas": {
+      "centro": 1495,
+      "duplicata": 374
+     },
+     "admissivel": false,
+     "condicoes": {
+      "fracao_>=_2x_H1_sem_portao": false,
+      "ganhos_>_perdas": true,
+      "cobertura_>=_2%": true
+     }
+    },
+    {
+     "tau": 0.02,
+     "abertas_marcadas": 257,
+     "ganho": 41,
+     "perda": 9,
+     "neutro": 207,
+     "fracao_de_ganhos": 0.1595,
+     "cobertura": 0.0436,
+     "abertas_sem_marcacao": 120,
+     "sem_marcacao": 2553,
+     "marcadas": 2938,
+     "aceitas_abertas": {
+      "marcadas": 38,
+      "sem_marcacao": 24
+     },
+     "fonte_do_sinal_nas_aberturas": {
+      "centro": 377
+     },
+     "admissivel": false,
+     "condicoes": {
+      "fracao_>=_2x_H1_sem_portao": false,
+      "ganhos_>_perdas": true,
+      "cobertura_>=_2%": true
+     }
+    },
+    {
+     "tau": 0.04,
+     "abertas_marcadas": 20,
+     "ganho": 1,
+     "perda": 1,
+     "neutro": 18,
+     "fracao_de_ganhos": 0.05,
+     "cobertura": 0.0023,
+     "abertas_sem_marcacao": 7,
+     "sem_marcacao": 2553,
+     "marcadas": 2938,
+     "aceitas_abertas": {
+      "marcadas": 7,
+      "sem_marcacao": 1
+     },
+     "fonte_do_sinal_nas_aberturas": {
+      "centro": 27
+     },
+     "admissivel": false,
+     "condicoes": {
+      "fracao_>=_2x_H1_sem_portao": false,
+      "ganhos_>_perdas": false,
+      "cobertura_>=_2%": false
+     }
+    },
+    {
+     "tau": 0.06,
+     "abertas_marcadas": 0,
+     "ganho": 0,
+     "perda": 0,
+     "neutro": 0,
+     "fracao_de_ganhos": null,
+     "cobertura": 0.0,
+     "abertas_sem_marcacao": 0,
+     "sem_marcacao": 2553,
+     "marcadas": 2938,
+     "aceitas_abertas": {
+      "marcadas": 0,
+      "sem_marcacao": 0
+     },
+     "fonte_do_sinal_nas_aberturas": {},
+     "admissivel": false,
+     "condicoes": {
+      "fracao_>=_2x_H1_sem_portao": false,
+      "ganhos_>_perdas": false,
+      "cobertura_>=_2%": false
+     }
+    },
+    {
+     "tau": 0.08,
+     "abertas_marcadas": 0,
+     "ganho": 0,
+     "perda": 0,
+     "neutro": 0,
+     "fracao_de_ganhos": null,
+     "cobertura": 0.0,
+     "abertas_sem_marcacao": 0,
+     "sem_marcacao": 2553,
+     "marcadas": 2938,
+     "aceitas_abertas": {
+      "marcadas": 0,
+      "sem_marcacao": 0
+     },
+     "fonte_do_sinal_nas_aberturas": {},
+     "admissivel": false,
+     "condicoes": {
+      "fracao_>=_2x_H1_sem_portao": false,
+      "ganhos_>_perdas": false,
+      "cobertura_>=_2%": false
+     }
+    },
+    {
+     "tau": 0.1,
+     "abertas_marcadas": 0,
+     "ganho": 0,
+     "perda": 0,
+     "neutro": 0,
+     "fracao_de_ganhos": null,
+     "cobertura": 0.0,
+     "abertas_sem_marcacao": 0,
+     "sem_marcacao": 2553,
+     "marcadas": 2938,
+     "aceitas_abertas": {
+      "marcadas": 0,
+      "sem_marcacao": 0
+     },
+     "fonte_do_sinal_nas_aberturas": {},
+     "admissivel": false,
+     "condicoes": {
+      "fracao_>=_2x_H1_sem_portao": false,
+      "ganhos_>_perdas": false,
+      "cobertura_>=_2%": false
+     }
+    }
+   ]
+  }
+ },
+ "reproducao": {
+  "dados_sha256": "951a20e2e4b6866d79954cf06a338148bd8829f90e36bcb27f01670336928fe7",
+  "script_sha256": "790fd9c56498435d4f891bb7fe50de844fca82042d2278aeb38da65876332b55",
+  "minutos": 2.8
+ }
+}

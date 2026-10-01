@@ -50,3 +50,16 @@ python3 gc_conf_juiz2.py comparar juiz2_rotulos.json  # compares labels locally,
 - **Resumable:** every step can be restarted with the same command.
 - **Verified caches:** parsed data, embeddings (model digest, text SHA-256) and judgements (prompt, model digest, data SHA-256) are reused only if they match.
 - **Judge validity gate:** a judge must reach sensitivity ≥ 0.30 on marked duplicates, ≤ 0.15 false positives on random pairs, and a gap of at least 0.25 between the two. Otherwise the judge-based criterion is INCONCLUSIVE, never a pass.
+
+## 04-answer-quality: rounds 9–11 (answers with retrieved context)
+
+**Data.** The confirmation's data and caches (run `03-confirmation` first) and, for rounds 10A and 11, `superuser.com.7z` from the same dump. Ollama with `nomic-embed-text` and `gemma4`.
+
+| Script | Stage |
+|---|---|
+| `gc_r9.py` | Round 9 (AskUbuntu): plain search vs H as answer context, blind judging. |
+| `gc_r10_portao.py` | Round 10, stage B: calibration of a gate that decides when to use the network (no language model). |
+| `gc_r10_A.py` | Round 10, stage A: confirmed relations on Super User (embeddings only). |
+| `gc_r11.py` | Round 11 (Super User): M0, H1 and H as answer context, blind judging. |
+
+Commands, the blind-judging procedure and the SHA-256 of every script version, including the frozen ones in `versions/`, are in [04-answer-quality/README.md](04-answer-quality/README.md).
