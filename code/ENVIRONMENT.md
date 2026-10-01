@@ -1,6 +1,6 @@
 # Environment and clean-run instructions
 
-The work ran in two environments. The versions below are the ones actually used. They were recorded on 29 September 2026, in the same environments, just after the runs.
+The work ran in two environments. The versions below are the ones actually used. They were recorded on 29 September 2026, in the same environments, just after the runs; the sections on rounds 9–12 and on the Claude judges were added on 1 October 2026.
 
 ## Environments
 
@@ -20,6 +20,19 @@ The work ran in two environments. The versions below are the ones actually used.
 | `llama3.1:8b` | Round 6 pilot only (canonical rewriting) | not recorded |
 
 Digests were recorded automatically only in the confirmation. The exploratory AskUbuntu stages used the same local models by name, but their digests were not stored.
+
+Digests from round 9 on:
+
+- **Rounds 9 and 11:** the result files record the `gemma4:latest` digest used to generate the answers, `c6eb396dbd5992bbe3f5cdb947e8bbc0ee413d7c17e2beaae69f5d569cf982eb`, and Ollama 0.30.10 (fields `reproducao` of `r9_resultado.json` and `r11_resultado.json`). Their retrieval reuses the confirmation's `nomic-embed-text` embeddings, whose digest is recorded in `gc_conf_result.json`.
+- **Round 10:** stage A records the `nomic-embed-text` digest (`r10A_resultado.json`); stage B uses no model and reuses the confirmation's caches.
+- **Round 12:** the pilot records, for each candidate embedding model, its digest, format, quantization, parameter count, dimension and input limit (from Ollama's `/api/show`). Texts above the input limit are cut, which is the default of `/api/embed`.
+
+## Claude judges and agents
+
+- **Who:** the second judge of the confirmation (complementary step) and the blind judges of rounds 9 and 11 were Claude (Anthropic) subagents. Separate Claude agents also wrote and reviewed part of the judge-control pairs (deviations 1 and 2).
+- **Version:** according to the assistant's session records, all ran as subagents launched from the same continuing working session (29 September – 1 October 2026). When this section was written (1 October 2026), the session was configured as `claude-opus-5-5`. The version that served each judging call was not exposed to the session and is not recorded; it may differ from the configured one.
+- **Independence:** each subagent started fresh and saw only the rubric and its batch, which helps preserve blinding. They are not independent models: all judges are the same model family, and so is the assistant that designed the experiments.
+- **Reproduction:** the rubric and the labels are published; the item files contain third-party text and are published only as SHA-256 (see `results/README.md`). A new run with another Claude version may not reproduce the labels exactly.
 
 ## Clean run (macOS or Linux)
 

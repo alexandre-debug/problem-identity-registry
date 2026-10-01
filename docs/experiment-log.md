@@ -1,8 +1,8 @@
 # Experiment log (English summary)
 
-**Author:** Alexandre Cardoso Rego · research conducted 28 September – 1 October 2026 · summary of version 0.2.0
+**Author:** Alexandre Cardoso Rego · research conducted 28 September – 1 October 2026 · summary of version 0.2.2
 
-This is a condensed English summary of every stage. The source of record is the original dated protocol, in Portuguese: [protocolo-original.pt-BR.md](protocolo-original.pt-BR.md) (up to the confirmation) and [protocolo-continuacao.pt-BR.md](protocolo-continuacao.pt-BR.md) (rounds 9 to 12). For each round, the question and the method were written there **before** running. Rounds meant to decide something also had their success criteria fixed in advance, and those criteria were never changed after seeing results. Diagnostic and exploratory stages had no criterion, as marked below. The protocol is a living document, dated to the day and, from round 9 on, often to the hour. It had no external time stamp before v0.1.0 (29 September 2026), its first public record. The continuation, with the pre-registrations of rounds 9 to 11, is first published in v0.2.0, after their results; its dates are the author's own record. Result files are in [`../results`](../results).
+This is a condensed English summary of every stage. The source of record is the original dated protocol, in Portuguese: [protocolo-original.pt-BR.md](protocolo-original.pt-BR.md) (up to the confirmation) and [protocolo-continuacao.pt-BR.md](protocolo-continuacao.pt-BR.md) (rounds 9 to 13). For each round, the question and the method were written there **before** running. Rounds meant to decide something also had their success criteria fixed in advance, and those criteria were never changed after seeing results. Diagnostic and exploratory stages had no criterion, as marked below. The protocol is a living document, dated to the day and, from round 9 on, often to the hour. It had no external time stamp before v0.1.0 (29 September 2026), its first public record. The continuation, with the pre-registrations of rounds 9 to 11, is first published in v0.2.0, after their results; its dates are the author's own record. Result files are in [`../results`](../results).
 
 ## Glossary
 
@@ -84,7 +84,7 @@ The first framing was a shared cache of validated interpretations of user reques
   - Calibrating β on marked hits chose 0.02; calibrating on the judge chose 0. **For the first suggestion, the popularity bonus, not the relations, was the problem.**
   - The bonus also supplied 44% of the family gain: M1 family gain +0.97 [0.86; 1.08], just under the 1-point bar, against +1.73 for M2.
 - **Network-effect curves.**
-  - *Density of confirmations* (content fixed): saturating, with saturation index 0.128 [0.068; 0.195]. 10% of the links gave ~46% of M1's gain.
+  - *Density of confirmations* (content fixed): saturating, with saturation index 0.128 [0.068; 0.195]. 10% of the links gave ~46% of M1's gain. Links were removed at random from the whole network, so this does not say how many confirmations each family needs (correction of 1 October 2026).
   - *Participants* (one community split into 10 simulated applications): the relative gain of M1 over M0 grew from +3% (1 application) to +31% (10); for H, from +3% to +44%. Part of this growth is expected by construction, because a link can exist only when both questions are in the memory.
   - The absolute gain per new application decreased (H: 0.57 → 0.195 points), below the 50% bar set for a "strong" signal. Plain search saturated faster (M0: 0.332 → 0.052).
   - Pre-registered reading: **moderate** network-effect signal.
@@ -146,7 +146,7 @@ The confirmation measured retrieval only. Rounds 9 to 11 measure the next step: 
 - **Generator:** gemma4 on the author's Mac (digest registered), temperature 0, at most 350 output tokens, thinking disabled. The prompt is the same in every condition except the context block, which says the discussions may be irrelevant.
 - **Context:** five discussions. Each is the old question (up to 80 words) plus one answer (up to 150 words) **as it stood when the new question was posted**: the answer accepted before that date, otherwise the most upvoted one by that date, in the text version valid on that date. Nothing written or edited after the new question enters its context.
 - **Reference (judge only):** the accepted answer of the new question. Only new questions with an accepted answer are used. The answer of the marked duplicate is never the reference.
-- **Judge:** fresh Claude subagents, one per batch of 35 items, receiving only the rubric and the items. The key that maps answers to conditions stays on the author's machine; a local script returns aggregates only.
+- **Judge:** fresh Claude subagents, one per batch of 35 items, receiving only the rubric and the items (version and independence caveats in [`../code/ENVIRONMENT.md`](../code/ENVIRONMENT.md)). The key that maps answers to conditions stays on the author's machine; a local script returns aggregates only.
 - **Rubric:** "Decide which candidate is more likely to solve the asker's problem; a candidate with wrong, risky or irrelevant steps is worse. Ignore length, style and formatting." The reference is evidence, and a different approach can be equally correct.
 - **What is measured:** a judge's preference guided by an imperfect reference, not problems actually solved.
 
@@ -217,14 +217,27 @@ The confirmation measured retrieval only. Rounds 9 to 11 measure the next step: 
   - Mean input tokens: 1,360 (M0), 1,368 (H1), 1,406 (H). Generation tokens were similar; the total cost of the network (building, maintaining and querying it) was not measured.
 - **Reading (review):** in this test, the popularity bonus hurt answer quality compared with the same design without it, and the network without the bonus kept quality within the accepted margin. A benefit over plain search, in quality, work saved or total cost, has not been shown.
 - **Limits:**
-  - Super User only; not repeated on AskUbuntu.
+  - Super User only; not yet run on AskUbuntu.
   - P2 is population non-inferiority within 3 points, not equivalence, and does not guarantee every question.
   - Without the bonus, retrieval finds less family (+11.6% instead of +25.3% on Super User).
   - The K4 errors and part of the K5 pairs were written by agents of the same model family as the judge.
 
-### Round 12 (draft, not frozen): can low-cost models create the links?
+## Part 5 — Next rounds
 
-A draft in the protocol, already reviewed externally, proposes testing whether small local models can create directional "the answers of B solve A" links. The precision would be measured on a random sample of the links they would actually add, with calibration and evaluation separated. The comparison would include the same human links, human plus AI links, AI links only, and a learned metric without links (M3) as the "train instead of link" arm.
+### Round 12 (frozen 1 October 2026, published before running): do the links still help over a hybrid search?
+
+- **Why:** every confirmed gain so far was measured over plain search with `nomic-embed-text`, a modest embedding model. A better model, or word search combined with vectors, might find the same discussions without the links.
+- **Status:** an additional comparison on the confirmation data, with rules fixed before running; not a new confirmation on untouched data. Retrieval only: no generated answers, no judge.
+- **Model selection (pilot, frozen rule; the result is called "the model selected by the pilot", not a strong search, until measured):** five Ollama embedding models (mxbai-embed-large, bge-m3, embeddinggemma, qwen3-embedding 0.6b and 4b) are scored by MAP on the exploratory Lei et al. AskUbuntu dev set (189 questions). The highest MAP among those estimated to embed the whole archive within 10 hours is selected (fallback: the fastest within 24 hours; otherwise the round does not run).
+- **Main comparison, fixed in advance:** HIB_E, a reciprocal-rank fusion (k = 60) of the top 100 of BM25 and of the selected model. L(HIB_E) is the same fusion with the frozen relation ranking M1 in the selected model's space. H1(HIB_E) keeps HIB_E's first suggestion and interleaves HIB_E and L(HIB_E).
+- **Criteria:** F1, relative family top-5 gain of H1(HIB_E) over HIB_E with 95% CI lower bound above 10%; F2, above 0. Readings fixed in advance: above 10%; positive but above-10% not shown; inconclusive; evidence of worsening.
+- **Descriptive:** every search with and without links, cheap search with links against the hybrid search without them, results by period, how often the family is among the top-k candidates, latency per query and the cost of building each structure.
+- **Known limits:** possible prior exposure of the embedding models to the evaluation data, with unknown effect on the incremental gain; no reranker.
+- **Script:** `code/05-hybrid-search/gc_r12.py`, SHA-256 `3414f6b24daa3ed3cc971a7590876220fd6a8c2458c66178daeb65ce98eda832`.
+
+### Round 13 (draft, not frozen): can low-cost models create the links?
+
+A draft in the protocol, reviewed externally twice, proposes testing whether small local models can create directional "the answers of B solve A" links; the same relation is used for the ground truth and for the review of hard negatives. Precision would be measured on a random sample of the links they would actually add, and sensitivity (the share of valid candidate links that are approved) with random samples of both approved and rejected candidates, with calibration and evaluation separated. The comparison would include the same human links, human plus AI links, AI links only, and a learned metric without links (M3) as the "train instead of link" arm. It will not be frozen before round 12 reports.
 
 ## Integrity notes
 
@@ -238,4 +251,6 @@ A draft in the protocol, already reviewed externally, proposes testing whether s
     - the demonstrated gain is retrieval of discussions, not verified solutions.
 - **A hypothesis added during the work:** "AI as curator of the collective memory" (the author, 29 September 2026), documented in [framework.md](framework.md). It is untested.
 - **Control pairs written by agents (deviations 1 and 2).** In round 9, the local model failed to insert usable K4 errors; in round 11, it failed to write enough usable K5 versions. Before any judging, separate Claude agents inserted the K4 errors (deviation 1; in round 11 this was part of the frozen design) and wrote the second version of 10 of the 26 approved K5 pairs of round 11 (deviation 2). Other agents reviewed them, and no threshold changed. The judge belongs to the same model family, which is a known limitation.
+- **Pre-registration published before the result (round 12).** For rounds 1–11 the protocol had no external time stamp before its results. Round 12 was frozen and published in version 0.2.2, with its script, before it ran.
+- **Corrections after the review of version 0.2.1 (1 October 2026).** The curve A finding was overstated as "a few confirmations per family capture most of the value"; it only shows that a fraction of the network's links captured much of the gain. This was corrected in the framework and in this log. The framework's claim that an AI curator "attacks exactly that bottleneck" was softened; the round 13 draft now uses one relation throughout, defines sensitivity and drops a promise stronger than its design; and the identification of the Claude judges was added to `code/ENVIRONMENT.md`. The original texts are kept in the protocol.
 - **A sign error in the round 11 script (erratum 1).** It was found after the result, because the counts contradicted the label. It was corrected according to the pre-registered text, and the correction was checked in an external review. Both outputs are published.

@@ -4,7 +4,7 @@
 
 *Registro de pesquisa sobre dar a problemas recorrentes uma identidade compartilhada e verificável, para que pessoas e sistemas de IA reaproveitem soluções conhecidas em vez de resolver de novo os mesmos problemas.*
 
-**Situação:** pesquisa em andamento · versão 0.2.1 · 1º de outubro de 2026 · [mudanças](CHANGELOG.md)
+**Situação:** pesquisa em andamento · versão 0.2.2 · 1º de outubro de 2026 · [mudanças](CHANGELOG.md)
 **Autor:** Alexandre Cardoso Rego (o projeto nasceu com o nome *Grande Cérebro*)
 **English:** [README.md](README.md)
 
@@ -20,7 +20,7 @@ A proposta completa, com o que é hipótese e o que é evidência, está em [doc
 
 ## O que foi demonstrado até aqui
 
-Esta é a única afirmação que este repositório apresenta como confirmada, na forma que consideramos defensável:
+Este é o principal resultado confirmado de recuperação, na forma que consideramos defensável:
 
 > Em perguntas novas do AskUbuntu (janeiro de 2020 a março de 2024, nunca usadas na fase exploratória), aproveitar relações de duplicata registradas anteriormente aumentou a recuperação de discussões da família marcada entre cinco sugestões. A combinação intercalada passou de 1,61% para 2,57% de todas as perguntas novas (+59% relativo; IC 95% do ganho relativo de +54% a +65%), mantendo a primeira sugestão idêntica à da busca semântica comum. **Não** medimos se os problemas foram de fato resolvidos, nem economia de trabalho.
 
@@ -85,11 +85,12 @@ Resultados negativos e inconclusivos fazem parte do registro:
 
 ## O que continua em aberto
 
+- Se as ligações ainda acrescentam algo sobre uma **busca híbrida**. A rodada 12 as compara com uma fusão da busca por palavras (BM25) com um modelo de embeddings selecionado por um piloto em dados exploratórios. Ela foi congelada e publicada na versão 0.2.2 antes de rodar.
 - Se a rede traz um **benefício sobre a busca comum**, e não só ausência de perda: respostas melhores, trabalho economizado ou custo total menor.
 - Se o resultado da rodada 11 **se mantém no AskUbuntu** e em outros sites.
 - Se as discussões encontradas **resolvem** de fato o problema novo, e quanto **trabalho ou computação** o reaproveitamento economizaria.
 - Se o efeito se mantém **entre aplicações e domínios diferentes**, além de uma única comunidade dividida ao acaso.
-- Se uma **IA curadora** consegue criar ligações confiáveis. Um juiz que passa em controles fáceis, que rejeitam pares aleatórios, ainda não está validado para os casos difíceis: problemas muito parecidos que pedem soluções diferentes. É a hipótese do autor *"gerar uma vez, validar muitas, reaproveitar sempre"*, descrita no framework. Um rascunho da rodada 12, já revisado externamente, a testaria com modelos locais pequenos.
+- Se uma **IA curadora** consegue criar ligações confiáveis. Um juiz que passa em controles fáceis, que rejeitam pares aleatórios, ainda não está validado para os casos difíceis: problemas muito parecidos que pedem soluções diferentes. É a hipótese do autor *"gerar uma vez, validar muitas, reaproveitar sempre"*, descrita no framework. Um rascunho da rodada 13, já revisado externamente, a testaria com modelos locais pequenos.
 - Se **pesos que dependem do contexto** conseguem manter o benefício do termo de popularidade sem o prejuízo.
 - **Governança:** confirmações falsas ou maliciosas, privacidade dos problemas relatados e incentivo para contribuir.
 
@@ -105,7 +106,7 @@ Resultados negativos e inconclusivos fazem parte do registro:
 - **Correções como errata.** Depois de revisão externa, interpretações que foram além dos dados foram corrigidas em erratas datadas no fim do protocolo, sem apagar o texto anterior. Isso vale tanto para frases do protocolo quanto para frases da conversa que acompanhou o trabalho.
 - **Desvios registrados, não escondidos.** Algumas mudanças foram necessárias depois que um desenho foi congelado, mas antes de qualquer resultado, como a forma de produzir os pares de controle do juiz. Cada uma foi registrada como um desvio numerado, com a decisão do autor. Cada mudança de script recebeu um novo SHA-256 e foi testada para reproduzir a saída congelada onde não deveria mudar nada.
 
-O resumo em inglês de todas as rodadas está em [docs/experiment-log.md](docs/experiment-log.md). O protocolo original datado, em português, está em [docs/protocolo-original.pt-BR.md](docs/protocolo-original.pt-BR.md); a última seção dele lista as poucas mudanças feitas para a publicação. As rodadas 9 a 12 continuam em [docs/protocolo-continuacao.pt-BR.md](docs/protocolo-continuacao.pt-BR.md).
+O resumo em inglês de todas as rodadas está em [docs/experiment-log.md](docs/experiment-log.md). O protocolo original datado, em português, está em [docs/protocolo-original.pt-BR.md](docs/protocolo-original.pt-BR.md); a última seção dele lista as poucas mudanças feitas para a publicação. As rodadas 9 a 13 continuam em [docs/protocolo-continuacao.pt-BR.md](docs/protocolo-continuacao.pt-BR.md).
 
 ## Organização do repositório
 
@@ -114,11 +115,12 @@ README.md, README.pt-BR.md       esta visão geral
 docs/framework.md (+ .pt-BR)     a proposta: identidade de problemas, confirmações, IA curadora, riscos
 docs/experiment-log.md           resumo em inglês de cada rodada, com critérios e resultados
 docs/protocolo-original.pt-BR.md protocolo original datado (fonte de referência), até a confirmação
-docs/protocolo-continuacao.pt-BR.md  a continuação dele: rodadas 9 a 12
+docs/protocolo-continuacao.pt-BR.md  a continuação dele: rodadas 9 a 13
 code/01-sgd-rounds/              rodadas 1 a 4 (Schema-Guided Dialogue)
 code/02-askubuntu-exploratory/   rodadas 5 a 8, diagnósticos e curvas de rede (AskUbuntu, Lei et al.)
 code/03-confirmation/            confirmação independente (AskUbuntu 2020–2024) e segundo juiz às cegas
 code/04-answer-quality/          rodadas 9 a 11: respostas com contexto recuperado, julgamento às cegas, portão, Super User
+code/05-hybrid-search/           rodada 12 (congelada, ainda não rodada): ligações sobre uma busca híbrida
 results/                         arquivos de resultado de cada etapa
 ```
 
@@ -133,6 +135,7 @@ results/                         arquivos de resultado de cada etapa
 - **Dados da confirmação:** `askubuntu.com.7z`, do dump do Stack Exchange de 2 de abril de 2024, no [Internet Archive](https://archive.org/details/stackexchange).
 - **Comandos:** `python3 gc_conf.py --judge gemma4:latest`, depois `python3 gc_conf_juiz2.py gerar` / `comparar juiz2_rotulos.json`.
 - **Rodadas 9 a 11:** veja [code/04-answer-quality/README.md](code/04-answer-quality/README.md). As respostas foram geradas pelo gemma4 no Mac do autor (cerca de 4,5 horas para as 1.540 respostas da rodada 9; 2.846 prompts distintos na rodada 11), e o julgamento foi feito por subagentes do Claude, com a chave guardada na máquina do autor. Dados do Super User: `superuser.com.7z`, do mesmo dump.
+- **Rodada 12:** veja [code/05-hybrid-search/README.md](code/05-hybrid-search/README.md). Congelada em 1º de outubro de 2026 e publicada antes de rodar; ainda sem resultados.
 - **Arquivos com texto de terceiros omitidos:** os arquivos de itens do julgamento às cegas, as respostas do piloto, os arquivos de revisão dos pares de controle, as edições de controle escritas por agentes, o arquivo de exemplos e os campos de exemplos de quatro arquivos de resultado não estão incluídos, porque contêm trechos de posts do askubuntu.com ou do superuser.com, ou reescritas deles feitas por modelos. Com exceção dos arquivos escritos por agentes, os scripts os produzem a partir dos dados públicos, desde que com os mesmos digests de modelo e os caches salvos localmente. Não há garantia de regeneração idêntica bit a bit em outra máquina. Os SHA-256 deles estão em [results/README.md](results/README.md), e o autor guarda os originais para conferência sob pedido.
 
 ## Dados e licenças
@@ -149,7 +152,7 @@ results/                         arquivos de resultado de cada etapa
 - **Autor:** a ideia, a direção e as decisões deste projeto são de Alexandre Cardoso Rego.
 - **Claude (Anthropic):** o desenho dos experimentos, o código, as análises e a documentação foram desenvolvidos com o Claude, que atuou como assistente de pesquisa.
 - **ChatGPT (OpenAI):** o autor trouxe revisões críticas do ChatGPT. Várias mudaram o protocolo antes das execuções e corrigiram interpretações depois delas.
-- **Juízes:** o modelo local gemma4 (na máquina do autor) e, na etapa complementar e nas rodadas 9 e 11, subagentes do Claude que receberam apenas a rubrica de julgamento e os itens.
+- **Juízes:** o modelo local gemma4 (na máquina do autor) e, na etapa complementar e nas rodadas 9 e 11, subagentes do Claude que receberam apenas a rubrica de julgamento e os itens. Quando isto foi registrado (1º de outubro de 2026), a sessão de trabalho estava configurada como `claude-opus-5-5`; a versão que serviu cada chamada de julgamento não foi exposta e não está registrada. Subagentes separados ajudam a preservar o cegamento, mas não são modelos independentes. Detalhes em [code/ENVIRONMENT.md](code/ENVIRONMENT.md).
 - **Rodadas 9 a 11:** as respostas foram geradas pelo gemma4. Alguns pares de controle do juiz foram escritos e revisados por agentes Claude separados (desvios 1 e 2).
 - **Revisão separada:** antes da publicação, um agente Claude separado (da mesma família de modelos), que não escreveu a documentação, conferiu a documentação contra os arquivos de resultado e o protocolo. Ele revisou a documentação, não o código. Para a versão 0.2.0, uma revisão externa (ChatGPT) recalculou os agregados da rodada 11 e conferiu a errata dela.
 

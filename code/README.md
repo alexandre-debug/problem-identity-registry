@@ -63,3 +63,11 @@ python3 gc_conf_juiz2.py comparar juiz2_rotulos.json  # compares labels locally,
 | `gc_r11.py` | Round 11 (Super User): M0, H1 and H as answer context, blind judging. |
 
 Commands, the blind-judging procedure and the SHA-256 of every script version, including the frozen ones in `versions/`, are in [04-answer-quality/README.md](04-answer-quality/README.md).
+
+## 05-hybrid-search: round 12 (frozen, not yet run)
+
+**Data.** The confirmation's data, caches and result (run `03-confirmation` first). Ollama with `nomic-embed-text` and the five candidate embedding models listed in [05-hybrid-search/README.md](05-hybrid-search/README.md).
+
+| Script | Stage |
+|---|---|
+| `gc_r12.py` | Round 12: `piloto` selects the embedding model by a frozen rule on exploratory data; `rodar` compares the links over a hybrid search (BM25 + the selected model). Published before running. |

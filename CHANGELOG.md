@@ -1,5 +1,18 @@
 # Changelog
 
+## v0.2.2 (1 October 2026)
+
+Documentation corrections after an external review of v0.2.1, and the round 12 pre-registration published before it runs. No published result changed.
+
+- **Round 12 published before running.** The pre-registration (in `docs/protocolo-continuacao.pt-BR.md`) and its frozen script (`code/05-hybrid-search/gc_r12.py`, SHA-256 `3414f6b2…`) test whether the confirmed links still help over a hybrid search that fuses word search (BM25) with an embedding model selected by a pilot on exploratory data. For the first time, a round's pre-registration has a public, dated record before its result.
+- **Framework updated with rounds 9–11.** Preserving the first suggestion does not guarantee preserving the quality of the final answer; removing the popularity term helped H1 against H on Super User, without showing superiority over plain search; a gate to predict when the network helps was not achieved; gains were smaller on a sparser site.
+- **Correction: curve A.** "A few confirmations per family capture most of the value" went beyond the test, which removed links from the whole network. It shows that a fraction of the links captured much of the gain, not how many confirmations each family needs. Prioritising new families remains a hypothesis. Corrected in the framework and the experiment log; recorded as an erratum in the protocol.
+- **Correction: the AI curator.** "Attacks exactly that bottleneck" became "could reduce the dependence on human moderation to extend the network".
+- **Round 13 draft (the AI curator, previously numbered 12).** The relation is now the same everywhere ("the answers of B solve A"), "coverage" became sensitivity with a defined denominator, and a promise stronger than the design allows was removed.
+- **Judges identified more reproducibly.** `code/ENVIRONMENT.md` records how the Claude judges ran, which version was configured, that the serving version was not exposed, and that separate subagents are not independent models.
+- **README.** "This is the only claim this repository presents as confirmed" became "This is the main confirmed retrieval result", since rounds 9–11 added other bounded results.
+- **Protocol continuation** re-exported at revision 131.
+
 ## v0.2.1 (1 October 2026)
 
 Repository fix. No results or documents changed.

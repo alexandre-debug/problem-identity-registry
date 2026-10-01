@@ -4,7 +4,7 @@
 
 *A research record on giving recurring problems a shared, verifiable identity, so that people and AI systems can reuse known solutions instead of solving the same problems again.*
 
-**Status:** work in progress · version 0.2.1 · 1 October 2026 · [changelog](CHANGELOG.md)
+**Status:** work in progress · version 0.2.2 · 1 October 2026 · [changelog](CHANGELOG.md)
 **Author:** Alexandre Cardoso Rego (the project was first conceived, in Portuguese, as *Grande Cérebro*)
 **Português:** [README.pt-BR.md](README.pt-BR.md)
 
@@ -20,7 +20,7 @@ The full proposal, including what is a hypothesis and what is evidence, is in [d
 
 ## What has been shown so far
 
-This is the only claim this repository presents as confirmed, in the form we consider defensible:
+This is the main confirmed retrieval result, in the form we consider defensible:
 
 > On new AskUbuntu questions (January 2020 to March 2024, never used during the exploratory phase), using previously recorded duplicate relations increased the retrieval of discussions from the marked family among five suggestions. The interleaved combination went from 1.61% to 2.57% of all new questions (+59% relative; 95% CI of the relative gain +54% to +65%), while keeping the first suggestion identical to plain semantic search. We have **not** measured whether problems were actually solved, nor any saving of work.
 
@@ -85,11 +85,12 @@ Negative and inconclusive results are part of the record:
 
 ## What is still open
 
+- Whether the links still add something over a **hybrid search**. Round 12 compares them with a fusion of word search (BM25) and an embedding model selected by a pilot on exploratory data. It was frozen and published in version 0.2.2 before running.
 - Whether the network gives a **benefit over plain search**, not only no loss: better answers, work saved or lower total cost.
 - Whether the round 11 result **holds on AskUbuntu** and other sites.
 - Whether the retrieved discussions actually **resolve** the new problem, and how much **work or compute** reuse would save.
 - Whether the effect holds **across different applications and domains**, beyond a single community split at random.
-- Whether an **AI curator** can create reliable links. A judge that passes easy controls, which reject random pairs, is not yet validated for hard cases: very similar problems that need different solutions. This is the author's hypothesis *"generate once, validate many, reuse always"*, described in the framework document. A draft of round 12, already reviewed externally, would test it with small local models.
+- Whether an **AI curator** can create reliable links. A judge that passes easy controls, which reject random pairs, is not yet validated for hard cases: very similar problems that need different solutions. This is the author's hypothesis *"generate once, validate many, reuse always"*, described in the framework document. A draft of round 13, already reviewed externally, would test it with small local models.
 - Whether **context-dependent weights** can keep the recall benefit of the popularity term without its harm.
 - **Governance:** false or malicious confirmations, privacy of the problems people report, and incentives to contribute.
 
@@ -105,7 +106,7 @@ Negative and inconclusive results are part of the record:
 - **Corrections as errata.** After external review, interpretations that went beyond the data were corrected in dated errata at the end of the protocol, without deleting earlier text. This covers statements both in the protocol and in the conversation that accompanied the work.
 - **Deviations recorded, not hidden.** Some changes were needed after a design was frozen but before any result, such as how judge-control pairs were produced. Each was recorded as a numbered deviation with the author's decision. Each script change got a new SHA-256 and was tested to reproduce the frozen output where it was not meant to change anything.
 
-The full English summary of every round is in [docs/experiment-log.md](docs/experiment-log.md). The original dated protocol, in Portuguese, is in [docs/protocolo-original.pt-BR.md](docs/protocolo-original.pt-BR.md); its final section lists the few changes made for publication. Rounds 9 to 12 continue in [docs/protocolo-continuacao.pt-BR.md](docs/protocolo-continuacao.pt-BR.md).
+The full English summary of every round is in [docs/experiment-log.md](docs/experiment-log.md). The original dated protocol, in Portuguese, is in [docs/protocolo-original.pt-BR.md](docs/protocolo-original.pt-BR.md); its final section lists the few changes made for publication. Rounds 9 to 13 continue in [docs/protocolo-continuacao.pt-BR.md](docs/protocolo-continuacao.pt-BR.md).
 
 ## Repository layout
 
@@ -114,11 +115,12 @@ README.md, README.pt-BR.md       this overview
 docs/framework.md (+ .pt-BR)     the proposal: problem identities, confirmations, AI curator hypothesis, risks
 docs/experiment-log.md           English summary of every round, with criteria and results
 docs/protocolo-original.pt-BR.md the original dated protocol (source of record), up to the confirmation
-docs/protocolo-continuacao.pt-BR.md  its continuation: rounds 9–12
+docs/protocolo-continuacao.pt-BR.md  its continuation: rounds 9–13
 code/01-sgd-rounds/              rounds 1–4 (Schema-Guided Dialogue)
 code/02-askubuntu-exploratory/   rounds 5–8, diagnostics and network curves (AskUbuntu, Lei et al.)
 code/03-confirmation/            independent confirmation (AskUbuntu 2020–2024) and blind second judge
 code/04-answer-quality/          rounds 9–11: answers with retrieved context, blind judging, gate, Super User
+code/05-hybrid-search/           round 12 (frozen, not yet run): links over a hybrid search
 results/                         result files of each stage
 ```
 
@@ -133,6 +135,7 @@ results/                         result files of each stage
 - **Confirmation data:** `askubuntu.com.7z` from the Stack Exchange data dump of 2 April 2024, on the [Internet Archive](https://archive.org/details/stackexchange).
 - **Commands:** `python3 gc_conf.py --judge gemma4:latest`, then `python3 gc_conf_juiz2.py gerar` / `comparar juiz2_rotulos.json`.
 - **Rounds 9–11:** see [code/04-answer-quality/README.md](code/04-answer-quality/README.md). The answers were generated by gemma4 on the author's Mac (about 4.5 hours for the 1,540 answers of round 9; 2,846 distinct prompts in round 11), and the judging was done by Claude subagents, with the key kept on the author's machine. Super User data: `superuser.com.7z` from the same dump.
+- **Round 12:** see [code/05-hybrid-search/README.md](code/05-hybrid-search/README.md). Frozen on 1 October 2026 and published before running; no results yet.
 - **Omitted files with third-party text:** the blind-judging item files, the pilot answers, the control-pair review files, the agent-written control edits, the example file and the example fields of four result files are not included, because they contain excerpts of askubuntu.com or superuser.com posts, or model rewrites of them. Except for the agent-written files, the scripts produce them from the public data, given the same model digests and the locally saved caches. Bit-identical regeneration on other hardware is not guaranteed. Their SHA-256 hashes are listed in [results/README.md](results/README.md), and the author keeps the originals for verification on request.
 
 ## Data and licenses
@@ -149,7 +152,7 @@ results/                         result files of each stage
 - **Author:** the idea, its direction and the decisions in this project belong to Alexandre Cardoso Rego.
 - **Claude (Anthropic):** the experimental design, the code, the analyses and the documentation were developed with Claude, which acted as research assistant.
 - **ChatGPT (OpenAI):** the author relayed critical reviews from ChatGPT, several of which changed the protocol before runs and corrected interpretations after them.
-- **Judges:** the local model gemma4 (on the author's machine) and, in the complementary step and in rounds 9 and 11, Claude subagents that received only the labelling rubric and the items.
+- **Judges:** the local model gemma4 (on the author's machine) and, in the complementary step and in rounds 9 and 11, Claude subagents that received only the labelling rubric and the items. When this was recorded (1 October 2026), the working session was configured as `claude-opus-5-5`; the version that served each judging call was not exposed and is not recorded. Separate subagents help preserve blinding, but they are not independent models. Details in [code/ENVIRONMENT.md](code/ENVIRONMENT.md).
 - **Rounds 9–11:** the answers were generated by gemma4. Some judge-control pairs were written and reviewed by separate Claude agents (deviations 1 and 2).
 - **Separate review:** before publication, a separate Claude agent (same model family) that had not written the documentation checked it against the result files and the protocol. It reviewed the documentation, not the code. For version 0.2.0, an external review (ChatGPT) recomputed the aggregates of round 11 and checked its erratum.
 

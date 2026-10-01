@@ -48,7 +48,7 @@ python3 gc_r11.py comparar r11_rotulos.json                 # -> r11_resultado.j
 
 - `itens` writes the items file, which starts with the rubric, and a key file named `*_chave_NAO_ENVIAR.json` ("do not send").
 - The key never leaves the author's machine. Only the items file goes to the judges.
-- The judges were fresh Claude subagents. Each received only the rubric and a batch of 35 items, and answered `A`, `B` or `TIE` for each item.
+- The judges were fresh Claude subagents. Each received only the rubric and a batch of 35 items, and answered `A`, `B` or `TIE` for each item. Version and independence caveats are in [../ENVIRONMENT.md](../ENVIRONMENT.md).
 - The labels are joined into one JSON file, `{"1": "A", "2": "TIE", ...}`. `comparar` reads it next to the key and writes only aggregates.
 - The judge must pass its controls before any criterion counts: K1 easy discrimination (≥ 0.85), K2 order consistency (≥ 0.75), K4 decisive error (≥ 0.80, at least 30 pairs) and K5 equivalent answers judged a tie (≥ 0.50, at least 20 pairs). Otherwise the result is invalid, never a pass.
 - Control pairs are reviewed before judging (`*_controles_revisao.txt` → `*_controles_aprovados.json`). In round 9, the local model could not insert usable K4 errors, and in round 11 it could not write enough usable K5 pairs, so separate Claude agents wrote those parts (deviations 1 and 2). In round 11, the K4 errors were written by an agent by design. The pair texts hold third-party text and are not published; only the review decisions (`*_controles_aprovados.json`) are. The SHA-256 hashes of the unpublished files are in [../../results/README.md](../../results/README.md).

@@ -1,11 +1,12 @@
 # Grande Cérebro — Protocolo do Experimento 1 (continuação)
 
-**Notas de publicação (01/10/2026).**
+**Notas de publicação (01/10/2026, versão 0.2.2).**
 
-- Este arquivo é a continuação de [protocolo-original.pt-BR.md](protocolo-original.pt-BR.md), que foi exportado na revisão 75. O texto abaixo foi exportado do mesmo documento vivo na revisão 116, a partir da seção "Versão pública preparada", sem edição de conteúdo.
-- Ele cobre a publicação da v0.1.x, as rodadas 9, 10 e 11 (pré-registros, desvios, resultados, erratas e revisões) e o rascunho da rodada 12, ainda não congelado.
+- Este arquivo é a continuação de [protocolo-original.pt-BR.md](protocolo-original.pt-BR.md), que foi exportado na revisão 75. O texto abaixo foi exportado do mesmo documento vivo na revisão 131, a partir da seção "Versão pública preparada", sem edição de conteúdo. A versão 0.2.0 trazia a exportação da revisão 116.
+- Ele cobre a publicação das versões 0.1.x e 0.2.x; as rodadas 9, 10 e 11 (pré-registros, desvios, resultados, erratas e revisões); a rodada 12, congelada em 01/10/2026 às 08h06 e publicada antes de rodar; e o rascunho da rodada 13 (a IA curadora, chamada de rodada 12 até 01/10/2026).
+- O rascunho da rodada 13 foi editado no próprio lugar depois de duas revisões do Astra, como permitido antes do congelamento; as notas de revisão dentro da seção dizem o que mudou.
 - "Astra" é o nome dado às revisões críticas do ChatGPT (OpenAI), repassadas pelo autor.
-- Por causa da ordem de inserção no documento vivo, dois blocos do pré-registro da rodada 9 ("Custo estimado da rodada 9" e "Pontos pedidos à revisão da rodada 9") aparecem no fim do arquivo.
+- Por causa da ordem de inserção no documento vivo, dois blocos do pré-registro da rodada 9 ("Custo estimado da rodada 9" e "Pontos pedidos à revisão da rodada 9") aparecem logo depois do rascunho da rodada 13.
 - Nenhum trecho de pergunta ou resposta do askubuntu.com ou do superuser.com aparece neste arquivo. Os arquivos que continham esse texto estão listados, com SHA-256, em `results/README.md`.
 
 ---
@@ -690,13 +691,21 @@ Nos itens principais, o juiz escolheu A em 29% e empate em 44,6%.
 - **Conferência contra a previsão feita aqui:** tudo o mais é idêntico ao que foi previsto antes da nova execução.
 - **Veredito oficial da rodada 11:** "P1: retirar a popularidade melhorou a resposta em relação a H." "P2: H1 ficou dentro da perda tolerada (−0,03) frente a M0." "P3: superioridade de H1 sobre M0 não demonstrada."
 
-## Rodada 12: a IA consegue criar as ligações? (rascunho, 30/09/2026, não congelado)
+## Rodada 13: a IA consegue criar as ligações? (rascunho, 30/09/2026, não congelado; era a rodada 12 até 01/10/2026)
 
 **Status:** rascunho para revisão do Astra. Não será congelado antes do resultado da rodada 11, porque ele decide se a etapa de busca usa H1 ou só M1.
 
 **Revisão do Astra (01/10/2026).** Quatro correções foram incorporadas abaixo, antes do congelamento: a relação que a IA cria, a precisão medida na distribuição real, a separação entre calibração e avaliação e o braço de treino (M3, e não M4). A rodada 11 definiu a base da busca: H1.
 
-**Pergunta:** modelos locais de baixo custo conseguem criar ligações "mesmo problema" que ajudem a busca como as ligações humanas? Se conseguirem, o registro cresce sem depender de moderadores, e a cobertura de famílias deixa de ser o gargalo. No Super User, só 1,89% das perguntas novas têm uma duplicata anterior.
+**Segunda revisão do Astra (01/10/2026, sobre a v0.2.1).** Três correções foram incorporadas abaixo, ainda antes do congelamento:
+
+1. **Relação uniformizada.** A pergunta e a revisão dos negativos passam a usar a mesma relação do gabarito, "as respostas de B resolvem A". Aplicabilidade e identidade não são equivalentes: um par de problemas distintos pode ser positivo para aplicabilidade.
+2. **Denominador definido.** "Cobertura" virou sensibilidade: a fração das ligações válidas entre as candidatas que o curador aprova. A precisão nas aprovadas não basta para calculá-la; é preciso avaliar também uma amostra das recusadas.
+3. **Promessa retirada.** "A cobertura de famílias deixa de ser o gargalo" era mais forte do que o desenho permite.
+
+Esta rodada também não será congelada antes do resultado da rodada 12, que diz se as ligações acrescentam algo sobre uma busca híbrida.
+
+**Pergunta:** modelos locais de baixo custo conseguem criar ligações do tipo "as respostas de B resolvem A" que ajudem a busca como as ligações humanas? Se conseguirem, isso pode reduzir a dependência de moderação humana para ampliar a rede. Mesmo com um bom curador, a busca pode não trazer as candidatas certas, e famílias raras podem continuar descobertas. No Super User, só 1,89% das perguntas novas têm uma duplicata anterior.
 
 **O que já sabemos:**
 
@@ -716,10 +725,10 @@ Nos itens principais, o juiz escolheu A em 29% e empate em 44,6%.
 - Um conjunto fixo e sorteado de pares vizinhos:
   - positivos: pares com ligação humana;
   - negativos difíceis: pares muito parecidos de famílias confirmadas distintas, com alvos diferentes e não ligados.
-- "Não ligados" não prova "diferentes". Um juiz cego (Claude, em lotes, com a chave fora do Claude) revisa os negativos e retira os que forem o mesmo problema.
-- **Medidas:** precisão e cobertura de cada curador, por limiar de confiança, e o custo por ligação em segundos e tokens no Mac.
-- **Critério E1, a IA pode entrar no registro:** precisão de pelo menos 0,80 (limite inferior do IC) numa amostra aleatória das ligações que o curador realmente aprovaria entre as candidatas, julgada por um avaliador cego independente, com cobertura de pelo menos 0,30. O conjunto de casos difíceis serve de diagnóstico. Os valores estão abertos à discussão.
-- **Calibração separada da avaliação:** o limiar de confiança é escolhido num conjunto de calibração. A precisão e a cobertura são medidas num conjunto de avaliação separado, sorteado antes.
+- "Não ligados" não prova "diferentes". Um juiz cego (Claude, em lotes, com a chave fora do Claude) revisa os negativos com a mesma relação do gabarito e retira aqueles em que as respostas de B resolvem A, mesmo que os problemas não sejam idênticos.
+- **Medidas:** precisão e sensibilidade de cada curador, por limiar de confiança, e o custo por ligação em segundos e tokens no Mac. Precisão é a fração das ligações aprovadas que são válidas. Sensibilidade é a fração das ligações válidas entre as candidatas que o curador aprova; ela exige avaliar também uma amostra aleatória das candidatas recusadas, com o mesmo avaliador cego. Descritivos: a fração das candidatas aprovadas e a fração das perguntas que recebem pelo menos uma ligação.
+- **Critério E1, a IA pode entrar no registro:** precisão de pelo menos 0,80 (limite inferior do IC) numa amostra aleatória das ligações que o curador realmente aprovaria entre as candidatas, julgada por um avaliador cego independente, com sensibilidade de pelo menos 0,30, estimada com amostras aleatórias das candidatas aprovadas e das recusadas. O conjunto de casos difíceis serve de diagnóstico. Os valores estão abertos à discussão.
+- **Calibração separada da avaliação:** o limiar de confiança é escolhido num conjunto de calibração. A precisão e a sensibilidade são medidas num conjunto de avaliação separado, sorteado antes.
 
 **Etapa 2, utilidade na busca (só se E1 passar para algum curador):**
 
@@ -762,3 +771,142 @@ Nos itens principais, o juiz escolheu A em 29% e empate em 44,6%.
 2. Uso da resposta aceita como referência.
 3. Escolha do juiz e dos controles, em especial se o K3 basta para mostrar que o juiz enxerga qualidade de solução.
 4. Se a subamostra C0 deve ser maior.
+
+## Publicação das versões 0.2.0 e 0.2.1 (01/10/2026)
+
+- **v0.2.0:** publicada no GitHub e arquivada no Zenodo com as rodadas 9 a 11: READMEs, registro de experimentos (parte 4), esta continuação do protocolo, código e resultados. Antes da publicação, um agente separado, que não escreveu os textos, conferiu números, SHA-256 e links contra o protocolo e os arquivos de resultado. As frases que iam além dos dados foram corrigidas antes de publicar.
+- **Arquivos apagados por engano:** o envio da v0.2.0 removeu 63 arquivos das versões anteriores (código e resultados das rodadas 1 a 8 e da confirmação, o framework, o protocolo original, o ambiente e os requisitos). Nada se perdeu: estavam no histórico do GitHub e foram conferidos byte a byte.
+- **v0.2.1:** restaura os 63 arquivos sem nenhuma mudança de conteúdo. O release e o arquivo do Zenodo da v0.2.0 ficam incompletos; a versão a citar é a v0.2.1 ou o DOI de todas as versões.
+
+## Rodada 12: as ligações ainda ajudam sobre uma busca forte? (01/10/2026, congelada às 08h06)
+
+**Renumeração:** o rascunho da IA curadora passa a ser a rodada 13, sem mudança no texto dele. Esta rodada vem antes porque a curadoria e a repetição da rodada 11 no AskUbuntu só valem a pena se as ligações acrescentarem algo sobre uma boa busca.
+
+**Revisão do Astra (01/10/2026, antes do congelamento).** As correções abaixo já estão incorporadas no texto desta seção e no script:
+
+1. **Comparação principal fixa.** B\* era escolhido pelos acertos nas próprias perguntas avaliadas, e o bootstrap não incorporava essa escolha. A comparação principal passa a ser HIB\_E, fixada antes. A conclusão será "ganho sobre esta busca híbrida", sem chamá-la de melhor busca disponível.
+2. **Leituras de F1 e F2 corrigidas.** "Só F2 passou" não significa ganho abaixo de 10%: um intervalo de +4% a +20% passa em F2, falha em F1 e continua compatível com ganhos maiores. A frase "o ganho dependia, em parte, de uma busca fraca" foi retirada, porque falhar em F2 não demonstra isso sozinho.
+3. **Configuração registrada.** Para cada modelo, o script registra digest, quantização, dimensão, limite de entrada e truncamento. O nome do modelo sozinho não identifica a configuração.
+4. **O modelo é "o selecionado pelo piloto".** O vencedor entre 20 candidatas pré-selecionadas não é necessariamente o melhor para buscar no acervo inteiro. Entrou uma regra para quando nenhum candidato cabe no orçamento.
+5. **H1 e a fusão congelados em detalhe:** a ordem exata e os parâmetros da fusão, iguais nas duas listas. Esta rodada testa este modo de usar a rede, não todas as formas de juntar relações a uma busca híbrida.
+6. **Vazamento:** pode favorecer as duas listas, porque o mesmo embedding alimenta M0\_E e M1\_E. Esta rodada é uma comparação adicional com regras fixadas antes, não uma nova confirmação em dados intocados.
+7. **Reordenador:** fica para uma etapa separada. A conclusão desta rodada vale para buscas sem reordenador.
+8. **Custo:** entram a latência por consulta e o custo de construir a estrutura da rede, além do tempo de embeddings.
+
+**Por que agora.** Todo o ganho confirmado foi medido sobre uma busca simples com o nomic-embed-text, um modelo de embeddings modesto. A primeira objeção de quem trabalha com recuperação de informação é que um modelo melhor, ou a busca por palavras somada aos vetores, acharia as mesmas discussões sem as ligações.
+
+**Pergunta:** sobre uma busca híbrida fixada antes, que junta a busca por palavras (BM25) e o modelo de embeddings selecionado no piloto, as ligações confirmadas ainda aumentam a recuperação da família marcada entre as 5 sugestões?
+
+**Dados:** os mesmos da confirmação.
+
+- AskUbuntu, dump de 02/04/2024. Memória: perguntas e ligações anteriores a 01/01/2020. Avaliação: as 96.333 perguntas novas de 2020 a 2024, nas versões de época.
+- Os dados da confirmação já foram vistos. Esta rodada é uma **comparação adicional com regras fixadas antes da execução**, não uma nova confirmação em dados intocados. Nada é ajustado nesses dados: o modelo é escolhido só com dados exploratórios, e métodos e parâmetros ficam fixados antes.
+- O script confere que a SHA-256 dos dados é a da confirmação e que os métodos com nomic reproduzem os números dela, com tolerância de 0,0001 (cerca de 10 perguntas).
+- Só recuperação: sem LLM gerando respostas e sem juiz.
+
+**Etapa 1, escolha do modelo (piloto com regra congelada):**
+
+- **Candidatos, todos do Ollama:** mxbai-embed-large, bge-m3, embeddinggemma, qwen3-embedding:0.6b e qwen3-embedding:4b. O nomic-embed-text entra só como referência. Do bge-m3 usa-se só a representação densa, a única que o Ollama devolve.
+- **Prefixos (pergunta nova / pergunta da memória), como nos cartões dos modelos:**
+  - nomic-embed-text: "search\_query: " / "search\_document: " (os da confirmação);
+  - mxbai-embed-large: "Represent this sentence for searching relevant passages: " / nenhum;
+  - bge-m3: nenhum / nenhum;
+  - embeddinggemma: "task: search result | query: " / "title: none | text: ";
+  - qwen3-embedding: "Instruct: Given a question posted on Ask Ubuntu, retrieve earlier questions that describe the same problem" + quebra de linha + "Query:" / nenhum. A frase da instrução é nossa e fica congelada.
+- **Configuração registrada para cada modelo:** digest, formato, quantização, número de parâmetros, dimensão e limite de entrada (pelo /api/show do Ollama). O truncamento é o padrão do /api/embed: o texto acima do limite de entrada é cortado.
+- **Medida:** MAP no dev do AskUbuntu de Lei et al. (189 perguntas com duplicata entre as 20 candidatas). São dados exploratórios; o teste desse conjunto foi usado na rodada 6. MRR e P@1 entram como descritivos.
+- **Tempo:** segundos por texto em 1.000 textos sorteados da confirmação (só o texto, sem marcação, com comprimentos representativos), com o modelo já carregado e o mesmo lote de 64 textos da execução completa. O tempo é extrapolado para o acervo inteiro.
+- **Regra:**
+  - o maior MAP entre os candidatos com tempo estimado de até 10 horas, uma noite no Mac; empate: o mais rápido;
+  - se nenhum couber em 10 horas: o mais rápido entre os que caibam em 24 horas (os embeddings são retomáveis, então dá para rodar em duas noites);
+  - se nenhum couber em 24 horas: a rodada não roda com estes candidatos, e isso fica registrado.
+- **Nome no relatório:** "o modelo selecionado pelo piloto" (E). O vencedor entre 20 candidatas pré-selecionadas não é necessariamente o melhor para buscar no acervo inteiro, então não o chamamos de busca forte antes de medir.
+- A escolha é automática: a etapa 2 lê o r12\_piloto.json.
+
+**Etapa 2, comparação:**
+
+- **Comparação principal, fixada antes: HIB\_E**, a fusão de postos (RRF, k = 60) das 100 primeiras do BM25 e das 100 primeiras do M0\_E.
+- **Buscas secundárias, sem ligações:**
+  - M0\_nomic: a busca simples da confirmação (referência);
+  - M0\_E: embeddings do modelo selecionado pelo piloto;
+  - BM25: k1 = 1,2 e b = 0,75; tokens \\w+ em minúsculas, sem as stopwords do scikit-learn; IDF e tamanho médio só das perguntas anteriores a 2020;
+  - HIB\_nomic: a mesma fusão, com o M0\_nomic.
+- **Ligações sobre cada busca, L(B):**
+  - L(M0\_E) = M1\_E, o M1 congelado no espaço do modelo selecionado: a nota de cada discussão é a maior entre a dela, a de uma duplicata confirmada direta e a do centro da família;
+  - L(HIB\_E) = a mesma fusão, com as 100 primeiras do M1\_E no lugar das 100 primeiras do M0\_E. Profundidade das listas, fórmula e constante da fusão, desempates e remoção de repetidos são iguais nas duas listas. Assim a diferença entre HIB\_E e L(HIB\_E) é só a informação das ligações;
+  - desempates: na fusão, nota maior primeiro e, empatando, a pergunta mais antiga; no BM25, o mesmo; nas listas por vetores, o critério da confirmação.
+- **H1(B), ordem exata:** B1, L(B)1, B2, L(B)2, B3, L(B)3, …, pulando documentos repetidos, até 5 sugestões. É o H1 da confirmação. A primeira sugestão nunca muda.
+- **Medida:** família marcada entre as 5 sugestões, como na confirmação. Ganho relativo com IC 95% por bootstrap, 2.000 reamostragens das perguntas com duplicata marcada.
+- **O que esta rodada testa:** este modo específico de usar a rede sobre uma busca híbrida, e não todas as formas possíveis de incorporar relações a ela.
+
+**Critérios:**
+
+- **F1 (principal):** ganho relativo de H1(HIB\_E) sobre HIB\_E, com limite inferior do IC 95% acima de 10%, o mesmo limite das rodadas anteriores.
+- **F2:** o mesmo, com limite inferior acima de 0.
+- **Leitura fixada antes:**
+  - limite inferior acima de 10%: ganho acima de 10% sustentado pelo critério;
+  - limite inferior acima de 0, mas não de 10%: ganho positivo demonstrado; ganho acima de 10% não demonstrado;
+  - intervalo contendo 0: ganho não demonstrado, resultado inconclusivo quanto à direção;
+  - intervalo inteiro abaixo de 0: evidência de piora.
+- A conclusão será sobre "esta busca híbrida". Atribuir uma queda do ganho a uma busca mais forte exigiria mostrar que a nova busca de fato melhorou e comparar diretamente a redução do ganho incremental das ligações; isso fica descritivo.
+
+**Descritivos, sem critério:**
+
+- acerto de todas as listas: família e duplicata marcada, no top-1 e no top-5, e qual busca sem ligações acertou mais;
+- ganho de H1 e de L sobre cada busca: M0\_E, HIB\_nomic e M0\_nomic (a confirmação);
+- as buscas entre si: M0\_E, BM25, HIB\_E e HIB\_nomic contra M0\_nomic;
+- H1\_nomic contra HIB\_E: busca barata com ligações contra a busca híbrida sem ligações, a pergunta de custo;
+- H com bônus sobre M0\_E, para continuidade;
+- F1 separado por período (2020–2021 e 2022–2024), só descritivo;
+- fração das perguntas com a família entre as k primeiras candidatas (k = 5, 10, 20 e 50) de M0\_E, BM25 e HIB\_E, para planejar a rodada 13;
+- custo:
+  - minutos de embeddings do acervo no Mac e segundos por 1.000 textos de cada candidato;
+  - tempo de embedding de uma pergunta nova, com o nomic e com o modelo selecionado;
+  - latência por consulta de cada etapa (busca por vetores, BM25, ligações, fusão), no Mac, com busca exaustiva e sem índice aproximado;
+  - tempo para construir o índice BM25 e a estrutura da rede (centros das famílias).
+
+**Limitações conhecidas:**
+
+- **Exposição prévia.** Pode haver exposição dos modelos aos dados de avaliação durante o treinamento. Seu efeito sobre o ganho incremental das ligações é desconhecido, porque o mesmo embedding alimenta M0\_E e M1\_E, inclusive os centros das famílias. A análise por período é descritiva e não confirma nem exclui contaminação.
+- **Dev pequeno.** O dev de Lei et al. tem 189 perguntas e textos já tokenizados. Serve para escolher o modelo, não para medir o ganho.
+- **Sem reordenador.** Um cross-encoder ou um LLM reordenando as candidatas não entra nesta rodada, e a conclusão vale para buscas sem reordenador. Um diagnóstico separado pode comparar, numa subamostra sorteada antes, a busca com e sem ligações usando o mesmo reordenador e o mesmo número de candidatas, independentemente de F1 passar.
+
+**Custo estimado:** piloto de 30 a 60 minutos. Etapa 2: uma noite de embeddings (o nomic levou cerca de uma hora para o acervo; modelos maiores levam várias horas) e alguns minutos de avaliação. Nenhum juiz.
+
+**Script:** gc\_r12.py. A versão de rascunho (SHA-256 c8b9143e…) passou para a SHA-256 3414f6b24daa3ed3cc971a7590876220fd6a8c2458c66178daeb65ce98eda832 com a revisão do Astra. No teste com dados sintéticos e Ollama simulado:
+
+- os métodos com nomic reproduziram exatamente os números da confirmação simulada;
+- a escolha do modelo seguiu a regra nos três casos: com candidatos dentro do limite, só dentro do limite de 24 horas e nenhum dentro;
+- a configuração de cada modelo, a latência por consulta e o custo de construção saem no resultado;
+- a saída tem só números;
+- a etapa 2 levou pouco mais de um minuto para 167 mil perguntas, com cerca de 1 GB de memória.
+
+**Pontos para o Astra:**
+
+1. Os candidatos e os prefixos.
+2. A regra de escolha pelo dev de Lei et al. e o limite de 10 horas.
+3. B\* restrito a M0\_E e HIB\_E, e a definição de L(HIB\_E).
+4. O limite de 10% em F1.
+5. Se vale incluir um reordenador numa subamostra.
+
+**Congelado em 01/10/2026 às 08h06 (+02:00).** O Astra recomendou seguir com a rodada depois das duas mudanças principais (HIB\_E como comparação fixa e as leituras de F1 e F2), e as demais correções dele também entraram. O script da rodada 12 é o gc\_r12.py com SHA-256 3414f6b24daa3ed3cc971a7590876220fd6a8c2458c66178daeb65ce98eda832. O piloto faz parte do desenho congelado: a escolha do modelo sai da regra, sem decisão manual. A partir daqui, qualquer mudança será registrada como desvio.
+
+## Revisão do Astra sobre a versão 0.2.1 e errata (01/10/2026)
+
+O Astra revisou a v0.2.1 (commit e747308): READMEs, framework, registro dos experimentos, esta continuação, documentação de reprodução e resultados. Conferiu também o trecho da correção de P1 no código, sem executar os experimentos nem auditar todo o código. Concluiu que a correção da rodada 11 está consistente: o código calcula H1 − H, o JSON mostra +0,0597, o original está preservado e a SHA-256 do script corresponde à documentada. Nenhum ajuste abaixo muda resultados publicados.
+
+**Correções, a publicar na v0.2.2:**
+
+1. **Framework atualizado com as rodadas 9 a 11.** Preservar a primeira sugestão não garante preservar a qualidade da resposta final. Retirar o bônus melhorou o H1 frente ao H no Super User, mas não demonstrou superioridade sobre o M0.
+2. **Errata sobre a curva A.** A frase "Pela curva A, poucas confirmações por família bastam, e o valor está em cobrir famílias novas", na seção de 29/09 sobre a IA curadora (no protocolo original, exportado na revisão 75), vai além do teste. A curva A reduziu as ligações da rede inteira. Ela sustenta que uma fração das ligações capturou boa parte do ganho, mas não determina quantas confirmações cada família precisa. Priorizar famílias novas continua sendo uma hipótese. Pelo mesmo motivo, "uma IA curadora ataca exatamente esse gargalo" fica corrigida para "uma IA curadora pode reduzir a dependência de moderação humana para ampliar a rede". O texto de 29/09 não foi apagado.
+3. **Rodada 13 (antes rodada 12):** relação uniformizada, denominador da sensibilidade definido e promessa retirada. As correções estão na própria seção, na nota "Segunda revisão do Astra".
+4. **Juiz identificado de forma reproduzível.** Os arquivos de ambiente passam a registrar a versão do Claude quando ela foi exposta e a declarar quando não foi. Os juízes foram subagentes do Claude criados na mesma sessão de trabalho. A sessão está configurada como claude-opus-5-5, mas a versão exata que serviu cada chamada não foi exposta. Sessões separadas ajudam a preservar o cegamento, mas não são modelos independentes.
+5. **README.** "Esta é a única afirmação que este repositório apresenta como confirmada" vira "principal resultado confirmado de recuperação", porque agora há outros resultados delimitados, como P1 e P2 da rodada 11.
+
+**Pré-registro público.** A v0.2.2 publica também a rodada 12 já congelada (texto e script gc\_r12.py, SHA-256 3414f6b2…) antes de ela rodar. Assim o pré-registro ganha um registro público datado anterior ao resultado, o que não aconteceu nas rodadas 9 a 11.
+
+**Nota de conferência da rodada 12 (01/10/2026, depois do congelamento; não muda o desenho nem o script).** Um agente separado conferiu o texto contra o gc\_r12.py antes da publicação da v0.2.2. Três esclarecimentos:
+
+- O ganho de L sobre o M0\_nomic é o ganho do M1 da confirmação, já publicado (+41,4%). O script não o repete como um campo separado; o acerto do M1\_nomic sai em acerto\_sem\_llm.
+- O "tempo de embedding de uma pergunta nova" é estimado pelo tempo médio por texto em lotes de 64, e não pela latência de uma pergunta isolada.
+- No repositório, o código fica em code/05-hybrid-search. O modelo escolhido é chamado de "modelo selecionado pelo piloto", e não de modelo mais forte, até ser medido.

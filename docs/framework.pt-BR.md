@@ -1,6 +1,6 @@
 # Framework: um registro compartilhado de identidades de problemas
 
-**Autor:** Alexandre Cardoso Rego · versão 0.1.1 · 29 de setembro de 2026 · [English](framework.md)
+**Autor:** Alexandre Cardoso Rego · versão 0.2.2 · 1º de outubro de 2026 (primeira versão em 29 de setembro de 2026) · [English](framework.md)
 
 As seções 1 e 2 descrevem a motivação e o desenho. Da seção 3 em diante, cada ponto leva um de quatro rótulos:
 
@@ -43,10 +43,12 @@ O projeto faz uma pergunta simples: **e se problemas recorrentes tivessem uma id
 2. **Manter o caso mais parecido em primeiro e acrescentar a família em volta. [Evidência mais uma decisão prudente]**
    - O desenho intercalado mantém a primeira sugestão idêntica à da busca comum.
    - Se a rede sozinha pode escolher com segurança a primeira sugestão continua sem resposta: o intervalo do juiz que passou nos controles vai de −4,8 a +0,7 pontos.
+   - **Preservar a primeira sugestão não garante preservar a qualidade da resposta final. [Evidência, rodada 9]** Nas perguntas do AskUbuntu sem duplicata marcada, as respostas escritas com o contexto do H (primeira sugestão idêntica à da busca comum) não passaram na margem pré-registrada de não inferioridade frente à busca comum: −0,070 [−0,138; 0,000]. As outras sugestões também entram no contexto e podem atrapalhar. [Interpretação]
 3. **Um peso global de popularidade tem dois gumes. [Evidência, exploratória; mesma direção, de forma descritiva, na confirmação]**
    - Um bônus pelo número de ligações de um nó, uma espécie de "fama", puxava guias gerais famosos para perguntas de outros assuntos. Foi a principal fonte de dano à primeira sugestão (56 de 67 casos piorados no diagnóstico exploratório).
    - O mesmo termo respondeu por 44% do ganho de família nesse diagnóstico. [Evidência, exploratória] A nossa leitura é que ele traz para a lista os guias de referência da família. [Interpretação]
    - O desenho confirmado H, definido na rodada 8, antes desse diagnóstico, usa o M2 só depois da primeira sugestão da busca comum. Sem o termo (H1, reportado de forma descritiva na confirmação), o ganho é de +31% em vez de +59%.
+   - **Nas respostas finais, retirar o termo ajudou em relação ao H. [Evidência, pré-registrada, rodada 11, só no Super User]** Nas perguntas sem duplicata marcada, as respostas com o contexto do H1 foram preferidas às do H: +0,060 [+0,013; +0,109]. Nas perguntas elegíveis, o H1 ficou dentro da margem de 3 pontos frente à busca comum (+0,006 [−0,016; +0,029]). A superioridade do H1 sobre a busca comum **não** foi demonstrada, e essa comparação ainda não foi feita no AskUbuntu.
 4. **O peso deve depender do contexto. [Proposta / Hipótese]**
    - Uma ligação, ou um nó, só deve ganhar peso a partir de confirmações parecidas com o problema novo.
    - É a versão formal da intuição original das "sinapses", próxima da ativação por propagação nos modelos cognitivos de memória e do PageRank personalizado na teoria de grafos.
@@ -55,13 +57,19 @@ O projeto faz uma pergunta simples: **e se problemas recorrentes tivessem uma id
    - As identidades devem vir de uma partição que tolere confirmações ruidosas e contraditórias; o correlation clustering é uma formalização natural. [Proposta]
 6. **No AskUbuntu, "duplicata" muitas vezes significa "as respostas de lá resolvem isto". [Interpretação]**
    - Isso é mais próximo de "a mesma solução serve" do que de "mesmo problema", e é um dos motivos para as ligações terem tipos.
-7. **Poucas confirmações por família capturam a maior parte do valor.**
-   - Com o conteúdo fixo, 10% das confirmações deram cerca de metade do ganho, e 25% deram 70%. [Evidência, exploratória]
-   - Por isso, o valor parece estar mais em cobrir famílias novas do que em adensar as antigas. [Interpretação]
+7. **Uma fração das ligações capturou boa parte do ganho.**
+   - Com o conteúdo fixo, retirando ligações ao acaso da rede inteira, 10% das confirmações deram cerca de metade do ganho, e 25% deram 70%. [Evidência, exploratória]
+   - Esse teste reduziu as ligações da rede inteira. Ele não determina quantas confirmações cada família precisa. *Correção (1º/10/2026): a versão 0.1.1 dizia "poucas confirmações por família capturam a maior parte do valor", o que ia além do teste.*
+   - Priorizar famílias novas em vez de adensar as antigas continua sendo uma hipótese. [Hipótese]
 8. **O sinal de efeito de rede é moderado. [Evidência, simulação exploratória]**
    - Com uma comunidade dividida em dez aplicações simuladas, as confirmações valeram proporcionalmente mais à medida que mais aplicações entravam: ganho relativo de +3% com uma, +31% com dez. Parte disso é esperada pela própria construção, porque uma ligação só existe quando as duas perguntas estão na memória.
    - No fim da curva, a busca comum ganhou bem menos por aplicação acrescentada do que a memória com confirmações: 0,052 ponto contra 0,195 do H.
    - O ganho absoluto de cada aplicação nova continuou diminuindo.
+9. **A rede ajuda a resposta quando traz a família certa, e saber de antemão quando isso vai acontecer não foi atingido. [Evidência, pré-registrada, rodadas 9 e 10]**
+   - Rodada 9 (AskUbuntu): quando o desenho intercalado trouxe a família marcada que a busca comum perdeu, os juízes preferiram as respostas dele: +0,153 [+0,024; +0,282], 124 perguntas.
+   - Rodada 10: um portão baseado em quanto o candidato da rede superava a busca comum não pôde ser calibrado para esse sinal, essa grade e essas exigências.
+   - São preferências de um juiz cego, guiado pela resposta aceita por quem perguntou, e não problemas verificados como resolvidos.
+10. **Ganhos menores numa rede mais esparsa. [Evidência, rodada 10]** No Super User, onde só 1,89% das perguntas novas têm uma duplicata marcada anterior, as relações melhoraram muito menos a recuperação do que no AskUbuntu (M1 +15,5% contra +41,4%). Isso compara dois sites; não isola o efeito da esparsidade.
 
 ## 4. Hipótese: a IA como curadora da memória coletiva
 
@@ -78,7 +86,7 @@ O projeto faz uma pergunta simples: **e se problemas recorrentes tivessem uma id
 
 O registro deixa de ser um cache passivo e vira uma memória coletiva verificável, mantida ativamente.
 
-**Por que se conecta aos resultados.** O valor medido vem das confirmações, e elas são escassas porque dependem de moderadores humanos. Uma IA curadora ataca exatamente esse gargalo: a memória que começa vazia e as famílias novas que ainda não estão cobertas.
+**Por que se conecta aos resultados.** O valor medido vem das confirmações, e elas são escassas porque dependem de moderadores humanos. Uma IA curadora pode reduzir a dependência de moderação humana para ampliar a rede. Mesmo um bom curador só julga as candidatas que a busca traz, e famílias raras podem continuar descobertas. *Correção (1º/10/2026): a versão 0.1.1 dizia que uma IA curadora "ataca exatamente esse gargalo", o que é mais forte do que a evidência permite.*
 
 **Correções incorporadas.**
 
@@ -146,8 +154,9 @@ O que parece incomum é a combinação: um **registro de identidades de problema
 
 ## 8. Próximos experimentos
 
-1. **IA curadora em casos difíceis:** uma IA consegue criar ligações corretas entre perguntas muito parecidas com soluções diferentes, sob avaliação independente?
-2. **Pesos de contexto:** ativação por propagação ou PageRank personalizado a partir da pergunta, no lugar da popularidade global. O objetivo é manter o benefício do termo de popularidade na recuperação sem o prejuízo.
-3. **Identidade como correlation clustering**, no lugar da vizinhança de um passo.
-4. **Entre aplicações reais:** sites diferentes do Stack Exchange, ou issues duplicadas entre repositórios do GitHub.
-5. **Resolução e economia:** entregar a um sistema de IA a resposta aceita da família confirmada melhora a resposta dele, ou reduz o custo?
+1. **Ligações sobre uma busca híbrida (rodada 12, congelada e publicada antes de rodar):** as ligações confirmadas ainda acrescentam algo a uma fusão da busca por palavras (BM25) com um modelo de embeddings selecionado por um piloto em dados exploratórios?
+2. **IA curadora em casos difíceis (rodada 13, rascunho):** um modelo local de baixo custo consegue criar ligações corretas do tipo "as respostas de B resolvem A" entre perguntas muito parecidas, sob avaliação independente, e como isso se compara com treinar uma métrica com os mesmos pares?
+3. **Pesos de contexto:** ativação por propagação ou PageRank personalizado a partir da pergunta, no lugar da popularidade global. O objetivo é manter o benefício do termo de popularidade na recuperação sem o prejuízo.
+4. **Identidade como correlation clustering**, no lugar da vizinhança de um passo.
+5. **Entre aplicações reais:** sites diferentes do Stack Exchange, ou issues duplicadas entre repositórios do GitHub.
+6. **Resolução e economia:** as rodadas 9 a 11 mediram as preferências de um juiz cego entre respostas finais. Se os problemas são de fato resolvidos, se há trabalho poupado e se o custo total cai continua em aberto.

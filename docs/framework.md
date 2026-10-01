@@ -1,6 +1,6 @@
 # Framework: a shared registry of problem identities
 
-**Author:** Alexandre Cardoso Rego · version 0.1.1 · 29 September 2026 · [Português](framework.pt-BR.md)
+**Author:** Alexandre Cardoso Rego · version 0.2.2 · 1 October 2026 (first version 29 September 2026) · [Português](framework.pt-BR.md)
 
 Sections 1 and 2 describe the motivation and the design. From section 3 on, each point carries one of four labels:
 
@@ -43,10 +43,12 @@ The project asks a simple question: **what if recurring problems had an identity
 2. **Keep the closest case first and add the family around it. [Evidence plus a prudent decision]**
    - The interleaved design keeps the first suggestion identical to plain search.
    - Whether the network alone can safely choose the first suggestion is still unresolved: the interval from the judge that passed its controls runs from −4.8 to +0.7 points.
+   - **Preserving the first suggestion does not guarantee preserving the quality of the final answer. [Evidence, round 9]** On AskUbuntu questions without a marked duplicate, answers written with H's context (first suggestion identical to plain search) failed the pre-registered non-inferiority margin against plain search: −0.070 [−0.138; 0.000]. The other suggestions also enter the context and can hurt. [Interpretation]
 3. **A global popularity weight is double-edged. [Evidence, exploratory; same direction, descriptively, in the confirmation]**
    - A bonus based on how many links a node has, a kind of "fame", pulled famous general guides into unrelated questions. It was the main source of damage to the first suggestion (56 of 67 degraded cases in the exploratory diagnostic).
    - The same term supplied 44% of the family gain in that diagnostic. [Evidence, exploratory] Our reading is that it brings the family's canonical guides into the list. [Interpretation]
    - The confirmed design H, defined in round 8 before this diagnostic, happens to use M2 only after the plain first suggestion. Without the term (H1, reported descriptively in the confirmation), the gain is +31% instead of +59%.
+   - **On final answers, removing the term helped relative to H. [Evidence, pre-registered, round 11, Super User only]** On questions without a marked duplicate, answers with H1's context were preferred to answers with H's: +0.060 [+0.013; +0.109]. Across the eligible questions, H1 stayed within the 3-point margin of plain search (+0.006 [−0.016; +0.029]). Superiority of H1 over plain search was **not** shown, and this comparison has not yet been run on AskUbuntu.
 4. **Weights should depend on context. [Proposal / Hypothesis]**
    - A link, or a node, should gain weight only from confirmations that resemble the new problem.
    - This is the formal version of the original "synapse" intuition, close to spreading activation in cognitive models of memory and to personalised PageRank in graph theory.
@@ -55,13 +57,19 @@ The project asks a simple question: **what if recurring problems had an identity
    - Identities should come from a partition that tolerates noisy and contradictory confirmations; correlation clustering is a natural formalisation. [Proposal]
 6. **On AskUbuntu, "duplicate" often means "the answers there solve this". [Interpretation]**
    - That is closer to "the same solution applies" than to "same problem", which is one reason links need types.
-7. **A few confirmations per family capture most of the value.**
-   - With content fixed, 10% of the confirmations gave about half of the gain and 25% gave 70%. [Evidence, exploratory]
-   - The value therefore seems to lie more in covering new families than in densifying old ones. [Interpretation]
+7. **A fraction of the links captured much of the gain.**
+   - With content fixed, removing links at random from the whole network, 10% of the confirmations gave about half of the gain and 25% gave 70%. [Evidence, exploratory]
+   - This test reduced the links of the whole network. It does not determine how many confirmations each family needs. *Correction (1 October 2026): version 0.1.1 read "a few confirmations per family capture most of the value", which went beyond the test.*
+   - Prioritising new families over densifying existing ones remains a hypothesis. [Hypothesis]
 8. **The network effect signal is moderate. [Evidence, exploratory simulation]**
    - When one community was split into ten simulated applications, confirmations became proportionally more valuable as more applications joined: +3% relative gain with one, +31% with ten. Part of this is expected by construction, because a link can exist only when both questions are in the memory.
    - At the end of the curve, plain search gained much less per added application than the confirmation-based memory: 0.052 points against 0.195 for H.
    - The absolute gain per new application still decreased.
+9. **The network helps the answer when it brings the right family, and knowing in advance when it will do so was not achieved. [Evidence, pre-registered, rounds 9 and 10]**
+   - Round 9 (AskUbuntu): when the interleaved design brought the marked family that plain search missed, the judges preferred its answers: +0.153 [+0.024; +0.282], 124 questions.
+   - Round 10: a gate based on how much the network's candidate beat plain search could not be calibrated for its signal, grid and requirements.
+   - These are preferences of a blind judge, guided by the asker's accepted answer, not problems verified as solved.
+10. **Smaller gains on a sparser network. [Evidence, round 10]** On Super User, where only 1.89% of new questions have an earlier marked duplicate, relations improved retrieval much less than on AskUbuntu (M1 +15.5% against +41.4%). This compares two sites; it does not isolate the effect of sparsity.
 
 ## 4. Hypothesis: AI as curator of the collective memory
 
@@ -78,7 +86,7 @@ The project asks a simple question: **what if recurring problems had an identity
 
 The registry stops being a passive cache and becomes a verifiable collective memory that is actively maintained.
 
-**Why it fits the results.** The measured value comes from confirmations, and confirmations are scarce because they depend on human moderators. An AI curator attacks exactly that bottleneck: a memory that starts empty, and new families that are not yet covered.
+**Why it fits the results.** The measured value comes from confirmations, and confirmations are scarce because they depend on human moderators. An AI curator could reduce the dependence on human moderation to extend the network. Even a good curator only judges the candidates that search brings, and rare families may remain uncovered. *Correction (1 October 2026): version 0.1.1 said that an AI curator "attacks exactly that bottleneck", which is stronger than the evidence allows.*
 
 **Corrections built in.**
 
@@ -146,8 +154,9 @@ What seems uncommon is the combination: a **cross-application, public and audita
 
 ## 8. Next experiments
 
-1. **AI curator on hard cases:** can an AI create correct links between very similar questions with different solutions, under independent evaluation?
-2. **Contextual weights:** spreading activation or personalised PageRank from the query instead of global popularity. The goal is to keep the recall benefit of the popularity term without its harm.
-3. **Identity as correlation clustering** instead of 1-hop neighbourhoods.
-4. **Across real applications:** different Stack Exchange sites, or duplicate issues across GitHub repositories.
-5. **Resolution and savings:** does giving an AI system the confirmed family's accepted answer improve its answer, or reduce its cost?
+1. **Links over a hybrid search (round 12, frozen and published before running):** do confirmed links still add to a fusion of word search (BM25) and an embedding model selected by a pilot on exploratory data?
+2. **AI curator on hard cases (round 13, draft):** can a low-cost local model create correct "the answers of B solve A" links between very similar questions, under independent evaluation, and how does that compare with training a metric on the same pairs?
+3. **Contextual weights:** spreading activation or personalised PageRank from the query instead of global popularity. The goal is to keep the recall benefit of the popularity term without its harm.
+4. **Identity as correlation clustering** instead of 1-hop neighbourhoods.
+5. **Across real applications:** different Stack Exchange sites, or duplicate issues across GitHub repositories.
+6. **Resolution and savings:** rounds 9–11 measured a blind judge's preferences between final answers. Whether the problems are actually solved, whether work is saved, and whether the total cost falls are still open.
