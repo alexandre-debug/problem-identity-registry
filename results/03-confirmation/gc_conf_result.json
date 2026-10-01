@@ -1,0 +1,199 @@
+{
+ "dados": {
+  "perguntas": 414451,
+  "perguntas_antes_de_2020": 318118,
+  "perguntas_na_avaliacao": 96333,
+  "com_duplicata_marcada_anterior": 5982,
+  "teto_marcada": 0.0621,
+  "duplicatas_validas": 41931,
+  "ligacoes_na_memoria": 32864,
+  "primeira_data": "2009-01-08T07:47:55.393",
+  "ultima_data": "2024-03-31T23:33:06.157",
+  "sem_historico_usou_versao_atual": 0
+ },
+ "modelo_juiz": "gemma4:latest",
+ "julgamentos_novos": 1313,
+ "respostas_invalidas": 14,
+ "acerto_sem_llm": {
+  "M0": {
+   "familia_top1": 0.0066,
+   "familia_top5": 0.0161,
+   "marcada_top1": 0.0034,
+   "marcada_top5": 0.008
+  },
+  "M1": {
+   "familia_top1": 0.0108,
+   "familia_top5": 0.0228,
+   "marcada_top1": 0.0067,
+   "marcada_top5": 0.019
+  },
+  "M2": {
+   "familia_top1": 0.0146,
+   "familia_top5": 0.0284,
+   "marcada_top1": 0.0139,
+   "marcada_top5": 0.0275
+  },
+  "H": {
+   "familia_top1": 0.0066,
+   "familia_top5": 0.0257,
+   "marcada_top1": 0.0034,
+   "marcada_top5": 0.0245
+  },
+  "H1": {
+   "familia_top1": 0.0066,
+   "familia_top5": 0.0212,
+   "marcada_top1": 0.0034,
+   "marcada_top5": 0.0164
+  }
+ },
+ "familia_top5_ganho_relativo_sobre_M0": {
+  "M1": {
+   "valor": 0.4137,
+   "ic95": [
+    0.3672,
+    0.4593
+   ]
+  },
+  "M2": {
+   "valor": 0.7603,
+   "ic95": [
+    0.69,
+    0.8345
+   ]
+  },
+  "H": {
+   "valor": 0.5928,
+   "ic95": [
+    0.5418,
+    0.6498
+   ]
+  },
+  "H1": {
+   "valor": 0.3131,
+   "ic95": [
+    0.2759,
+    0.3499
+   ]
+  }
+ },
+ "marcada_top5_ganho_relativo_sobre_M0": {
+  "M1": {
+   "valor": 1.3727,
+   "ic95": [
+    1.2296,
+    1.5239
+   ]
+  },
+  "M2": {
+   "valor": 2.4455,
+   "ic95": [
+    2.2126,
+    2.698
+   ]
+  },
+  "H": {
+   "valor": 2.0701,
+   "ic95": [
+    1.889,
+    2.2759
+   ]
+  }
+ },
+ "juiz_1a_sugestao": {
+  "M1_menos_M0": {
+   "diferenca_ponderada": -0.0193,
+   "ic95": [
+    -0.0439,
+    0.0044
+   ],
+   "discordantes": {
+    "marcada": [
+     11,
+     10
+    ],
+    "sem_marcacao": [
+     17,
+     9
+    ]
+   }
+  },
+  "M2_menos_M1 (bonus)": {
+   "diferenca_ponderada": -0.0771,
+   "ic95": [
+    -0.1157,
+    -0.0392
+   ],
+   "discordantes": {
+    "marcada": [
+     33,
+     7
+    ],
+    "sem_marcacao": [
+     49,
+     20
+    ]
+   }
+  },
+  "M2_menos_M0": {
+   "diferenca_ponderada": -0.0963,
+   "ic95": [
+    -0.1375,
+    -0.0568
+   ],
+   "discordantes": {
+    "marcada": [
+     41,
+     14
+    ],
+    "sem_marcacao": [
+     58,
+     21
+    ]
+   }
+  },
+  "sim_bruto": {
+   "marcada": {
+    "M0": 0.41,
+    "M1": 0.403,
+    "M2": 0.27
+   },
+   "sem_marcacao": {
+    "M0": 0.275,
+    "M1": 0.254,
+    "M2": 0.18
+   }
+  },
+  "controles": {
+   "sensibilidade": 0.271,
+   "falsos_positivos": 0.0
+  }
+ },
+ "pesos": {
+  "marcada": 0.0621,
+  "sem_marcacao": 0.9379
+ },
+ "criterios": {
+  "juiz_valido (sens >= 0,30; falsos pos. <= 0,15; diferenca >= 0,25)": false,
+  "P1_familia_M1_ganho_relativo_IC_inferior_>_10%": true,
+  "P2_juiz_M1_menos_M0_IC_inferior_>=_-0,03": "inconclusivo (juiz reprovado nos controles)",
+  "P3_familia_H_ganho_relativo_IC_inferior_>_10%": true,
+  "S1_bonus_piora_M2_menos_M1_IC_superior_<_0": "inconclusivo (juiz reprovado nos controles)",
+  "CONFIRMA": "INCONCLUSIVO (juiz reprovado nos controles)"
+ },
+ "exemplos_M2_piorou": "[10 exemplos removidos na versão pública: contêm trechos de perguntas do askubuntu.com. SHA-256 do arquivo original: c6cb76cc180789f1281a9df1c52c0585d5c6c923686abba7c48dc75d96781a80]",
+ "reproducao": {
+  "dados_sha256": "951a20e2e4b6866d79954cf06a338148bd8829f90e36bcb27f01670336928fe7",
+  "preprocessamento": "v2: historico de edicoes; markdown limpo; pre/code ate 30 palavras; minusculas; 200 palavras",
+  "embeddings": {
+   "modelo": "nomic-embed-text",
+   "digest": "0a109f422b47e3a30ba2b10eca18548e944e8a23073ee3f3e947efcf3c45e59f"
+  },
+  "juiz": {
+   "modelo": "gemma4:latest",
+   "digest": "c6eb396dbd5992bbe3f5cdb947e8bbc0ee413d7c17e2beaae69f5d569cf982eb",
+   "cache": "juiz_conf_8977222229069576.jsonl"
+  },
+  "ollama": "0.30.10"
+ },
+ "minutos_nesta_execucao": 93.6
+}

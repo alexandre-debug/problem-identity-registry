@@ -1,0 +1,69 @@
+{
+ "modelo": "gemma4:latest",
+ "julgamentos": 461,
+ "respostas_invalidas": 3,
+ "juiz": {
+  "sensibilidade_em_duplicatas_marcadas": 0.45,
+  "falsos_positivos_em_pares_aleatorios": 0.0
+ },
+ "primeira_sugestao_util_corrigida": {
+  "busca_plana_M0": 0.669,
+  "M2": 0.52,
+  "M2_menos_M0": -0.149,
+  "M2_menos_M0_ic95": [
+   -0.307,
+   0.0
+  ],
+  "por_grupo": {
+   "M0": {
+    "marcada": 0.907,
+    "sem_marcacao": 0.651
+   },
+   "M2": {
+    "marcada": 0.862,
+    "sem_marcacao": 0.494
+   }
+  }
+ },
+ "sim_bruto": {
+  "marcada": {
+   "M0": 0.408,
+   "M2": 0.388
+  },
+  "sem_marcacao": {
+   "M0": 0.293,
+   "M2": 0.222
+  }
+ },
+ "acerto_pela_marcacao_top1_grupo_marcado": {
+  "M0": 0.071,
+  "M2": 0.429
+ },
+ "acerto_sem_llm_sobre_todas_as_perguntas_da_janela": {
+  "M0_familia_top1": 0.0139,
+  "M0_familia_top5": 0.0319,
+  "M0_marcada_top1": 0.0046,
+  "M0_marcada_top5": 0.0119,
+  "M2_familia_top1": 0.0335,
+  "M2_familia_top5": 0.0491,
+  "M2_marcada_top1": 0.0321,
+  "M2_marcada_top5": 0.0484
+ },
+ "mesma_primeira_sugestao": 0.294,
+ "pares_discordantes_pelo_juiz": {
+  "marcada": {
+   "so_M0_util": 16,
+   "so_M2_util": 14
+  },
+  "sem_marcacao": {
+   "so_M0_util": 10,
+   "so_M2_util": 3
+  }
+ },
+ "pesos": {
+  "com_marcacao": 0.0719,
+  "sem_marcacao": 0.9281
+ },
+ "exemplos_de_discordancia": "[12 exemplos removidos na versão pública: contêm trechos de perguntas do askubuntu.com. SHA-256 do arquivo original: a45f10d53a2fc0718a290748eeb253d40fce78c42bcc117807f7adfbcbb749d8]",
+ "minutos": 6.9
+}

@@ -1,0 +1,17 @@
+dataset e852981ae349 | avaliação no desenvolvimento; diálogos de teste filtrados antes do diagnóstico
+Events_1 V2 K1_texto_estrito         turnos= 303 cobertura= 16.2% precisão_literal= 61.2% precisão_relativa*= 63.3%
+Events_1 V2 K2_parcial_normalizada   turnos= 303 cobertura= 14.5% precisão_literal= 77.3% precisão_relativa*= 79.5%
+Events_1 V2 K3_parcial_estrita       turnos= 303 cobertura=  9.9% precisão_literal= 66.7% precisão_relativa*= 66.7%
+Events_1 V2 K4_valores_e_estado_anotado turnos= 303 cobertura=  1.0% precisão_literal=100.0% precisão_relativa*=100.0%
+Events_1 V3 K1_texto_estrito         turnos= 303 cobertura= 24.8% precisão_literal= 64.0% precisão_relativa*= 64.0%
+Events_1 V3 K2_parcial_normalizada   turnos= 303 cobertura= 22.1% precisão_literal= 82.1% precisão_relativa*= 82.1%
+Events_1 V3 K3_parcial_estrita       turnos= 303 cobertura= 16.8% precisão_literal= 78.4% precisão_relativa*= 78.4%
+Events_1 V3 K4_valores_e_estado_anotado turnos= 303 cobertura=  1.0% precisão_literal=100.0% precisão_relativa*=100.0%
+Events_2 V2 K1_texto_estrito         turnos= 825 cobertura= 22.5% precisão_literal= 61.8% precisão_relativa*= 62.9%
+Events_2 V2 K2_parcial_normalizada   turnos= 825 cobertura= 16.7% precisão_literal= 76.1% precisão_relativa*= 83.3%
+Events_2 V2 K3_parcial_estrita       turnos= 825 cobertura= 13.3% precisão_literal= 76.4% precisão_relativa*= 84.5%
+Events_2 V2 K4_valores_e_estado_anotado turnos= 825 cobertura=  1.3% precisão_literal= 90.9% precisão_relativa*= 90.9%
+Events_2 V3 K1_texto_estrito         turnos= 825 cobertura= 23.8% precisão_literal= 63.3% precisão_relativa*= 63.8%
+Events_2 V3 K2_parcial_normalizada   turnos= 825 cobertura= 18.3% precisão_literal= 76.8% precisão_relativa*= 82.8%
+Events_2 V3 K3_parcial_estrita       turnos= 825 cobertura= 14.3% precisão_literal= 78.0% precisão_relativa*= 84.7%
+Events_2 V3 K4_valores_e_estado_anotado turnos= 825 cobertura=  1.3% precisão_literal= 90.9% precisão_relativa*= 90.9%

@@ -1,0 +1,70 @@
+{
+ "dataset_commit": "4d0a9169ef0bfa4c93ff1aa9f25bc426a7fa559e",
+ "perguntas": 167765,
+ "janelas": {
+  "calibracao": {
+   "total": 16777,
+   "com_duplicata_anterior_marcada": 1373,
+   "sem_marcacao_amostradas": 3000
+  },
+  "avaliacao": {
+   "total": 33553,
+   "com_duplicata_anterior_marcada": 2412,
+   "sem_marcacao_amostradas": 5000
+  }
+ },
+ "buscadores": {
+  "tfidf": {
+   "sugestao_util_calibracao_media_V2_V3": 0.0081,
+   "avaliacao": {
+    "teto_V3_duplicata_marcada_existe": 0.0719,
+    "sugestao_util_V2": 0.005,
+    "sugestao_util_V3": 0.008,
+    "V3_menos_V2": [
+     0.003,
+     [
+      0.0024,
+      0.0035
+     ]
+    ],
+    "reuso_automatico_V2": 0.0,
+    "reuso_automatico_V3": 0.0,
+    "precisao_conservadora_V3": null,
+    "limiar_V3": Infinity
+   }
+  },
+  "vetores": {
+   "sugestao_util_calibracao_media_V2_V3": 0.0015,
+   "avaliacao": {
+    "teto_V3_duplicata_marcada_existe": 0.0719,
+    "sugestao_util_V2": 0.0012,
+    "sugestao_util_V3": 0.0017,
+    "V3_menos_V2": [
+     0.0005,
+     [
+      0.0003,
+      0.0009
+     ]
+    ],
+    "reuso_automatico_V2": 0.0,
+    "reuso_automatico_V3": 0.0,
+    "precisao_conservadora_V3": null,
+    "limiar_V3": Infinity
+   }
+  }
+ },
+ "criterio": {
+  "buscador": "tfidf",
+  "sugestao_util_V3": 0.008,
+  "V3_menos_V2": [
+   0.003,
+   [
+    0.0024,
+    0.0035
+   ]
+  ],
+  "atingido": false
+ },
+ "segundos": 364.9,
+ "teto_V2_duplicata_marcada_na_propria_central": 0.0375
+}

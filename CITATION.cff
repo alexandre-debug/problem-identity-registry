@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "If you use or discuss this work, please cite it as below."
 title: "Problem Identity Registry: a research record on shared, verifiable identities for recurring problems"
-version: 0.2.0
+version: 0.2.1
 date-released: 2026-10-01
 doi: 10.5281/zenodo.23037099
 identifiers:

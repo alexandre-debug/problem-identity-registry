@@ -1,0 +1,648 @@
+{
+ "dataset_commit": "e852981ae34990f4358979625854259302feaa78",
+ "split": "dev",
+ "run_at": "2026-09-28T12:36:16.260877Z",
+ "manifest_seed": 20260928,
+ "rows": [
+  {
+   "app": "Events_1",
+   "cond": "V2",
+   "key": "K1_texto_estrito",
+   "kind": "todos",
+   "turns": 303,
+   "hits": 49,
+   "prec_literal": 30,
+   "prec_relativa_com_gabarito": 31
+  },
+  {
+   "app": "Events_1",
+   "cond": "V2",
+   "key": "K1_texto_estrito",
+   "kind": "entidade",
+   "turns": 136,
+   "hits": 14,
+   "prec_literal": 0,
+   "prec_relativa_com_gabarito": 3
+  },
+  {
+   "app": "Events_1",
+   "cond": "V2",
+   "key": "K1_texto_estrito",
+   "kind": "categorico",
+   "turns": 33,
+   "hits": 3,
+   "prec_literal": 2,
+   "prec_relativa_com_gabarito": 0
+  },
+  {
+   "app": "Events_1",
+   "cond": "V2",
+   "key": "K1_texto_estrito",
+   "kind": "sem_valor",
+   "turns": 134,
+   "hits": 32,
+   "prec_literal": 28,
+   "prec_relativa_com_gabarito": 28
+  },
+  {
+   "app": "Events_1",
+   "cond": "V2",
+   "key": "K2_parcial_normalizada",
+   "kind": "todos",
+   "turns": 303,
+   "hits": 44,
+   "prec_literal": 34,
+   "prec_relativa_com_gabarito": 35
+  },
+  {
+   "app": "Events_1",
+   "cond": "V2",
+   "key": "K2_parcial_normalizada",
+   "kind": "entidade",
+   "turns": 136,
+   "hits": 7,
+   "prec_literal": 0,
+   "prec_relativa_com_gabarito": 2
+  },
+  {
+   "app": "Events_1",
+   "cond": "V2",
+   "key": "K2_parcial_normalizada",
+   "kind": "categorico",
+   "turns": 33,
+   "hits": 3,
+   "prec_literal": 3,
+   "prec_relativa_com_gabarito": 2
+  },
+  {
+   "app": "Events_1",
+   "cond": "V2",
+   "key": "K2_parcial_normalizada",
+   "kind": "sem_valor",
+   "turns": 134,
+   "hits": 34,
+   "prec_literal": 31,
+   "prec_relativa_com_gabarito": 31
+  },
+  {
+   "app": "Events_1",
+   "cond": "V2",
+   "key": "K3_parcial_estrita",
+   "kind": "todos",
+   "turns": 303,
+   "hits": 30,
+   "prec_literal": 20,
+   "prec_relativa_com_gabarito": 20
+  },
+  {
+   "app": "Events_1",
+   "cond": "V2",
+   "key": "K3_parcial_estrita",
+   "kind": "entidade",
+   "turns": 136,
+   "hits": 7,
+   "prec_literal": 0,
+   "prec_relativa_com_gabarito": 2
+  },
+  {
+   "app": "Events_1",
+   "cond": "V2",
+   "key": "K3_parcial_estrita",
+   "kind": "categorico",
+   "turns": 33,
+   "hits": 2,
+   "prec_literal": 2,
+   "prec_relativa_com_gabarito": 0
+  },
+  {
+   "app": "Events_1",
+   "cond": "V2",
+   "key": "K3_parcial_estrita",
+   "kind": "sem_valor",
+   "turns": 134,
+   "hits": 21,
+   "prec_literal": 18,
+   "prec_relativa_com_gabarito": 18
+  },
+  {
+   "app": "Events_1",
+   "cond": "V2",
+   "key": "K4_valores_e_estado_anotado",
+   "kind": "todos",
+   "turns": 303,
+   "hits": 3,
+   "prec_literal": 3,
+   "prec_relativa_com_gabarito": 3
+  },
+  {
+   "app": "Events_1",
+   "cond": "V2",
+   "key": "K4_valores_e_estado_anotado",
+   "kind": "entidade",
+   "turns": 136,
+   "hits": 0,
+   "prec_literal": 0,
+   "prec_relativa_com_gabarito": 0
+  },
+  {
+   "app": "Events_1",
+   "cond": "V2",
+   "key": "K4_valores_e_estado_anotado",
+   "kind": "categorico",
+   "turns": 33,
+   "hits": 0,
+   "prec_literal": 0,
+   "prec_relativa_com_gabarito": 0
+  },
+  {
+   "app": "Events_1",
+   "cond": "V2",
+   "key": "K4_valores_e_estado_anotado",
+   "kind": "sem_valor",
+   "turns": 134,
+   "hits": 3,
+   "prec_literal": 3,
+   "prec_relativa_com_gabarito": 3
+  },
+  {
+   "app": "Events_1",
+   "cond": "V3",
+   "key": "K1_texto_estrito",
+   "kind": "todos",
+   "turns": 303,
+   "hits": 75,
+   "prec_literal": 48,
+   "prec_relativa_com_gabarito": 48
+  },
+  {
+   "app": "Events_1",
+   "cond": "V3",
+   "key": "K1_texto_estrito",
+   "kind": "entidade",
+   "turns": 136,
+   "hits": 20,
+   "prec_literal": 0,
+   "prec_relativa_com_gabarito": 2
+  },
+  {
+   "app": "Events_1",
+   "cond": "V3",
+   "key": "K1_texto_estrito",
+   "kind": "categorico",
+   "turns": 33,
+   "hits": 8,
+   "prec_literal": 7,
+   "prec_relativa_com_gabarito": 5
+  },
+  {
+   "app": "Events_1",
+   "cond": "V3",
+   "key": "K1_texto_estrito",
+   "kind": "sem_valor",
+   "turns": 134,
+   "hits": 47,
+   "prec_literal": 41,
+   "prec_relativa_com_gabarito": 41
+  },
+  {
+   "app": "Events_1",
+   "cond": "V3",
+   "key": "K2_parcial_normalizada",
+   "kind": "todos",
+   "turns": 303,
+   "hits": 67,
+   "prec_literal": 55,
+   "prec_relativa_com_gabarito": 55
+  },
+  {
+   "app": "Events_1",
+   "cond": "V3",
+   "key": "K2_parcial_normalizada",
+   "kind": "entidade",
+   "turns": 136,
+   "hits": 11,
+   "prec_literal": 1,
+   "prec_relativa_com_gabarito": 3
+  },
+  {
+   "app": "Events_1",
+   "cond": "V3",
+   "key": "K2_parcial_normalizada",
+   "kind": "categorico",
+   "turns": 33,
+   "hits": 11,
+   "prec_literal": 11,
+   "prec_relativa_com_gabarito": 9
+  },
+  {
+   "app": "Events_1",
+   "cond": "V3",
+   "key": "K2_parcial_normalizada",
+   "kind": "sem_valor",
+   "turns": 134,
+   "hits": 45,
+   "prec_literal": 43,
+   "prec_relativa_com_gabarito": 43
+  },
+  {
+   "app": "Events_1",
+   "cond": "V3",
+   "key": "K3_parcial_estrita",
+   "kind": "todos",
+   "turns": 303,
+   "hits": 51,
+   "prec_literal": 40,
+   "prec_relativa_com_gabarito": 40
+  },
+  {
+   "app": "Events_1",
+   "cond": "V3",
+   "key": "K3_parcial_estrita",
+   "kind": "entidade",
+   "turns": 136,
+   "hits": 9,
+   "prec_literal": 1,
+   "prec_relativa_com_gabarito": 3
+  },
+  {
+   "app": "Events_1",
+   "cond": "V3",
+   "key": "K3_parcial_estrita",
+   "kind": "categorico",
+   "turns": 33,
+   "hits": 8,
+   "prec_literal": 8,
+   "prec_relativa_com_gabarito": 6
+  },
+  {
+   "app": "Events_1",
+   "cond": "V3",
+   "key": "K3_parcial_estrita",
+   "kind": "sem_valor",
+   "turns": 134,
+   "hits": 34,
+   "prec_literal": 31,
+   "prec_relativa_com_gabarito": 31
+  },
+  {
+   "app": "Events_1",
+   "cond": "V3",
+   "key": "K4_valores_e_estado_anotado",
+   "kind": "todos",
+   "turns": 303,
+   "hits": 3,
+   "prec_literal": 3,
+   "prec_relativa_com_gabarito": 3
+  },
+  {
+   "app": "Events_1",
+   "cond": "V3",
+   "key": "K4_valores_e_estado_anotado",
+   "kind": "entidade",
+   "turns": 136,
+   "hits": 0,
+   "prec_literal": 0,
+   "prec_relativa_com_gabarito": 0
+  },
+  {
+   "app": "Events_1",
+   "cond": "V3",
+   "key": "K4_valores_e_estado_anotado",
+   "kind": "categorico",
+   "turns": 33,
+   "hits": 0,
+   "prec_literal": 0,
+   "prec_relativa_com_gabarito": 0
+  },
+  {
+   "app": "Events_1",
+   "cond": "V3",
+   "key": "K4_valores_e_estado_anotado",
+   "kind": "sem_valor",
+   "turns": 134,
+   "hits": 3,
+   "prec_literal": 3,
+   "prec_relativa_com_gabarito": 3
+  },
+  {
+   "app": "Events_2",
+   "cond": "V2",
+   "key": "K1_texto_estrito",
+   "kind": "todos",
+   "turns": 825,
+   "hits": 186,
+   "prec_literal": 115,
+   "prec_relativa_com_gabarito": 117
+  },
+  {
+   "app": "Events_2",
+   "cond": "V2",
+   "key": "K1_texto_estrito",
+   "kind": "entidade",
+   "turns": 328,
+   "hits": 43,
+   "prec_literal": 0,
+   "prec_relativa_com_gabarito": 3
+  },
+  {
+   "app": "Events_2",
+   "cond": "V2",
+   "key": "K1_texto_estrito",
+   "kind": "categorico",
+   "turns": 84,
+   "hits": 11,
+   "prec_literal": 9,
+   "prec_relativa_com_gabarito": 8
+  },
+  {
+   "app": "Events_2",
+   "cond": "V2",
+   "key": "K1_texto_estrito",
+   "kind": "sem_valor",
+   "turns": 413,
+   "hits": 132,
+   "prec_literal": 106,
+   "prec_relativa_com_gabarito": 106
+  },
+  {
+   "app": "Events_2",
+   "cond": "V2",
+   "key": "K2_parcial_normalizada",
+   "kind": "todos",
+   "turns": 825,
+   "hits": 138,
+   "prec_literal": 105,
+   "prec_relativa_com_gabarito": 115
+  },
+  {
+   "app": "Events_2",
+   "cond": "V2",
+   "key": "K2_parcial_normalizada",
+   "kind": "entidade",
+   "turns": 328,
+   "hits": 26,
+   "prec_literal": 0,
+   "prec_relativa_com_gabarito": 12
+  },
+  {
+   "app": "Events_2",
+   "cond": "V2",
+   "key": "K2_parcial_normalizada",
+   "kind": "categorico",
+   "turns": 84,
+   "hits": 15,
+   "prec_literal": 14,
+   "prec_relativa_com_gabarito": 12
+  },
+  {
+   "app": "Events_2",
+   "cond": "V2",
+   "key": "K2_parcial_normalizada",
+   "kind": "sem_valor",
+   "turns": 413,
+   "hits": 97,
+   "prec_literal": 91,
+   "prec_relativa_com_gabarito": 91
+  },
+  {
+   "app": "Events_2",
+   "cond": "V2",
+   "key": "K3_parcial_estrita",
+   "kind": "todos",
+   "turns": 825,
+   "hits": 110,
+   "prec_literal": 84,
+   "prec_relativa_com_gabarito": 93
+  },
+  {
+   "app": "Events_2",
+   "cond": "V2",
+   "key": "K3_parcial_estrita",
+   "kind": "entidade",
+   "turns": 328,
+   "hits": 20,
+   "prec_literal": 1,
+   "prec_relativa_com_gabarito": 11
+  },
+  {
+   "app": "Events_2",
+   "cond": "V2",
+   "key": "K3_parcial_estrita",
+   "kind": "categorico",
+   "turns": 84,
+   "hits": 10,
+   "prec_literal": 9,
+   "prec_relativa_com_gabarito": 8
+  },
+  {
+   "app": "Events_2",
+   "cond": "V2",
+   "key": "K3_parcial_estrita",
+   "kind": "sem_valor",
+   "turns": 413,
+   "hits": 80,
+   "prec_literal": 74,
+   "prec_relativa_com_gabarito": 74
+  },
+  {
+   "app": "Events_2",
+   "cond": "V2",
+   "key": "K4_valores_e_estado_anotado",
+   "kind": "todos",
+   "turns": 825,
+   "hits": 11,
+   "prec_literal": 10,
+   "prec_relativa_com_gabarito": 10
+  },
+  {
+   "app": "Events_2",
+   "cond": "V2",
+   "key": "K4_valores_e_estado_anotado",
+   "kind": "entidade",
+   "turns": 328,
+   "hits": 0,
+   "prec_literal": 0,
+   "prec_relativa_com_gabarito": 0
+  },
+  {
+   "app": "Events_2",
+   "cond": "V2",
+   "key": "K4_valores_e_estado_anotado",
+   "kind": "categorico",
+   "turns": 84,
+   "hits": 0,
+   "prec_literal": 0,
+   "prec_relativa_com_gabarito": 0
+  },
+  {
+   "app": "Events_2",
+   "cond": "V2",
+   "key": "K4_valores_e_estado_anotado",
+   "kind": "sem_valor",
+   "turns": 413,
+   "hits": 11,
+   "prec_literal": 10,
+   "prec_relativa_com_gabarito": 10
+  },
+  {
+   "app": "Events_2",
+   "cond": "V3",
+   "key": "K1_texto_estrito",
+   "kind": "todos",
+   "turns": 825,
+   "hits": 196,
+   "prec_literal": 124,
+   "prec_relativa_com_gabarito": 125
+  },
+  {
+   "app": "Events_2",
+   "cond": "V3",
+   "key": "K1_texto_estrito",
+   "kind": "entidade",
+   "turns": 328,
+   "hits": 45,
+   "prec_literal": 0,
+   "prec_relativa_com_gabarito": 3
+  },
+  {
+   "app": "Events_2",
+   "cond": "V3",
+   "key": "K1_texto_estrito",
+   "kind": "categorico",
+   "turns": 84,
+   "hits": 15,
+   "prec_literal": 13,
+   "prec_relativa_com_gabarito": 11
+  },
+  {
+   "app": "Events_2",
+   "cond": "V3",
+   "key": "K1_texto_estrito",
+   "kind": "sem_valor",
+   "turns": 413,
+   "hits": 136,
+   "prec_literal": 111,
+   "prec_relativa_com_gabarito": 111
+  },
+  {
+   "app": "Events_2",
+   "cond": "V3",
+   "key": "K2_parcial_normalizada",
+   "kind": "todos",
+   "turns": 825,
+   "hits": 151,
+   "prec_literal": 116,
+   "prec_relativa_com_gabarito": 125
+  },
+  {
+   "app": "Events_2",
+   "cond": "V3",
+   "key": "K2_parcial_normalizada",
+   "kind": "entidade",
+   "turns": 328,
+   "hits": 26,
+   "prec_literal": 0,
+   "prec_relativa_com_gabarito": 12
+  },
+  {
+   "app": "Events_2",
+   "cond": "V3",
+   "key": "K2_parcial_normalizada",
+   "kind": "categorico",
+   "turns": 84,
+   "hits": 19,
+   "prec_literal": 17,
+   "prec_relativa_com_gabarito": 14
+  },
+  {
+   "app": "Events_2",
+   "cond": "V3",
+   "key": "K2_parcial_normalizada",
+   "kind": "sem_valor",
+   "turns": 413,
+   "hits": 106,
+   "prec_literal": 99,
+   "prec_relativa_com_gabarito": 99
+  },
+  {
+   "app": "Events_2",
+   "cond": "V3",
+   "key": "K3_parcial_estrita",
+   "kind": "todos",
+   "turns": 825,
+   "hits": 118,
+   "prec_literal": 92,
+   "prec_relativa_com_gabarito": 100
+  },
+  {
+   "app": "Events_2",
+   "cond": "V3",
+   "key": "K3_parcial_estrita",
+   "kind": "entidade",
+   "turns": 328,
+   "hits": 20,
+   "prec_literal": 1,
+   "prec_relativa_com_gabarito": 11
+  },
+  {
+   "app": "Events_2",
+   "cond": "V3",
+   "key": "K3_parcial_estrita",
+   "kind": "categorico",
+   "turns": 84,
+   "hits": 14,
+   "prec_literal": 13,
+   "prec_relativa_com_gabarito": 11
+  },
+  {
+   "app": "Events_2",
+   "cond": "V3",
+   "key": "K3_parcial_estrita",
+   "kind": "sem_valor",
+   "turns": 413,
+   "hits": 84,
+   "prec_literal": 78,
+   "prec_relativa_com_gabarito": 78
+  },
+  {
+   "app": "Events_2",
+   "cond": "V3",
+   "key": "K4_valores_e_estado_anotado",
+   "kind": "todos",
+   "turns": 825,
+   "hits": 11,
+   "prec_literal": 10,
+   "prec_relativa_com_gabarito": 10
+  },
+  {
+   "app": "Events_2",
+   "cond": "V3",
+   "key": "K4_valores_e_estado_anotado",
+   "kind": "entidade",
+   "turns": 328,
+   "hits": 0,
+   "prec_literal": 0,
+   "prec_relativa_com_gabarito": 0
+  },
+  {
+   "app": "Events_2",
+   "cond": "V3",
+   "key": "K4_valores_e_estado_anotado",
+   "kind": "categorico",
+   "turns": 84,
+   "hits": 0,
+   "prec_literal": 0,
+   "prec_relativa_com_gabarito": 0
+  },
+  {
+   "app": "Events_2",
+   "cond": "V3",
+   "key": "K4_valores_e_estado_anotado",
+   "kind": "sem_valor",
+   "turns": 413,
+   "hits": 11,
+   "prec_literal": 10,
+   "prec_relativa_com_gabarito": 10
+  }
+ ]
+}

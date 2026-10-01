@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.2.1 (1 October 2026)
+
+Repository fix. No results or documents changed.
+
+- **Files restored.** The upload of v0.2.0 removed by mistake 63 files from earlier versions: the code and results of rounds 1–8 and of the confirmation, `docs/framework.md`, `docs/framework.pt-BR.md`, `docs/protocolo-original.pt-BR.md`, `code/ENVIRONMENT.md` and the requirement files. They are restored here unchanged, so this version contains the full research record. The GitHub release and the Zenodo archive of v0.2.0 are incomplete; cite v0.2.1 or the concept DOI.
+
 ## v0.2.0 (1 October 2026)
 
 New results: rounds 9 to 11, which ask whether the retrieved discussions improve the final answer, not only retrieval. The confirmed claim of v0.1 did not change.
